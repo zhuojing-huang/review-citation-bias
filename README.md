@@ -13,10 +13,10 @@ The peer review data for the following conferences was gathered using the **Open
 - `API1.0_get_data.py`: Uses OpenReview API v1.0 to fetch peer review data for ICLR.
 
 The retrieved data is defaultly saved in JSON format:
-- `EMNLP2023.json`
-- `NeurIPS2023.json`
-- `NeurIPS2024.json`
-- `ICLR2023.json`
+- `raw_data/EMNLP2023.json`
+- `raw_data/NeurIPS2023.json`
+- `raw_data/NeurIPS2024.json`
+- `raw_data/ICLR2023.json`
 
 ## Workflow
 
