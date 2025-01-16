@@ -1,4 +1,4 @@
-# Peer Review Analysis Project
+# Quantifying Biases in Peer Review: Analyzing Reviewer Suggestions in Artificial Intelligence Publications
 
 This project provides a framework for analyzing biases induced by citation suggestions from peer review at major AI conferences. It includes tools for retrieving, converting, annotating, and shuffling review data, as well as sending prompts together with review data to open-source large language models to evaluate their performance in suggesting additional citations based on the reviews.
 
