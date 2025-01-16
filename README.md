@@ -1,93 +1,106 @@
-# Review Citation Bias
+# Peer Review Analysis Project
 
+This project provides a framework for analyzing biases induced by citation suggestions from peer review at major AI conferences. It includes tools for retrieving, converting, annotating, and shuffling review data, as well as sending prompts together with review data to open-source large language models to evaluate their performance in suggesting additional citations based on the reviews.
 
+## Data Retrieval
 
-## Getting started
+The peer review data for the following conferences was gathered using the **OpenReview API**:
+- **EMNLP 2023** and **NeurIPS 2023 & 2024**: Data retrieved using `API2.0_get_data.py`.
+- **ICLR 2023**: Data retrieved using `API1.0_get_data.py`.
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+### Python Files for Data Retrieval
+- `API2.0_get_data.py`: Uses OpenReview API v2.0 to fetch peer review data for EMNLP and NeurIPS conferences.
+- `API1.0_get_data.py`: Uses OpenReview API v1.0 to fetch peer review data for ICLR.
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+The retrieved data is defaultly saved in JSON format:
+- `EMNLP2023.json`
+- `NeurIPS2023.json`
+- `NeurIPS2024.json`
+- `ICLR2023.json`
 
-## Add your files
+## Workflow
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+### 1. JSON to CSV Conversion
+Python scripts are provided to convert the JSON files into CSV format for easier processing for later manual annotation:
+- `convert_json_csv_emnlp.py`: Converts EMNLP JSON data to CSV.
+- `convert_json_csv_neurips.py`: Converts NeurIPS JSON data to CSV.
+- `convert_json_csv_iclr.py`: Converts ICLR JSON data to CSV.
 
-```
-cd existing_repo
-git remote add origin https://gitlab.gwdg.de/zhuojing.huang/review-citation-bias.git
-git branch -M main
-git push -uf origin main
-```
+### 2. Manual Annotation
+After converting the JSON files to CSV:
+1. **Annotate Reviews**: 
+   - 50 reviews where reviewers suggest authors cite additional literature are manually marked as **positive cases** (`1`).
+   - 50 reviews without such suggestions are manually marked as **negative cases** (`0`).
+2. **Distribution**: These 100 labeled cases are evenly distributed across the three venues: EMNLP, NeurIPS, and ICLR, with each of them roughly having 33.3% of the annotated data.
+3. Labeled files are saved as:
+   - `EMNLPwithLabels.csv`
+   - `NeurIPSwithLabels.csv`
+   - `ICLRwithLabels.csv`
 
-## Integrate with your tools
+### 3. Shuffle Labeled Data
+The labeled data is shuffled to ensure random distribution:
+- **Issue**: Positive cases were originally at the beginning, and negative cases were at the end.
+- **Solution**: `shuffle_csv.py` shuffles the labeled data files.
+- Resulting files:
+  - `shuffled_ICLRwithoutLabels.csv`
+  - `shuffled_EMNLPwithoutLabels.csv`
+  - `shuffled_NeurIPSwithoutLabels.csv`
 
-- [ ] [Set up project integrations](https://gitlab.gwdg.de/zhuojing.huang/review-citation-bias/-/settings/integrations)
+### 4. Language Model Response Collection
+The shuffled data is used to evaluate language model performance in identifying citation suggestions:
+1. `get_response_csv.py` sends each review as a **prompt** to a language model via **LM Studio** API.
+2. The model's response is saved in a new column, `suggest_citation`, in the output CSV files.
 
-## Collaborate with your team
+## File Summary
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
-
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+| File | Description |
+|------|-------------|
+| `API2.0_get_data.py` | Script to fetch EMNLP and NeurIPS data using OpenReview API v2.0. |
+| `API1.0_get_data.py` | Script to fetch ICLR data using OpenReview API v1.0. |
+| `EMNLP2023.json` | Raw EMNLP 2023 peer review data in JSON. |
+| `NeurIPS2023.json` | Raw NeurIPS 2023 peer review data in JSON. |
+| `NeurIPS2024.json` | Raw NeurIPS 2024 peer review data in JSON. |
+| `ICLR2023.json` | Raw ICLR 2023 peer review data in JSON. |
+| `convert_json_csv_emnlp.py` | Script to convert EMNLP JSON to CSV. |
+| `convert_json_csv_neurips.py` | Script to convert NeurIPS JSON to CSV. |
+| `convert_json_csv_iclr.py` | Script to convert ICLR JSON to CSV. |
+| `shuffle_csv.py` | Script to shuffle labeled data for randomization. |
+| `get_response_csv.py` | Script to send reviews to language models and save responses. |
+| `shuffled_ICLRwithoutLabels.csv` | Shuffled, unlabeled ICLR data for LM evaluation. |
+| `shuffled_EMNLPwithoutLabels.csv` | Shuffled, unlabeled EMNLP data for LM evaluation. |
+| `shuffled_NeurIPSwithoutLabels.csv` | Shuffled, unlabeled NeurIPS data for LM evaluation. |
 
 ## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+### Prerequisites
+- Python 3.x
+- LM Studio for interacting with language models
+- OpenReview API keys for data retrieval
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+### Steps
+1. **Retrieve Data**:
+   Run the appropriate script to fetch conference data:
+   ```bash
+   python API2.0_get_data.py
+   python API1.0_get_data.py
+   ```
+2. **Convert JSON to CSV**:
+   Run the conversion scripts:
+   ```bash
+   python convert_json_csv_emnlp.py
+   python convert_json_csv_neurips.py
+   python convert_json_csv_iclr.py
+   ```
+3. **Annotate Reviews**: Manually label 50 positive and 50 negative cases per venue and save labeled CSV files.
+4. **Shuffle Labeled Data**:
+   ```bash
+   python shuffle_csv.py
+   ```
+5. **Send Prompts to LM**:
+   Use `get_response_csv.py` to collect model responses:
+   ```bash
+   python get_response_csv.py
+   ```
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+## Outputs
+The final output is a set of CSV files with an additional `suggest_citation` column containing language model responses. These can be analyzed to assess the models' ability to detect citation suggestions in peer reviews.
