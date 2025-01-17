@@ -1,0 +1,720 @@
+id,summary,strengths,weaknesses,questions,limitations,flag_for_ethics_review,rating,confidence,Reviewer_Confidence,code_of_conduct,contribution,presentation,soundness,cdate,ddate,details,domain,forum,invitations,license,mdate,nonreaders,number,odate,pdate,readers,replyto,signatures,tcdate,tmdate,writers,response
+VZ9eiTIGMz,"This paper presents conditions for identifying the generator of a linear stochastic differential equation (SDE) with additive and multiplicative noise. The authors derive sufficient conditions for identifying the generator of both types of SDEs and offer geometric interpretations. 
+",I think this paper is theoretically sound. ,"1. It would be great if there are practical examples for motivating readers. It’s hard to evaluate the papers’ practical importance because there are no practical scenarios and simulations. 
+2. In the introduction, the link between causal inference and the identiability of the SDE is weak. Is the goal to identify the “generator” of the post-interventional stochastic process when only observational process is available?","1. Could you please give some examples or practical scenarios of the proposed method 
+2. Could you please provide DAGs or any graphs that describing the data generating process? I want to see graphical settings that enables identification of post-interventional processes.","1. I believe that the paper's writing lacks motivation because it lacks examples or practical scenarios to describe practical importance.
+2. Without a graphical description of the data generating processes, it's difficult to assess how this result is related to causality.",['No ethics review needed.'],"7: Accept: Technically solid paper, with high impact on at least one sub-area, or moderate-to-high impact on more than one areas, with good-to-excellent evaluation, resources, reproducibility, and no unaddressed ethical considerations.",1: Your assessment is an educated guess. The submission is not in your area or the submission was difficult to understand. Math/other details were not carefully checked.,,Yes,3 good,2 fair,3 good,1688427159321,,,NeurIPS.cc/2023/Conference,zsOOqjaj2z,"['NeurIPS.cc/2023/Conference/Submission5668/-/Official_Review', 'NeurIPS.cc/2023/Conference/-/Edit']",CC BY 4.0,1702411021240,[],1,,,['everyone'],zsOOqjaj2z,['NeurIPS.cc/2023/Conference/Submission5668/Reviewer_Huoq'],1688427159321,1702411021240,"['NeurIPS.cc/2023/Conference', 'NeurIPS.cc/2023/Conference/Submission5668/Reviewer_Huoq']","Yes.
+
+The reviewer suggests that the authors should provide practical examples for motivating readers and offering a better evaluation of the papers' practical importance. They also mention the lack of motivation in the introduction, which could be improved by discussing the connection between causal inference and SDEs more clearly.
+
+Additionally, the reviewer notes that without graphical descriptions of the data generating processes, it's difficult to assess how this result is related to causality. The authors might consider incorporating causal diagrams (DAGs) or other graphical representations to help illustrate their results.
+
+The reviewer also points out that the paper could benefit from discussing additional literature, particularly in the context of practical applications and the relationship between SDEs and causal inference."
+9oW2sasuE5,"Paper introduces a framework to detect and categorize different model uncertainty types in classification setting. Proposer model-agnostic (with some assumptions of model structure) uncertainty quantification (UQ) relies on kernel density estimation on latent space representation by defining scores for OOD, Bnd, and IDM examples. Proposed approach is empirically evaluated using toy data as well as real MNIST and UCI datasets. Some of the limitations of existing UQ are examined as well as ability to use new uncertainty categorisation as flagging method to filter out training example to learn more accurate models.","To my knowledge, paper presents a novel approach to categorise different predictive uncertainty types in classification setting. The proposal is well-structured with appropriate theoretical background, and especially practical evaluation which includes both toy illustration of properties as well as real data evaluation of MNIST variants and UCI datasets. Proposed framework shows simple yet effective solution that seems to improve existing approaches in practice and is bringing new knowledge for analysing existing UQ methods.
+
+Summary of strengths
+- Novel view on uncertainty quantification
+- Work in practice, at least in given classification tasks
+- Well-made empirical evaluation (see also weaknesses)","There are some weaknesses that could further improve the presentation and usefulness of proposed framework. Analysis of different model architectures (i.e. latent space) with proposed density estimation could be further extend to show how these behave with different level of uncertainty in the datasets to justify the modelling choices. Also, the analysis of verifying DAUC concentrates only on MNIST variants, but it could be useful to examine different types of data with different noise and uncertainty levels.
+
+Summary of weaknesses
+- Limited analysis of model assumptions and density estimation
+- Somewhat limited type of datasets and model architectures evaluated
+- Some polishing of text here and there (see questions)
+","- Table 1: Could you ellaborate why other related approaches could not be used to improve the prediction? (if threshold is determined for the uncertainty estimates these methods are utilising). I see prediction improvement more related to use case than general property of particular method directly. It might be not give better predictive accuracy than proposed method, but is doable.
+- Figure 4: What is clustering/projecting method used? Maybe mention in the text.
+- Figure 5 & 6: How error bars are calculated? Maybe mention in the text.
+
+Minor
+- DAUC is developed for classification tasks in specific. Maybe that could be mentioned in the abstract.
+","Some of the assumptions and limitations of proposed framework are listed in the supplementary material in relation to model structure and latent space density estimation. Furthermore, the usefulness of UQ are broader sense are mention as an important part of safety critical AI applications. No negative impact identified.",['No ethics review needed.'],"6: Weak Accept: Technically solid, moderate-to-high impact paper, with no major concerns with respect to evaluation, resources, reproducibility, ethical considerations.","4: You are confident in your assessment, but not absolutely certain. It is unlikely, but not impossible, that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work.",,Yes,3 good,3 good,2 fair,1688657604892,,,NeurIPS.cc/2023/Conference,zyhxRc9bew,"['NeurIPS.cc/2023/Conference/Submission10819/-/Official_Review', 'NeurIPS.cc/2023/Conference/-/Edit']",CC BY 4.0,1702411303144,[],4,,,['everyone'],zyhxRc9bew,['NeurIPS.cc/2023/Conference/Submission10819/Reviewer_sVgx'],1688657604892,1702411303144,"['NeurIPS.cc/2023/Conference', 'NeurIPS.cc/2023/Conference/Submission10819/Reviewer_sVgx']","Yes
+
+The reviewer suggests that the authors could further improve their presentation and usefulness by extending their analysis to different model architectures and datasets with varying levels of uncertainty, which might justify their modelling choices. This implies that they should consider incorporating more relevant literature in these areas for a more comprehensive understanding.
+
+Additionally, the reviewer mentions that some polishing of text is required, which may involve clarifying certain points or providing additional details. However, it does not explicitly state that they need to refer to any specific other literature. Nevertheless, considering the suggestions made by the reviewer, the authors could benefit from reviewing existing literature on model uncertainty in different classification tasks and data types, as well as methods for evaluating and improving predictive accuracy in safety-critical applications."
+aSKCSVsxev,"This paper analyzes the expressive power of pooling operators in Graph Neural Networks (GNNs) and derives three conditions for a pooling operator to fully preserve the expressive power of the Message Passing (MP) layers preceding it. The derived conditions are as follows: 
+
+a) The pooling operator should extract different features for non-isomorphic graphs that are distinguishable using the Weisfeiler-Lehman (WL) test. 
+
+b) All nodes in the original graph must contribute to the creation of supernodes.
+
+c) The features of the supernodes (denoted as X^P) should be a convex combination of the features of the nodes X^L.
+
+The paper presents controlled experiments along with theoretical support to validate and support their findings.","1 - The paper is well-written and easy to follow. 
+2 - The hypothesis is nicely executed in a controlled set of experiments. 
+3 - Theoretical analysis has been provided to support the findings. 
+4 - Sufficient review of the literature and pooling operators is provided. 
+5 - Clear categorization and analysis of the pooling operators are provided.","1 - Selected real-world graph classification datasets are chosen. I was wondering why MUTAG, PTC_MR, IMDB-B are IMDB-MULTI left out
+2 - A comparison with pooling operators such as global_add, global_sum and global_max might provide a better overview of the effectiveness of these pooling operators.  ","1 - I found the figure 2 slightly difficult to understand. I believe that adding some additional information, if applicable, could be helpful in making it easier to comprehend.
+
+2 - I appreciate that the running times are provided, but I was wondering if it would be possible to derive their computational complexities (pooling operators) and include them in Table 2.
+
+3 - The quality of Figure 3 could potentially be improved.",- ,['No ethics review needed.'],"6: Weak Accept: Technically solid, moderate-to-high impact paper, with no major concerns with respect to evaluation, resources, reproducibility, ethical considerations.",5: You are absolutely certain about your assessment. You are very familiar with the related work and checked the math/other details carefully.,,Yes,2 fair,3 good,3 good,1688531384966,,,NeurIPS.cc/2023/Conference,zqyVjCjhYD,"['NeurIPS.cc/2023/Conference/Submission813/-/Official_Review', 'NeurIPS.cc/2023/Conference/-/Edit']",CC BY 4.0,1702410758770,[],3,,,['everyone'],zqyVjCjhYD,['NeurIPS.cc/2023/Conference/Submission813/Reviewer_KM5y'],1688531384966,1702410758770,"['NeurIPS.cc/2023/Conference', 'NeurIPS.cc/2023/Conference/Submission813/Reviewer_KM5y']","Yes
+
+The reviewer suggests that a comparison with pooling operators such as global_add, global_sum and global_max might provide a better overview of the effectiveness of these pooling operators, which implies that the authors should consider referencing additional literature on this topic."
+043osb093q,"This paper introduces a new hybrid distillation method for Vision Transformer. It is hybrid in the sense that two teacher models pre-trained by two different approaches, namely Contrastive Learning and Masked Image Modeling, are adopted in the distillation. In this way, the student model inherit both the diversity from MIM pre-trained teacher model and the discriminability from the CL pre-trained teacher model. Further more, a progressive masking strategy is adopted to reduce redundancy during distillation. Experiments on multiple popular classification/detection/segmentation benchmarks demonstrate the effectiveness of the proposed approach.","The idea of adopting two homgeneous teacher models is interetsing. Intuitively, a good design allows the student model to learn the advantages of both teacher models.","1. I find many experimental details in the explorative model evaluation part (section 2) are missing, making it hard for readers to assess the soundness of those experiments. Note that these experiments are crucial for justifying the motivation of this work. My questions are listed as follows: 
+a) What kind of distillation approach is used here? Is it the same as the one used in Hybrid Distillation, or just naive feature distillation? Also, details like where to distill and distill objectives are missing. 
+b) Why are the average head distance and normalizedmutual information good indicators of the discrimination power and diversity of the learnt representations? And how are the so called `discrimination and diversity` related to the downstream performances? So far I have only seen very vague definition of these two metrics, and I am not sure if they are solid proofs that teacher models pre-trained by different objectives do have different advantages that the student must learn. 
+c) The notations need further clarification. For instance, in Figure 2(a), the caption says 'various decoder' , indicating the curves are the values of NMI of the decoder. While there is actually a curve for `no decoder`, indicating the curves are the values of NMI of the encoder. These notations are very confusing.
+d) The authors claim that `The Increase in Diversity Derives from the Asymmetric Designs`, but there are no ablation on if the symmetric design of MIM architecture would lead to the same diversity. The closet design is in section 2.4, but its objective is to reconstruct high-level features from the teacher model.
+
+2. Similarly, some implementation details about the Hybrid Distillation itself are missing. For example, I do not believe the student is solely trained by the distillation objective. Is there also a supervised training objective like cross-entropy loss? The authors should make it more clear. 
+
+3. I wonder how did the authors get the results of baseline methods. For example, in table 1, CLIP ViT-B achieves an accuracy of 83.6 on IN-1K, and CLIP ViT-L achieves an accuracy of 86.1. These numbers are too good to be zero-shot results, so I have to assume they are fine-tuning results. Yet, based on [1], fine-tuning CLIP ViT-B achieves an accuracy of 85.7, and CLIP ViT-L achieves an accuracy of 88.0 on IN-1K, which have achieved better or on par performance comapred to the Hybrid Distillation (85.1 for ViT-B, 88.0 for ViT-L). In this case, the proposed Hybrid Distillation approach does not seems to show enough empirical gain.
+
+4. As already discussed in the limitation section in the supplemental material, the gain of Hybrid Distillation over Distill-CLIP is not so significant (only 0.3\% on IN-1K with ViT-B).
+
+References
+[1] Dong X, Bao J, Zhang T, et al. CLIP Itself is a Strong Fine-tuner: Achieving 85.7% and 88.0% Top-1 Accuracy with ViT-B and ViT-L on ImageNet[J]. arXiv preprint arXiv:2212.06138, 2022.",See weakness.,The authors have included discussion on the limited gain over Distill-CLIP.,['No ethics review needed.'],"4: Borderline reject: Technically solid paper where reasons to reject, e.g., limited evaluation, outweigh reasons to accept, e.g., good evaluation. Please use sparingly.","4: You are confident in your assessment, but not absolutely certain. It is unlikely, but not impossible, that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work.",,Yes,3 good,2 fair,3 good,1687462207886,,,NeurIPS.cc/2023/Conference,ztqf6bzuqQ,"['NeurIPS.cc/2023/Conference/Submission801/-/Official_Review', 'NeurIPS.cc/2023/Conference/-/Edit']",CC BY 4.0,1702410758348,[],1,,,['everyone'],ztqf6bzuqQ,['NeurIPS.cc/2023/Conference/Submission801/Reviewer_yZYM'],1687462207886,1702410758348,"['NeurIPS.cc/2023/Conference', 'NeurIPS.cc/2023/Conference/Submission801/Reviewer_yZYM']","Yes
+
+The peer review suggests that the authors should refer to other additional literature for several reasons:
+
+1. The authors need to provide more experimental details and clarify their methods, notations, and metrics. For example, they could look into more advanced distillation approaches, such as knowledge distillation with multiple teachers or attention-based distillation.
+2. They also need to provide a clearer definition of ""discrimination power"" and ""diversity"" in the context of deep learning and explain how these concepts are related to downstream performances.
+3. The authors could investigate other implementation details, such as whether they used cross-entropy loss or other objectives during supervised training.
+4. They should also compare their results with more recent papers on similar topics, such as [1] mentioned in the reference section.
+
+Some additional literature that might be relevant includes:
+
+* Papers on knowledge distillation and its variants
+* Research on contrastive learning and masked image modeling
+* Studies on the relationship between representation diversity and discriminability
+* Recent works on Vision Transformer architectures and their pre-training objectives"
+EyXxjDQtCn,This paper introduce a new distillation method that complimentary harmonizes two distillation method of different properties.,"* Hybrid Distillation obtained higher accuracies than DeiT, MAE, and CLIP using them.
+* Explanation with analyses (NMI, AHD, and attention map visualization)
+* The paper is clearly written","* When I read the explanation in the method section, the proposed method seems very inefficient compared to methods without distillation (e.g., MAE, DINO). It would be better to compare quantitatively with throughput and total training hours.
+
+* Some values in tables are different to original values in references.
+    * The COCO detection performance of MAE in this paper and MAE paper are different. The AP^box and AP^mask of MAE are reported as 50.3% and 44.9% in MAE paper while they are reported as 48.4% and 42.6% in this paper, respectively.
+    * The transfer learning result of MAE toward Naturalist19 is also different to the value in MAE paper. MAE paper report it as 80.5% for ViT-B while this paper report it as 75.2%.
+
+* Are the explanations provided in the preliminary section the author’s own contributions or are they similar analyses  conducted and explained in other references? If they are the author’s contributions, which points can be regarded as novel?
+
+* Some points are not understandable
+    * The authors distilled the features of the supervised and CL models and MIM models to features of the different layers in student model regarding diversity and discriminatively. However, in the current design, the distillation performed on the last layer affect the front layers without detaching back-propagation of the distillation loss. Is this the intended situation?
+","* How much more inefficient is Hybrid Distill compared to MAE?
+* It may be better to remove unnecessary area in the right graph in Fig. 3(a)
+","* Its computational inefficiency was my primary concern, and the authors addressed it in the limitations section.",['No ethics review needed.'],"4: Borderline reject: Technically solid paper where reasons to reject, e.g., limited evaluation, outweigh reasons to accept, e.g., good evaluation. Please use sparingly.",3: You are fairly confident in your assessment. It is possible that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work. Math/other details were not carefully checked.,,Yes,2 fair,2 fair,2 fair,1688582035480,,,NeurIPS.cc/2023/Conference,ztqf6bzuqQ,"['NeurIPS.cc/2023/Conference/Submission801/-/Official_Review', 'NeurIPS.cc/2023/Conference/-/Edit']",CC BY 4.0,1702410758195,[],3,,,['everyone'],ztqf6bzuqQ,['NeurIPS.cc/2023/Conference/Submission801/Reviewer_CGRR'],1688582035480,1702410758195,"['NeurIPS.cc/2023/Conference', 'NeurIPS.cc/2023/Conference/Submission801/Reviewer_CGRR']","Yes.
+
+The reviewer suggests that the authors should compare the proposed method quantitatively with throughput and total training hours, as it may be more efficient than methods without distillation. This implies that the authors might need to investigate existing literature on efficiency and computational costs in neural network models, such as DeiT or DINO, to better understand their performance and make a more informed comparison with Hybrid Distillation."
+rRyi34YfBy,"This paper analysed the relationship between adversarial examples and poisoned examples. 
+Then, this paper proposed a fine-tuning strategy to purify the poisoned model. ","1 This paper is easy to follow. 
+
+2 This paper provides some experiments that support the proposed method. 
+
+3 This paper has some experimental analyses that can lead to the proposed method. ","1 It seems this paper used many  ill-established notions such as backdoor risk, shared adversarial risk, vanilla adversarial risk, etc..  To the best of my knowledge, I haven't heard to backdoor risk in any machine learning/AI books. 
+
+2 Adversarial training has the issue of high computational overhead, which could limit the practicality of the proposed method in real-world applications.
+
+3 The key reference is missing. This paper also need to compared with the paper [1]. 
+Previous work [1] has proposed to tackle with backdoor attacks with multiple adversarial perturbations (L_p adversarial attack and spatial adversarial attack). I encourage the authors to discuss the differences between both works and explore more types of adversarial attack such as spatial adversarial attacks [2] or perceptual adversarial attacks [3].  Besides, some popular backdoor attacks do not satisfy Assumption 1 such as BadNets which has a large L_p norm. 
+
+[1] On the Effectiveness of Adversarial Training against Backdoor Attacks. TNNLS 2023.
+
+[2] Spatially Transformed Adversarial Examples. ICLR 2018.
+
+[3] Perceptual Adversarial Robustness: Defense Against Unseen Threat Models. ICLR 2021.","Can the proposed method mitigate the backdoor issues of the contrastive learning [4], which is a more practical setting. 
+
+[4] Poisoning and backdooring contrastive learning, ICLR2022","After the part of conclusion, the authors discussed the limitation of this work. ",['No ethics review needed.'],"3: Reject: For instance, a paper with technical flaws, weak evaluation, inadequate reproducibility and incompletely addressed ethical considerations.","4: You are confident in your assessment, but not absolutely certain. It is unlikely, but not impossible, that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work.",,Yes,2 fair,3 good,2 fair,1688690695941,,,NeurIPS.cc/2023/Conference,zqOcW3R9rd,"['NeurIPS.cc/2023/Conference/Submission2649/-/Official_Review', 'NeurIPS.cc/2023/Conference/-/Edit']",CC BY 4.0,1702410854663,[],3,,,['everyone'],zqOcW3R9rd,['NeurIPS.cc/2023/Conference/Submission2649/Reviewer_Do9c'],1688690695941,1702410854663,"['NeurIPS.cc/2023/Conference', 'NeurIPS.cc/2023/Conference/Submission2649/Reviewer_Do9c']","Yes
+
+The reviewer suggests that the authors should discuss the differences between their work and previous work [1], which proposed a method for tackling backdoor attacks with multiple adversarial perturbations. They also suggest exploring more types of adversarial attacks, such as spatial adversarial attacks [2] or perceptual adversarial attacks [3]. Additionally, they mention that some popular backdoor attacks, like BadNets, do not satisfy the assumptions made in this paper.
+
+The reviewer is asking if the proposed method can mitigate the backdoor issues of contrastive learning [4], which is a more practical setting. They also mention that the authors should provide a key reference for their work and compare it with previous work [1]."
+IQQtOHcYcu,This paper addresses the interventional identifiability of two classes of stochastic differential equations. Theoretical results are illustrated with simulation of identifiable and non-identifiable cases. ,"The paper is carefully written and the theoretical results appear sound, although I could not check the proofs in detail. ","My main concern is whether the target audience for this paper is really NeurIPS. Considering myself one of relatively few in the NeurIPS community with some familiarity with both causality and (to a limited extent) with SDE, I have a hard time making sense of the contribution. Although the presentation of the framework of reference [16] for causality with SDE is interesting, it is quite challenging to get an intuition of the concrete cases for which this framework is relevant: the defined interventions are static (not time dependent) and I have a hard time to imagine in which application we need the heavy toolbox of SDEs to model static interventions, which moreover are constrained to always start from the exact same point in state space. The paper does not really help, neither with justifying this framework nor with providing some intuitions. 
+
+Moreover, the paper is written in a quite confusing way, at least for a non expert in SDEs: after introducing ""standard"" SDE based on Brownian motion in Eqs. (1) and (3), we are introduced in Lemma 2.1 and above with SDEs based on integrating Levy processes (and not being explained what is this). Then we move on to talking about Ito diffusion processes (Propostion 2.1) with an equation of the generator exhibited, although we have not being told at any time, even roughly, what a generator is for a stochastic process. 
+
+I can imagine the results may be relevant for a mathematical journal, but if the authors what to target the ML/causality community, there is a lot of work to do on the manuscript to keep only the essential mathematical concepts, explain them well with reduced formalism, and convey intuition of why this is relevant to the NeurIPS readership interested in causality and time series.
+
+Additionally, if I risk myself on evaluating the importance/novelty of the key results of this work, they resemble standard results on characterizing the set of states reachable by some classes of Markov chains in general state space. I can imagine there are also fairly standard results for this question in the context of SDEs, and the rank constraint of Theorem 3.3 is not very surprising when considering the dimension of the subspace reachable from a fixed initial point. Given the whole state space is explored, again I can imagine identifying the generator boils down to exploiting standard results. I am left wondering whether this result really deserves a new paper that addresses it exclusively (meaning: without exhibiting any concrete problem where it is relevant and helpful).  ",How the continuous time identifiability results relate to identifiability of equivalent discrete time models (Markov chains with additive/multiplicative noise in general state space)? ,"Limitations are addressed in the discussion. However, how restrictive is the interventional framework for concrete problems is not addressed (see ""weaknesses"" section).",['No ethics review needed.'],"4: Borderline reject: Technically solid paper where reasons to reject, e.g., limited evaluation, outweigh reasons to accept, e.g., good evaluation. Please use sparingly.","2: You are willing to defend your assessment, but it is quite likely that you did not understand the central parts of the submission or that you are unfamiliar with some pieces of related work. Math/other details were not carefully checked.",,Yes,2 fair,2 fair,3 good,1689117977974,,,NeurIPS.cc/2023/Conference,zsOOqjaj2z,"['NeurIPS.cc/2023/Conference/Submission5668/-/Official_Review', 'NeurIPS.cc/2023/Conference/-/Edit']",CC BY 4.0,1702411021146,[],2,,,['everyone'],zsOOqjaj2z,['NeurIPS.cc/2023/Conference/Submission5668/Reviewer_8vBF'],1689117977974,1702411021146,"['NeurIPS.cc/2023/Conference', 'NeurIPS.cc/2023/Conference/Submission5668/Reviewer_8vBF']","Yes.
+
+The reviewer suggests that the authors should:
+
+1. Explain and justify the framework of reference [16] for causality with SDEs, especially considering its relevance to applications.
+2. Provide intuitions about when this framework is applicable, particularly in scenarios where static (time-independent) interventions are relevant.
+3. Clarify and simplify their explanations regarding stochastic processes (Brownian motion, integrating Levy processes, Ito diffusion processes) and the generator concept for NeurIPS readers without a strong background in SDEs.
+4. Emphasize how the continuous time identifiability results relate to identifiability of equivalent discrete time models (Markov chains with additive/multiplicative noise).
+5. Discuss and address the restrictive nature of their interventional framework, providing concrete problems or applications where it is relevant and helpful.
+
+Additionally, the reviewer questions whether the key results are truly novel and deserving of a standalone paper without illustrating practical applications or problem instances where they are beneficial."
+fEaGpgZJxH,"This paper provides an in-depth analysis of the phenomenon of ""shortened learning"" in machine learning models, especially in the context of perceptual tasks. The authors confirm that basic empirical risk minimization (ERM) methods tend to prefer models that depend on shortcut features, even when models can achieve zero loss using only stable features. They attribute this to ERM's inductive bias to maximize margins across all samples. To address this, the authors propose an alternative loss function biased inductively with a uniform margin called MARG-CTRL. The paper demonstrates that MARG-CTRL mitigates shortcut learning on multiple vision and language tasks without the use of annotations of the shortcut feature in training or even validation. They also show that MARG-CTRL performs on par or better than the more complex and costly two-step shortcut mitigation method.","-This paper presents a thorough analysis of the shortcut learning problem. 
+-The authors propose a novel solution, MARG-CTRL, which has been shown to effectively mitigate shortcut learning in several tasks.
+-The paper is well-written and easy to understand.","-Although MARG-CTRL is shown to perform well across different tasks, it is not clear how MARG-CTRL perform in scenarios where the shortcut features and the stable features are highly correlated.
+-The paper compares MARG-CTRL with two-stage shortcut-mitigating methods like JTT and CNC, it would be helpful to understand the specific scenarios where MARG-CTRL outperforms these methods and where it does not.","-How does MARG-CTRL perform in scenarios where the shortcut features and the stable features are highly correlated? Does this affect the effectiveness of MARG-CTRL?
+-What are the trade-offs involved in using MARG-CTRL versus two-stage shortcut-mitigating methods??
+-Are there specific scenarios or types of tasks for which MARG-CTRL may not be as effective?",Please see the weaknesses part.,['No ethics review needed.'],"5: Borderline accept: Technically solid paper where reasons to accept outweigh reasons to reject, e.g., limited evaluation. Please use sparingly.",3: You are fairly confident in your assessment. It is possible that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work. Math/other details were not carefully checked.,,Yes,4 excellent,4 excellent,4 excellent,1688644377742,,,NeurIPS.cc/2023/Conference,zyZkaqNnpa,"['NeurIPS.cc/2023/Conference/Submission15594/-/Official_Review', 'NeurIPS.cc/2023/Conference/-/Edit']",CC BY 4.0,1702411520475,[],2,,,['everyone'],zyZkaqNnpa,['NeurIPS.cc/2023/Conference/Submission15594/Reviewer_PgqC'],1688644377742,1702411520475,"['NeurIPS.cc/2023/Conference', 'NeurIPS.cc/2023/Conference/Submission15594/Reviewer_PgqC']","Yes.
+
+The reviewer suggests that the authors might want to explore additional scenarios where MARG-CTRL may not perform well, such as when shortcut features and stable features are highly correlated. This implies that the authors should consider investigating this limitation further by consulting other literature on the topic of shortcut learning and its mitigation methods."
+69Gtm3rChU,"This work presents Hybrid Distillation, which attempts to distill from both supervised/CL and MIM frameworks. The work begins by revealing certain observations regarding the interplay between self-supervised pre-training and the concepts of diversity and discrimination. Subsequently, the authors propose the Hybrid Distillation technique that leverages token relations from the MIM teacher and feature maps from the supervised/CL teacher for knowledge distillation purposes.",The findings on the relationship between diversity and architecture are interesting,"1. The presentation quality of this work is bad due to the following reasons:
+
+i) Section 2 lacks an explanation of the experimental setup, For example, what is the design and architecture of the distillation? How are different decoders used for DeiT distillation? 
+
+ii) The description of the metrics, such as the average head distance and normalized mutual information, is inadequate. There is insufficient clarification regarding the existence of multiple attention distances for each layer and how they reflect diversity. Furthermore, the explanation of how NMI reflects discrimination is absent.
+
+iii) The analysis of the figures lacks details, making it challenging to comprehend the meaning conveyed by the illustrated figures.
+
+2. The authors state that ""Mask Reconstruction of High-Level Semantics Does not Help Improve Diversity."" However, previous studies [1][2][3][4] have distilled knowledge from high-level semantics and achieved high performance. Does this imply that high performance can still be attained with low diversity? If so, why should we care about diversity?
+
+3. The correlation between the observations made and the design of the proposed Hybrid Distillation method is weak. For instance, how does the discovery of the ""Asymmetric Decoder"" inspire the proposed Hybrid Distillation approach?
+
+4. The absence of a discussion and comparison of relevant works is noticeable. Numerous related works, such as [5][6][7], should have been included and compared.
+
+5. Unfair comparisons are made in this work. While the proposed approach is distilled from multiple networks, it is only compared with methods that distill knowledge from a single network. Strong baselines that employ distillation from multiple networks should also be incorporated for a fair evaluation.
+
+
+[1] IBOT : IMAGE BERT PRE-TRAINING WITH ONLINE TOKENIZER
+
+[2] DINOv2: Learning Robust Visual Features without Supervision
+
+[3] Masked Feature Prediction for Self-Supervised Visual Pre-Training 
+
+[4] BEiT v2: Masked Image Modeling with Vector-Quantized Visual Tokenizers
+
+[5] Mimco: Masked image modeling pre-training with contrastive teacher.
+
+[6] Layer Grafted Pre-training: Bridging Contrastive Learning And Masked Image Modeling For Label-Efficient Representations
+
+[7] Contrastive Masked Autoencoders are Stronger Vision Learners",See above,,['No ethics review needed.'],"5: Borderline accept: Technically solid paper where reasons to accept outweigh reasons to reject, e.g., limited evaluation. Please use sparingly.",5: You are absolutely certain about your assessment. You are very familiar with the related work and checked the math/other details carefully.,,Yes,2 fair,1 poor,1 poor,1688577265853,,,NeurIPS.cc/2023/Conference,ztqf6bzuqQ,"['NeurIPS.cc/2023/Conference/Submission801/-/Official_Review', 'NeurIPS.cc/2023/Conference/-/Edit']",CC BY 4.0,1702410758259,[],2,,,['everyone'],ztqf6bzuqQ,['NeurIPS.cc/2023/Conference/Submission801/Reviewer_dWYQ'],1688577265853,1702410758259,"['NeurIPS.cc/2023/Conference', 'NeurIPS.cc/2023/Conference/Submission801/Reviewer_dWYQ']","Yes
+
+The reviewer suggests that the authors should refer to the following additional literature:
+
+1. Previous studies [1][2][3][4] on knowledge distillation from high-level semantics, which achieved high performance.
+2. Related works such as [5][6][7], which could be included and compared for a more comprehensive evaluation.
+
+These references can help support or challenge the authors' claims about diversity and the proposed Hybrid Distillation method."
+U42jOXJBQo,"This paper proposed a method to advance adversarial contrastive learning by utilizing a technique called causal reasoning. The adversarial invariant regularization (AIR) proposed in this paper demonstrated a style factor. Additionally, the effectiveness of the proposed method was empirically shown using CIFAR10 and CIFAR100.","- Theoretically, it explained how the KL divergence can provide invariant regularization.
+- The paper is well organized and most explanations are clearly written and easy to understand the approach and the theoretical explanations.","- The theoretical analysis of this paper (section 3.2 and section 3.3) appears to apply adversarial examples to the theorem shown in paper [1], which seems closer to an application rather than a novel combination, resulting in a perceived lack of originality.
+- Although most theorems and reasoning methods are well explained, expressing which input types the KL divergence loss of SIR and AIR applies to would be more effective for reproducing this paper through implementation.
+- Furthermore, the performance gain shown in robustness experiments from the proposed regularization is considered to have low significance as it is less than 1% in most datasets and tasks.
+- Also, there is insufficient explanation as to why the proposed method is more helpful for self-supervised adversarial robustness than existing methods, making it difficult to verify the experimental significance of the proposed method. Especially in the experimental results, AIR helps both clean performance and robustness compared to SIR, but there is no clear justification for why these two components should be used simultaneously.
+- It is unclear why a model trained with SIR and AIR regularization for adversarial x and natural x performs well against common corruption.
+- As it's a self-supervised pretraining method, the fact that experiments were only conducted on small datasets (CIFAR10, CIFAR100) leaves concerns about its applicability.
+
+[1] Mitrovic et al., REPRESENTATION LEARNING VIA INVARIANT CAUSAL MECHANISMS, ICLR 2021","- It would be good to mention y^R in the main text.
+- In equation 3, adversarial for x_k^i and x_k^j is expressed in one formula. I'm curious if x_k^j also gets its perturbation updated when creating the adversarial for x_k^i.
+- It would be great to mention how much performance difference there is, how much slower the speed is, and how much the transferability improves when compared to Supervised Adversarial Training (Madry, TRADES).","- There is a limitation in the hyperparameter tuning of lambda1 and lambda2.
+- There is a limitation that the gain in performance is marginal.",['No ethics review needed.'],"4: Borderline reject: Technically solid paper where reasons to reject, e.g., limited evaluation, outweigh reasons to accept, e.g., good evaluation. Please use sparingly.","4: You are confident in your assessment, but not absolutely certain. It is unlikely, but not impossible, that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work.",,Yes,2 fair,3 good,2 fair,1688722500298,,,NeurIPS.cc/2023/Conference,zuXyQsXVLF,"['NeurIPS.cc/2023/Conference/Submission327/-/Official_Review', 'NeurIPS.cc/2023/Conference/-/Edit']",CC BY 4.0,1702410738854,[],4,,,['everyone'],zuXyQsXVLF,['NeurIPS.cc/2023/Conference/Submission327/Reviewer_fVht'],1688722500298,1702410738854,"['NeurIPS.cc/2023/Conference', 'NeurIPS.cc/2023/Conference/Submission327/Reviewer_fVht']","Yes
+
+The reviewer suggests that the authors should refer to the paper ""[1] Mitrovic et al., REPRESENTATION LEARNING VIA INVARIANT CAUSAL MECHANISMS, ICLR 2021"" for a more in-depth understanding of the theoretical analysis presented in their own paper. This indicates that there is a related work that could provide additional context and insights for the authors to consider."
+a6VMMGtzgz,"This paper proposes a Shared Adversarial Unlearning (SAU) method for mitigating backdoor attacks. The motivation behind this method is the recognition that not all adversarial samples are effective for backdoor defense. Therefore, it is important to identify the adversarial samples that truly contribute to backdoor defense during adversarial training. The authors derive an upper bound on the backdoor risk from benign model and backdoor model predictions, and optimize the generation of backdoor samples based on this bound. Experimental results demonstrate the effectiveness of the method in purifying the backdoor model.","- Clear research motivation, well-structured writing, and provides ample theoretical support. 
+- Comprehensive comparison results with mainstream backdoor defense methods on multiple datasets, confirm its effectiveness.
+","- Adversarial training often involves complex min-max optimization problems, making it difficult to apply in practical training. However, existing defense work, such as ABL, achieves efficient backdoor removal by detecting suspicious backdoor samples and performing unlearning (gradient ascent) training. ABL's unlearning paradigm is evidently a simpler and more direct backdoor removal strategy. Therefore, it would be interesting to explore the combination of the adversarial sample generation strategy proposed in this paper with ABL's unlearning paradigm, simplifying the optimization process of the proposed adversarial training. It would be helpful if the authors could provide some theoretical or empirical results.
+
+- From Table 3 in the experiments, it is apparent that the proposed SAU method fails to effectively defend against the WaNet attack with full-image triggers on the TinyImageNet dataset (attack success rate after defense is as high as 85.75%). In other words, when the image scale or trigger norm increases, the SAU method may face defense failures. The authors need to provide a reasonable explanation and corresponding countermeasures to demonstrate the generalization performance of the SAU method.
+
+- If the attacker is aware of the defender's adversarial training strategy, can they generate corresponding backdoor trigger samples based on the adversarial training and launch attacks? In such a scenario, is the SAU defense effective?
+
+- To my knowledge, adversarial defense is sensitive to the scale of clean data. In the experiments, the authors state that the defense method requires 5% clean samples. How much will the accuracy and defense performance of SAU decline when the scale of clean samples drops below 1%?
+
+- There is a lack of comparison with more advanced defense benchmarks, such as the recently proposed RNP [1].
+
+Overall, the authors of this paper highlight the differential impact of different types of adversarial samples on backdoor defense during adversarial training. While there are optimization uncertainties and application limitations, such as the difficulty in scaling to large models, associated with mitigating backdoor attacks through adversarial training, the authors' findings provide new insights into the relationship between adversarial samples and backdoor unlearning. Therefore, if the authors can address the aforementioned concerns and related questions, I would be happy to increase the score.
+
+[1] Yige Li, Xixiang Lyu, Xingjun Ma, et al, Reconstructive Neuron Pruning for Backdoor Defense, ICML, 2023.
+",Refer to the weaknesses mentioned above.,Refer to the weaknesses mentioned above.,['No ethics review needed.'],"6: Weak Accept: Technically solid, moderate-to-high impact paper, with no major concerns with respect to evaluation, resources, reproducibility, ethical considerations.",5: You are absolutely certain about your assessment. You are very familiar with the related work and checked the math/other details carefully.,,Yes,2 fair,3 good,3 good,1688541118141,,,NeurIPS.cc/2023/Conference,zqOcW3R9rd,"['NeurIPS.cc/2023/Conference/Submission2649/-/Official_Review', 'NeurIPS.cc/2023/Conference/-/Edit']",CC BY 4.0,1702410854876,[],1,,,['everyone'],zqOcW3R9rd,['NeurIPS.cc/2023/Conference/Submission2649/Reviewer_1V93'],1688541118141,1702410854876,"['NeurIPS.cc/2023/Conference', 'NeurIPS.cc/2023/Conference/Submission2649/Reviewer_1V93']","Yes
+
+The reviewer suggests that the authors should consider referring to more advanced defense benchmarks, such as the recently proposed RNP [1], in addition to ABL and the existing backdoor defense methods used for comparison. This would help strengthen their research by considering a broader range of relevant literature. 
+
+Additionally, the reviewer mentions potential improvements or related work, such as exploring the combination with ABL's unlearning paradigm, addressing the limitation of SAU method when facing image scale or trigger norm increases, and studying the robustness of SAU to various scenarios (e.g., attacker is aware of the defender's adversarial training strategy)."
+txEscf2xXf,"This paper presents a novel perspective on the problem of node role extraction in complex networks, highlighting its distinctions from community detection. The authors propose a definition of node roles and introduce two optimization problems based on graph-isomorphism tests, the Weisfeiler-Leman algorithm, and equitable partitions. Theoretical guarantees are provided, and the approach is validated using a newly introduced ""role-infused partition benchmark"" that allows for stochastic assignment of different roles to nodes in sampled networks. The findings contribute to network analysis, graph mining, and the development of reduced order models for dynamical processes on networks.","- The research topic, role discovery in graphs, is very important and is worth studying, especially compared to the community detection problem, role discovery is also important but lacks attention.
+
+- The design of the model based on equitable partitions is technically sound and theoretically guaranteed.
+
+- Experimental results on several datasets from different perspectives show the effectiveness of the proposed method.","- Baseline selection. Some relevant and/or important baselines have not been compared.
+
+- Downstream tasks. The proposed method is not tested on widely used downstream tasks to show its effectiveness.
+
+- Dataset. There are some more widely used datasets for role discovery that are not used in this paper.","Most of my questions are related to the experiments:
+- There are some relevant baselines that are not compared, for example, MMSB [1] and RIDRs [2]. The first one you can also discuss the relation with your proposed method, e.g., if it is possible to extend the proposed method to soft role assignment like MMSB. The second method is also based on equitable partitions.
+
+- There are some commonly used datasets that can be used for evaluating role discovery, for example, these datasets used in [3].
+
+- In previous role discovery studies, different downstream tasks have been selected to show the effectiveness of the discovered roles, e.g., node classification and link prediction. For example, these tasks in RolX [4] and struc2vec [3]. Also, there is no evaluation of the discovered roles. For example, in RolX, the quantitative evaluation using clustering metric has been used.
+
+- Efficiency issue. Although the proposed method is technically sound, a question is how efficient the proposed method is, e.g., how large a graph this method can handle.
+
+[1] Airoldi E M, Blei D, Fienberg S, et al. Mixed membership stochastic blockmodels[J]. Advances in neural information processing systems, 2008, 21.
+
+[2] Gupte P V, Ravindran B, Parthasarathy S. Role discovery in graphs using global features: Algorithms, applications and a novel evaluation strategy[C]//2017 IEEE 33rd International Conference on Data Engineering (ICDE). IEEE, 2017: 771-782.
+
+[3] Henderson K, Gallagher B, Eliassi-Rad T, et al. Rolx: structural role extraction & mining in large graphs[C]//Proceedings of the 18th ACM SIGKDD international conference on Knowledge discovery and data mining. 2012: 1231-1239.
+
+[4] Ribeiro L F R, Saverese P H P, Figueiredo D R. struc2vec: Learning node representations from structural identity[C]//Proceedings of the 23rd ACM SIGKDD international conference on knowledge discovery and data mining. 2017: 385-394.
+
+==============================================
+
+After the rebuttal, I increased my overall rating.
+",No potential negative societal impact.,['No ethics review needed.'],"5: Borderline accept: Technically solid paper where reasons to accept outweigh reasons to reject, e.g., limited evaluation. Please use sparingly.",3: You are fairly confident in your assessment. It is possible that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work. Math/other details were not carefully checked.,,Yes,3 good,3 good,2 fair,1688663151312,,,NeurIPS.cc/2023/Conference,ztDxO15N7f,"['NeurIPS.cc/2023/Conference/Submission7411/-/Official_Review', 'NeurIPS.cc/2023/Conference/-/Edit']",CC BY 4.0,1702411111496,[],2,,,['everyone'],ztDxO15N7f,['NeurIPS.cc/2023/Conference/Submission7411/Reviewer_nMtV'],1688663151312,1702411111496,"['NeurIPS.cc/2023/Conference', 'NeurIPS.cc/2023/Conference/Submission7411/Reviewer_nMtV']","Yes
+
+The reviewer suggests that the authors should consider referring to the following additional literature:
+
+1. MMSB [1] and RIDRs [2], which are relevant baselines not compared in the current paper.
+2. Datasets used in [3] for evaluating role discovery, as they might be more widely recognized or useful than the ones used in the paper.
+3. Previous studies on role discovery that have employed downstream tasks such as node classification and link prediction to evaluate the effectiveness of discovered roles, e.g., RolX [4] and struc2vec [3]. 
+
+These additional literature can help the authors strengthen their comparison with existing methods, improve the generalizability of their results, and provide more comprehensive evaluation of their proposed method."
+YyV6LzKwBp,"Previous research has primarily focused on using pre-defined single-granularity labels as priors for recognizing novel classes. However, classes naturally adhere to a taxonomy, enabling classification at multiple levels of granularity and offering richer supervision through underlying relationships. To address this, this paper proposes TIDA (Taxonomic context pIrors Discovering and Aligning), a unified framework that leverages sample relationships across various levels of granularity. TIDA discovers multi-granularity semantic concepts as taxonomic context priors (e.g., sub-class, target-class, and super-class) to enhance representation learning and improve pseudo label quality. Extensive experiments on seven datasets demonstrate TIDA's significant performance improvement, achieving a new state-of-the-art.","1. The motivation is clear and convincing. It is reasonable that taxonomic context priors are helpful to extract discriminative features.
+2. The writing is clear. I like the figures in this paper.
+3. Experiments effectively verify the effectiveness of this work. Comprehensive experimental results are provided in the supplementary material.","1. The necessity of constructing taxonomic priors remains unclear. Various methods, such as using WordNet [1], can extract taxonomic priors among categories. I think that there is insufficient evidence to support the essentiality of constructing taxonomic priors in typical scenarios.
+
+[1] I Am Going MAD: Maximum Discrepancy Competition for Comparing Classifiers Adaptively. ICLR 2020.
+
+2. Some works, especially [2], on the taxonomic structure lack proper citation and comparison.
+
+[2] Open-world Semi-supervised Novel Class Discovery. IJCAI 2023.
+
+3. The Introduction section lacks high-level statements regarding the construction and correctness of taxonomic priors.  need to find these information in the Methodology section.","1. Can pre-defined taxonomic priors be utilized? Some datasets already have defined taxonomic priors, while WordNet can be used [1] to extract such priors among categories.
+
+[1] I Am Going MAD: Maximum Discrepancy Competition for Comparing Classifiers Adaptively. ICLR 2020.
+
+2. Have other cluster algorithms been explored for obtaining taxonomic priors, besides the SK algorithm?
+
+3. Could you provide further clarification on why this work is suitable for open-world learning? I can understand its benefits for generating high-quality pseudo labels in semi-supervised learning.
+
+4. Can you compare with [2] in detail?
+
+[2] Open-world Semi-supervised Novel Class Discovery. IJCAI 2023.","In conclusion, this paper exhibits a clear motivation and comprehensive experimental verifications. However, the necessity of constructing taxonomic priors remains a main concern. It would be beneficial if the authors could provide specific scenarios where the construction of taxonomic priors is indeed essential. In addition, the comparison with [2] is essential.
+
+This paper fully considers potential negative societal impact of their work.",['No ethics review needed.'],"6: Weak Accept: Technically solid, moderate-to-high impact paper, with no major concerns with respect to evaluation, resources, reproducibility, ethical considerations.",3: You are fairly confident in your assessment. It is possible that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work. Math/other details were not carefully checked.,,Yes,2 fair,3 good,3 good,1688548941955,,,NeurIPS.cc/2023/Conference,zrLxHYvIFL,"['NeurIPS.cc/2023/Conference/Submission2448/-/Official_Review', 'NeurIPS.cc/2023/Conference/-/Edit']",CC BY 4.0,1702410835139,[],2,,,['everyone'],zrLxHYvIFL,['NeurIPS.cc/2023/Conference/Submission2448/Reviewer_Qvan'],1688548941955,1702410835139,"['NeurIPS.cc/2023/Conference', 'NeurIPS.cc/2023/Conference/Submission2448/Reviewer_Qvan']","Yes
+
+The reviewer suggests referring to additional literature, specifically WordNet [1] for extracting taxonomic priors among categories and Open-world Semi-supervised Novel Class Discovery [2] for comparison. 
+
+Additionally, they recommend exploring other cluster algorithms besides the SK algorithm."
+4COROvjSRb,"This paper proposes a model-agnostic framework named DAUC to categorize uncertain examples flagged by UQ methods, which introduces the confusion density matrix and provides post-hoc categorization for model uncertainty. Besides, this paper categorizes suspicious examples identified by a given uncertainty method into OOD, Bnd and IDM three classes.","1. This paper focuses on samples that remain suspect in uncertain methods, and proposes a model-agnostic density-based approach to mitigate this problem.
+2. The overall writing structure of this paper is clear, and the core ideas expressed are clear too.
+","1. Why are the uncertain samples of the model divided into three categories? It is only mentioned in the abstract (i.e., a kernel-based approximation of the misclassification density), but there is no relevant description in the paper. 
+2. The four classes in Figure 1 should be changed to three classes, corresponding to the paper.
+3. In the Categorizing Uncertainty part of the Section introduction, it is mentioned that DAUC is a model-agnostic method, but in the experimental part, we do not see the model-agnostic of DAUC.
+","1. Checking some details in the paper, such as illustration, etc, corresponding to the paper.
+2. Adding the basis of classifying uncertain samples into three categories, or relevant explanations.
+3. Adding the explanation of DAUC approach model-agnostic.
+",Is DAUC a model-agnostic approach that can be extended to other tasks or domains?,['No ethics review needed.'],"6: Weak Accept: Technically solid, moderate-to-high impact paper, with no major concerns with respect to evaluation, resources, reproducibility, ethical considerations.",3: You are fairly confident in your assessment. It is possible that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work. Math/other details were not carefully checked.,,Yes,3 good,3 good,3 good,1688368213177,,,NeurIPS.cc/2023/Conference,zyhxRc9bew,"['NeurIPS.cc/2023/Conference/Submission10819/-/Official_Review', 'NeurIPS.cc/2023/Conference/-/Edit']",CC BY 4.0,1702411303415,[],1,,,['everyone'],zyhxRc9bew,['NeurIPS.cc/2023/Conference/Submission10819/Reviewer_AvJq'],1688368213177,1702411303415,"['NeurIPS.cc/2023/Conference', 'NeurIPS.cc/2023/Conference/Submission10819/Reviewer_AvJq']","Yes
+
+The peer review suggests that the authors should consider adding relevant explanations about classifying uncertain samples into three categories and how DAUC is a model-agnostic approach, in addition to clarifying some details mentioned earlier in the paper.
+
+To provide more comprehensive insights on these points, the authors might benefit from exploring existing literature on:
+
+1. Methods for categorizing suspicious examples identified by uncertainty methods (to better explain why uncertain samples are divided into three categories).
+2. Model-agnostic approaches for post-hoc explanation and uncertainty estimation in machine learning models.
+3. Techniques for kernel-based approximations of misclassification densities.
+
+By referencing relevant studies, the authors can strengthen their paper's foundation and enhance its clarity, ultimately contributing to a more convincing argument about the value of DAUC."
+fIw3G93ZBL,"The paper introduces a new mechanism called Cluster Information Transfer (CIT) to improve the generalization ability of GNNs to various and unknown test graphs with structure shift. The CIT mechanism enhances the diversity of nodes by combining different cluster information with the nodes, which helps GNNs learn invariant representations. The paper presents experimental results on several benchmark datasets, demonstrating that the proposed CIT-GNN model outperforms existing GNN models in terms of accuracy and macro-F1 score. ","- The paper is easy to understand.
+- While the theory analysis is straightforward, it provides theoretically support for the proposed method.
+- The experiments are extensive and the results look promising.
+","- **Fair Novelty:** The proposed method is essentially an embedding transformation function that aims to eliminate the statistic variance between clusters that causes bias and hinders generalization. The novelty comes from the clustering mechanism and the augmented training using adjusted node embeddings. However, the spectral clustering mechanism has been introduced previously, and the transformation is relatively straightforward.
+- **Assumptions and scope of the solution:** My second concern is about the assumptions of this paper. The paper generally assumes that there exist cluster / structural shifts between training and testing datasets. While structure could change across environments, the node labels remain invariant. The paper also implicitly assumes the node embeddings in different clusters are subject to Multivariate Gaussian distributions. These assumptions should be made explicit and formal. Moreover, the scope of structural shifts needs to be clarified. I understand that the variant of graph density or node degree can be one factor, but do other factors, e.g., edge homophily, also contribute to the shifts? A more general scope should be discussed in order to ensure its applicability.
+- **More validation about the claim:** The examples in the introduction considers the shifts between sparse and dense graphs. One simple baseline to mitigate it is to augment the datasets or clusters via DropEdge and AddEdge compared to modifying node embeddings. While I understand that the graph structure is complex in the real world, as the authors claimed (Line 57-59), it would be good to experimentally validate the effectiveness of the method with a simple baseline that modifies the graph structure.  
+- **Lack of real datasets with natural shifts**: The experiments are somewhat synthetic in the sense that the training and testing sets are splitted with strong structural shifts. I wonder the performance of this method on datasets with more natural shifts, e.g., ogbn-arxiv, where the training and testing sets are splitted based on the time difference.
+- **Missing Related Works:** It is unclear how the proposed clustering objective differs from the existing group clustering methods, e.g., Zhou et al. [1].
+
+**Minor:**
+
+- I feel Section 2 is not very informative since the setting is simple and the conclusion is not surprising. It would be good to demonstrate the structural shifts in more real settings or just combine this section to the introduction.
+- In Line139 and 149, $m$ and $M$ are both used to indicate the number of clusters. It's better to make it consistent.
+
+In general, the angle of mitigating structure shifts is interesting. However, several things above should be solved or clarified to understand its generality and effectiveness.
+
+
+[1] Towards Deeper Graph Neural Networks with Differentiable Group Normalization. Kaixiong Zhou, Xiao Huang, Yuening Li, Daochen Zha, Rui Chen, Xia Hu.","- The method considers the embedding space only. Thus, it seems that the method can be extended to other domains, e.g., for images. If that is the case, are there any graph-specific properties that make this solution remains on the graph domain rather than other general domains?
+- What's the method's performance when removing/adding 5%, 20% edges and not removing/adding any edges? Does the improvement of the method decline with the decreasing ratios?","The authors discussed the limitations on the fact that the method could only apply to node-level tasks directly and the theory remain to be fully developed, as well as the limitation that the transfer remains on embedding space but graph topology.",['No ethics review needed.'],"6: Weak Accept: Technically solid, moderate-to-high impact paper, with no major concerns with respect to evaluation, resources, reproducibility, ethical considerations.","4: You are confident in your assessment, but not absolutely certain. It is unlikely, but not impossible, that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work.",,Yes,2 fair,3 good,2 fair,1688448571574,,,NeurIPS.cc/2023/Conference,zrCmeqV3Sz,"['NeurIPS.cc/2023/Conference/Submission11147/-/Official_Review', 'NeurIPS.cc/2023/Conference/-/Edit']",CC BY 4.0,1702411317410,[],2,,,['everyone'],zrCmeqV3Sz,['NeurIPS.cc/2023/Conference/Submission11147/Reviewer_5H2e'],1688448571574,1702411317410,"['NeurIPS.cc/2023/Conference', 'NeurIPS.cc/2023/Conference/Submission11147/Reviewer_5H2e']","Yes
+
+The reviewer suggests that the authors should refer to the literature on group clustering methods, such as Zhou et al. [1], in order to clarify how their proposed method differs from existing approaches."
+nKB90wCcJD,"This paper proposes a novel adversarial contrastive learning method, which introduces causal reasoning method to obtain robust feature representation and enforce independence from style factors. The idea is simple and effective. In addition, the experiments are sufficient to prove the effectiveness of the proposed method. The source codes are released.","1. The idea is interesting and easy to understand.
+2. The theoretical analysis is detailed and proves the effectiveness of the proposed method.
+","1. The improvement of the proposed method is limited.
+2. Without causal reasoning, this paper only proposes two distribution alignment regularizations in the adversarial samples to obtain robust feature representation. Thus, this paper is an incremental work based on ACL and DynACL.
+3. I want to see the performance of this paper in the large-scale datasets, such as sub-imagenet.",Shown as Weaknesses.,Shown as Weaknesses.,['No ethics review needed.'],"6: Weak Accept: Technically solid, moderate-to-high impact paper, with no major concerns with respect to evaluation, resources, reproducibility, ethical considerations.","4: You are confident in your assessment, but not absolutely certain. It is unlikely, but not impossible, that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work.",,Yes,3 good,3 good,3 good,1687405291359,,,NeurIPS.cc/2023/Conference,zuXyQsXVLF,"['NeurIPS.cc/2023/Conference/Submission327/-/Official_Review', 'NeurIPS.cc/2023/Conference/-/Edit']",CC BY 4.0,1702410738990,[],2,,,['everyone'],zuXyQsXVLF,['NeurIPS.cc/2023/Conference/Submission327/Reviewer_paeS'],1687405291359,1702410738990,"['NeurIPS.cc/2023/Conference', 'NeurIPS.cc/2023/Conference/Submission327/Reviewer_paeS']","Yes
+
+The reviewer suggests that the authors should refer to ACL and DynACL, as their work is an incremental improvement based on these papers. This implies that the authors may have benefited from exploring these existing methods before proposing their new approach."
+wQixC5Y3Gc,"The authors propose the notion of equitable partitions from graph isomorphism literature in order to partition the nodes of a network according to their structural roles. They study two optimization problems for approximately recovering such equitable partitions. Analogous to the SBM model, the authors devise the RIP (role-infused partition) stochastic model and validate their findings on this model. ",The paper is very well-written. The proposed cost functions for computing approximate equitable partitions are very well-motivated and natural. Approximate versions of the Weisfeiler-Leman algorithm is an important question which deserves much study. The proposed RIP model is a very satisfcatory benchmark for role discovery.,"The experimental work is inadequate in order to understand the impact of the proposed formalism to real-world data (Section 5, Experiment 3). The considered datasets are too few, specialized and small-sized in order to deduce that approximate equitable partitions (and approximate Weisfeiler-Leman) is at the core of role discovery.  ","1) On the considered molecular datasets, does the approximate number of equitable partitions differ (the parameter ""k"" \in {2,20}) differ significantly from the actual number of equitable partitions, on an average? Since the average number of nodes is 30, and since I would expect most graphs to have discrete equitable partitions (i.e. one node per class), it will be interesting to know if the optimal values of k were indeed small (say 2-6).",Yes.,['No ethics review needed.'],"6: Weak Accept: Technically solid, moderate-to-high impact paper, with no major concerns with respect to evaluation, resources, reproducibility, ethical considerations.",3: You are fairly confident in your assessment. It is possible that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work. Math/other details were not carefully checked.,,Yes,3 good,4 excellent,3 good,1688707829469,,,NeurIPS.cc/2023/Conference,ztDxO15N7f,"['NeurIPS.cc/2023/Conference/Submission7411/-/Official_Review', 'NeurIPS.cc/2023/Conference/-/Edit']",CC BY 4.0,1702411111310,[],4,,,['everyone'],ztDxO15N7f,['NeurIPS.cc/2023/Conference/Submission7411/Reviewer_ZAin'],1688707829469,1702411111310,"['NeurIPS.cc/2023/Conference', 'NeurIPS.cc/2023/Conference/Submission7411/Reviewer_ZAin']","Yes.
+
+The reviewer suggests that the authors may want to consider referencing more real-world datasets and potentially exploring the impact of their proposed formalism on a larger and more diverse range of data. They also mention the importance of studying approximate versions of the Weisfeiler-Leman algorithm, which could be an area for additional literature review and exploration."
+gWkTOIzfqn,"The authors propose AIR to regulate the the process of contrastive learning. They first analyze the causal graph of contrastive learning under the adversarial setting, and try to enforce  $p\left(y^R | \tilde x\right)\cdot p\left(\tilde x | x\right)$ (Eq.4) to be invariant under different interventions. Intuitively, this regularizer would force the crafted adversarial examples to be style-independent and thus the learned representations shall enjoy better robustness. ","The core idea of this paper is technically novel and clearly presented.
+
+Experiments are reported by applying the proposed AIR / SIR terms to ACL / DynACL, and consistent performance gains are observed. Ablation studies for different values of $\lambda_1$ and $\lambda_2$ are also provided, to verify the effectiveness of the AIR term itself.
+
+The authors also provide theoretical results to justify the rationality of the AIR term.","The proposed method would require more tunning since it incorporates two more hyper-parameters $\lambda_1$ and $\lambda_2$, and we can see from Table 7 that these two hyper-parameters interact in a non-trival way. For example, when compared with the case that only AIR is leveraged ($\lambda_1=0,\ \lambda_2>0$), incorporating AIR with SIR (i.e., $\lambda_1>0,\ \lambda_2>0$) could result in better **robust accuracy**.
+
+Little type in Eq. 8: two augmentations in KL divergence should be different.
+
+--- Update ---
+After reading additional experimented provieded by the authors, I decide to raise my score to 8.","See ""Weaknesses"" part.",N.A.,['No ethics review needed.'],"8: Strong Accept: Technically strong paper, with novel ideas, excellent impact on at least one area, or high-to-excellent impact on multiple areas, with excellent evaluation, resources, and reproducibility, and no unaddressed ethical considerations.","4: You are confident in your assessment, but not absolutely certain. It is unlikely, but not impossible, that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work.",,Yes,2 fair,3 good,3 good,1687187527651,,,NeurIPS.cc/2023/Conference,zuXyQsXVLF,"['NeurIPS.cc/2023/Conference/Submission327/-/Official_Review', 'NeurIPS.cc/2023/Conference/-/Edit']",CC BY 4.0,1702410739080,[],1,,,['everyone'],zuXyQsXVLF,['NeurIPS.cc/2023/Conference/Submission327/Reviewer_Ai1a'],1687187527651,1702410739080,"['NeurIPS.cc/2023/Conference', 'NeurIPS.cc/2023/Conference/Submission327/Reviewer_Ai1a']","Yes
+
+The peer review does not explicitly mention referring to additional literature but it suggests that more tuning might be required due to the introduction of two new hyper-parameters, $\lambda_1$ and $\lambda_2$. This could imply that further investigation into the interaction between these parameters is needed, potentially involving additional research or literature on hyperparameter optimization."
+E1j3jaoZAA,This paper tackles open-world semi-supervised learning and proposes to use multi-granularity labels as taxonomic context priors to leverage hierarchical supervision to enhance representation learning and improve the quality of pseudo labels. A taxonomic context discovery module is used to construct hierarchical prototypes; a taxonomic context-based prediction alignment module is applied to enforce consistency across multi-granularity predictions. ,1. The motivation and idea of this paper are clear and well-explained. Multi-granularity supervision is introduced to improve the representation of base and novel classes. The alignment among each granularity is enforced.,"1. Additional baselines are needed for comparison: 
+
+[1] Pu N, Zhong Z, Sebe N. Dynamic Conceptional Contrastive Learning for Generalized Category Discovery[C]//Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. 2023: 7579-7588.
+
+[2] Zhang S, Khan S, Shen Z, et al. Promptcal: Contrastive affinity learning via auxiliary prompts for generalized novel category discovery[C]//Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. 2023: 3479-3488.
+
+[3] Vaze S, Han K, Vedaldi A, et al. Generalized category discovery[C]//Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. 2022: 7492-7501.
+
+[4] Wen X, Zhao B, Qi X. A Simple Parametric Classification Baseline for Generalized Category Discovery[J]. arXiv preprint arXiv:2211.11727, 2022.
+
+[5] Chiaroni F, Dolz J, Masud Z I, et al. Mutual information-based generalized category discovery[J]. arXiv preprint arXiv:2212.00334, 2022.
+
+2. The actual number of classes must be known. Otherwise, it is difficult to determine how many classes should be defined for sub-class, target-class, and super-class, respectively. 
+
+3. The real composition of the sub-class and super-class may not go exactly as designed. It is difficult to guarantee each sub-class only contains samples of one target class, and each target-class only belongs to one super-class.","1. The authors need to analyze the learned hierarchical tree of multi-granularity labels of each dataset. It could be the case that each super-class may contain different numbers of target-classes, and also each target-class may contain different numbers of sub-classes. Especially when the target-classes of one dataset are imbalanced in terms of similarity in semantic space. 
+
+2. The learning of multi-granularity pseudo-labels could be heavily-biased when the class-distribution is imbalanced and the semantic distance of each target-class is imbalanced. ",The number of novel classes needs to be known. The class-distribution needs to be balanced. These assumptions make TIDA not robust for practical usage. ,['No ethics review needed.'],"5: Borderline accept: Technically solid paper where reasons to accept outweigh reasons to reject, e.g., limited evaluation. Please use sparingly.","4: You are confident in your assessment, but not absolutely certain. It is unlikely, but not impossible, that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work.",,Yes,2 fair,2 fair,2 fair,1688653581641,,,NeurIPS.cc/2023/Conference,zrLxHYvIFL,"['NeurIPS.cc/2023/Conference/Submission2448/-/Official_Review', 'NeurIPS.cc/2023/Conference/-/Edit']",CC BY 4.0,1702410835057,[],3,,,['everyone'],zrLxHYvIFL,['NeurIPS.cc/2023/Conference/Submission2448/Reviewer_k9he'],1688653581641,1702410835057,"['NeurIPS.cc/2023/Conference', 'NeurIPS.cc/2023/Conference/Submission2448/Reviewer_k9he']","Yes
+
+Based on the weaknesses mentioned in the peer review, it seems that the authors should consider comparing their method with more recent and relevant works in the field of open-world semi-supervised learning, such as Pu et al., Zhang et al., Vaze et al., Wen et al., and Chiaroni et al. This can provide a more comprehensive evaluation of their proposed method and help to establish its significance within the existing literature.
+
+Additionally, considering the limitations mentioned in the peer review, it might be beneficial for the authors to discuss or investigate methods that can handle class-distribution imbalance and variable semantic distance between target-classes, in order to make TIDA more robust for practical usage."
+6NtDWTiIMi,"This paper proposes a method to defend against backdoor attacks in deep neural networks through adversarial training techniques. By exploring the connection between adversarial examples and poisoned samples, the authors propose an upper bound for backdoor risk and a bi-level formulation for mitigating backdoor attacks in poisoned models. The proposed approach can identify shared adversarial examples and unlearns them to break the connection between the poisoned sample and the target label.","- This paper explores the connection between adversarial examples and backdoor attacks, which is interesting.
+
+- Extensive experiments are conducted to evaluate the performance of the proposed method.
+
+- The paper is well written and easy to read.","- Some important related works are missing. There are some existing works that study provable/certified robustness against backdoor attacks or data poisoning [1,2,3]. However, the authors do not mention those works in the paper. It would be interesting if the authors could compare their method with those works.
+
+- This paper assumes that the trigger magnitude is bounded by a norm, which may degrade the practicality of the proposed method. In practice, it is entirely possible for the attacker to adopt triggers with very large magnitudes, and the proposed method may not work in this case.
+
+- The proposed method relies on a clean dataset to achieve the defense goal, and the quality of the dataset may affect the performance of the proposed method. However, it is not clear how to obtain a clean dataset with high quality in practice.
+
+     [1] RAB: Provable Robustness Against Backdoor Attacks. IEEE S&P 2022.
+
+     [2] Certified Robustness of Nearest Neighbors against Data Poisoning and Backdoor Attacks. AAAI 2022.
+
+     [3] BagFlip: A Certified Defense against Data Poisoning. NeurIPS 2022.","- Compare the proposed method with existing works that study provable/certified robustness against backdoor attacks or data poisoning.
+
+- How to achieve good performance when the trigger magnitude is larger than the assumed norm?
+
+- Does the quality of the clean dataset affect the performance of the proposed method? How to obtain the dataset with high quality in practice?
+",The authors have discussed the limitations.,['No ethics review needed.'],"4: Borderline reject: Technically solid paper where reasons to reject, e.g., limited evaluation, outweigh reasons to accept, e.g., good evaluation. Please use sparingly.","4: You are confident in your assessment, but not absolutely certain. It is unlikely, but not impossible, that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work.",,Yes,3 good,3 good,3 good,1688677891394,,,NeurIPS.cc/2023/Conference,zqOcW3R9rd,"['NeurIPS.cc/2023/Conference/Submission2649/-/Official_Review', 'NeurIPS.cc/2023/Conference/-/Edit']",CC BY 4.0,1702410854754,[],2,,,['everyone'],zqOcW3R9rd,['NeurIPS.cc/2023/Conference/Submission2649/Reviewer_mKLw'],1688677891394,1702410854754,"['NeurIPS.cc/2023/Conference', 'NeurIPS.cc/2023/Conference/Submission2649/Reviewer_mKLw']","Yes
+
+The peer review suggests that the authors should refer to existing works that study provable/certified robustness against backdoor attacks or data poisoning, specifically [1,2,3]. These works are mentioned in the weaknesses section of the review and could be compared with the proposed method."
+9wxmSAB0nw,"The paper conducts sufficient experiments and theoretical analysis on diversity and discrimination. 
+Meanwhile,  the authors propose a simple yet effective hybrid distillation that combines contrastive learning pre-train and MIM pre-train.
+This hybrid distillation achieves significant improvement on downstream tasks.
+","- The paper is well written, with sufficient experiments and analysis. 
+- The accuracy improvement is significant.","- The paper has some minor typo errors.
+","1. Figure 4 seems to be wrong, it should be NMI(normalized mutual information), not attention distance.
+2. For ViT-B, is the 300-epoch distillation saturated? Would more epochs of distillation bring larger gains? 
+3. For ViT-L, is there an obvious difference between using ImageNet-21K dataset and ImageNet-1K dataset? Is the performance improvement due to using ImageNet-21K dataset? Can you provide evaluation results trained on the ImageNet-1K dataset?
+4. For the objective function, is it feasible to adjust the weight of the CL branch [e.g.$ \alpha D ( T_{c}(x) \odot M, S_{\theta}(M \odot x) ) $]?  Does the impact of branch CL have to be larger than branch MIM?
+5. Are the classification results fair(CIFAR-100, Cars, INaturalist19 )? Can you use a unified setting to finetune the models(MAE, DeiT)?","- Hybrid Distill does not improve CLIP as much as DeiT after introducing the MAE teacher. The authors could spend more pages analyzing the relationship between the MIM branch and the CL branch, as well as the underlying reasons.",['No ethics review needed.'],"5: Borderline accept: Technically solid paper where reasons to accept outweigh reasons to reject, e.g., limited evaluation. Please use sparingly.",5: You are absolutely certain about your assessment. You are very familiar with the related work and checked the math/other details carefully.,,Yes,2 fair,3 good,3 good,1689767626743,,,NeurIPS.cc/2023/Conference,ztqf6bzuqQ,"['NeurIPS.cc/2023/Conference/Submission801/-/Official_Review', 'NeurIPS.cc/2023/Conference/-/Edit']",CC BY 4.0,1702410758135,[],4,,,['everyone'],ztqf6bzuqQ,['NeurIPS.cc/2023/Conference/Submission801/Reviewer_5Rvs'],1689767626743,1702410758135,"['NeurIPS.cc/2023/Conference', 'NeurIPS.cc/2023/Conference/Submission801/Reviewer_5Rvs']","Yes.
+
+Based on the provided feedback, it seems that the authors may want to consider referring to additional literature in a few areas:
+
+1. They should correct the typo errors mentioned and verify the accuracy of Figure 4.
+2. To answer question 2 about whether more epochs would bring larger gains for ViT-B, they may benefit from looking into studies on pre-training duration and its effect on model performance.
+3. For question 3 regarding the comparison between ImageNet-21K and ImageNet-1K datasets for ViT-L, referring to literature that discusses dataset size effects on model performance could be helpful.
+4. In terms of adjusting the objective function weights (question 4), exploring related work in multi-task learning or weighted loss functions might provide insights into feasible weight adjustments.
+5. To improve the fairness of classification results mentioned in question 5, they may benefit from considering literature that discusses bias and fairness in machine learning models.
+
+Additionally, as suggested by the reviewer for potential improvements, analyzing the relationship between the MIM branch and CL branch could be an area to explore further through related work in multi-task learning or transfer learning."
+K5ahqR5UFP,"The paper considers a relaxed definition of the coarsest equitable partition (CEP), which equals the final partition of Weisfeiler-Leman or the color refinement algorithm in the original version. The authors allow to specify the number of cells of the partition and derive a related optimization problem. From this, an algorithm for role discovery is derived, outperforming techniques such as role2vec on real-world graphs.","* The concept of structural roles is closely related to the Weisfeiler-Leman algorithm and fundamental for graph learning.
+* The relaxation of the final WL partition with a fixed number of cells is novel.
+* The RIP model for graph generation is innovative.","* Algorithm 1 is not analyzed sufficiently. It would be interesting to have approximation guarantees. Moreover, it would be nice to investigate the case where $k$ equals the number of cells in the cEP. I believe that the current version would not guarantee that the cEP is found since the cluster method obtains only $X$ as an argument neglecting $H$, which should be required to guarantee this. Is this correct?
+* Several other methods compute relaxed WL partitions without allowing to specify $k$ and are discussed in section 2.1. These could also be used in the experimental comparison to assess the advantages of the proposed method.",* Could you explain whether Algorithm 1 can recover the cEP for a suitable choice of the parameter $k$?,Limitations are sufficiently discussed.,['No ethics review needed.'],"6: Weak Accept: Technically solid, moderate-to-high impact paper, with no major concerns with respect to evaluation, resources, reproducibility, ethical considerations.","4: You are confident in your assessment, but not absolutely certain. It is unlikely, but not impossible, that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work.",,Yes,2 fair,3 good,3 good,1688681107832,,,NeurIPS.cc/2023/Conference,ztDxO15N7f,"['NeurIPS.cc/2023/Conference/Submission7411/-/Official_Review', 'NeurIPS.cc/2023/Conference/-/Edit']",CC BY 4.0,1702411111399,[],3,,,['everyone'],ztDxO15N7f,['NeurIPS.cc/2023/Conference/Submission7411/Reviewer_WiNY'],1688681107832,1702411111399,"['NeurIPS.cc/2023/Conference', 'NeurIPS.cc/2023/Conference/Submission7411/Reviewer_WiNY']","Yes
+
+The reviewer suggests that the authors should analyze Algorithm 1 more thoroughly and consider discussing other methods in Section 2.1 for a proper comparison with their proposed method, implying that referring to these methods' literature might be beneficial."
+QBspMPqlAE,"Selecting the most appropriate active learning algorithm for a given dataset poses a significant challenge when applying active learning in real-world scenarios. This challenge stems from the fact that the performance of different active learning strategies could vary significantly across various scenarios and datasets. The paper introduces an interactive and adaptive algorithm selection strategy inspired by the concept of multi-armed bandit. By employing carefully designed reward functions, the proposed strategy can identify a subset of acquisition functions that yield maximum rewards. The authors prove that their selection algorithm exhibits a tighter bound on the Bayesian regret. Experimental evaluations conducted on both multi-class and multi-label classification tasks illustrate the promising performance of the proposed approach in terms of accuracy. ","* Given the diverse nature of datasets, it is crucial to carefully consider and evaluate various active learning algorithms to achieve optimal performance and effectiveness. The concept of reducing the selection of acquisition functions to a multi-armed bandit problem is interesting as it allows the election process to incorporate accumulated rewards, providing a valuable approach for algorithm selection.
+* The proposed method demonstrates adaptability to both multi-class and multi-label classification tasks by utilizing well-designed reward functions that suitably capture the task-specific requirements.
+* Additionally, the authors present a proof establishing that the proposed selection algorithm outperforms an existing algorithm with a higher bound on Bayesian regret, although the reviewer did not thoroughly examine the soundness of the proof.","* The class imbalance issue is dealt with through a proper designed reward function, discussed in section 4.1. The idea of the inversely weighting each class based on its samples is not supervising, given that the weight scheme has been widely used in imbalanced semi supervised learning. The main concern is rather the empirical studies. Even though Figure 3(c) seems to show that the proposed method could deal with the imbalance problem, there is lack of studies about how tolerate the proposed method to different class imbalance ratios. Instead of showing the number of samples in the rarest class, it is better to plot the imbalance ratio. Furthermore, it is not clear how the imbalance issue is handled in the multi-label classification tasks.
+* With respect to Assumption 3.1, it basically assumes to choose the top B samples ranked based on, for example uncertainty/least confidence scores. However, there are other methods, in particularly, some diversity-based AL methods, that choose the samples using clustering, which cannot be directly converted into an iterative selection process.
+* The efficiency aspect of the proposed method is not adequately discussed in the paper. Consideration of efficiency factors, such as computational cost or time complexity, would provide a more holistic evaluation of the proposed method's practicality and real-world applicability.
+","* For each iteration of acquisition, B samples are selected from B acquisition strategies, it sounds like an ensemble approach, doesn’t it? Different acquisition functions might capture, for example, different types of uncertainties, some to do with the model parameters, some to do directly with the model performance. Will this contribute to the performance difference?
+* The reward function focuses on the class diversity in order to deal with the class imbalanced issue. It would be interesting to design some reward function that is closely related to the model performance.
+* It is good to show the higher bound. However, can the author prove the convergence of the classifier, as done in WMOCU (Guang Zhao, Edward Dougherty, Byung-Jun Yoon, Francis Alexander, and Xiaoning Qian. Uncertaintyaware active learning for optimal Bayesian classifier. In International Conference on Learning Representations, ICLR 2021, 2021)
+* In figure 3, there is no substantial difference between TAILOR and some other methods, including BADGE, can the author explain this? Meanwhile, BADGE is a diversity-based method using clustering, how this can be adopted in TAILOR with Assumption 3.1?","The author briefly touches on the limitations in section 6.3 and section 7. As mentioned above, it is also good to discuss more about the computational cost which could potential benefit the AL practitioners.",['No ethics review needed.'],"5: Borderline accept: Technically solid paper where reasons to accept outweigh reasons to reject, e.g., limited evaluation. Please use sparingly.","4: You are confident in your assessment, but not absolutely certain. It is unlikely, but not impossible, that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work.",,Yes,2 fair,3 good,2 fair,1689050502893,,,NeurIPS.cc/2023/Conference,zrUEHZ6s9C,"['NeurIPS.cc/2023/Conference/Submission8399/-/Official_Review', 'NeurIPS.cc/2023/Conference/-/Edit']",CC BY 4.0,1702411167124,[],4,,,['everyone'],zrUEHZ6s9C,['NeurIPS.cc/2023/Conference/Submission8399/Reviewer_4Aq9'],1689050502893,1702411167124,"['NeurIPS.cc/2023/Conference', 'NeurIPS.cc/2023/Conference/Submission8399/Reviewer_4Aq9']","Yes
+
+The reviewer suggests that the authors refer to additional literature in several areas:
+
+1. Diversity-based active learning methods, specifically those using clustering, which may not be directly applicable with Assumption 3.1.
+2. The paper by Guang Zhao et al. (2021) on uncertainty-aware active learning for optimal Bayesian classifier, where convergence of the classifier is proven.
+3. Literature on semi-supervised learning techniques for dealing with class imbalance issues, as some methods and weight schemes used in the paper have been widely studied before.
+
+Additionally, the reviewer recommends a more comprehensive discussion on computational cost and efficiency factors to provide a more holistic evaluation of the proposed method's practicality and real-world applicability."
+cO71CR95SH,"The paper proposes to use the recently published model reassembly technique (NeurIPS 2022) to obtain personalized models through federated learning. At each round, the server collects the current models from the clients and uses reassembly to generate new candidate models, potentially training some stitching layers using a public datasets. Then the closest candidate model (again similarity is evaluated through the public dataset) is sent back to the client who can (later) train its own model distilling knowledge from the candidate model. By using the public dataset only for a few selected operations, the proposed scheme should be more robust to deviations from the training dataset and the public one.
+","* The idea to use reassembly for federated learning is a novel one to the best of my knowledge 
+* Experimental results are promising and the robustness to the choice of the public dataset is definitely an important plus of the proposed approach.
+","* In the proposed scheme, the server does not keep historical aggregate information about the training, as for example it does under FedAvg by storing the last version of the shared model.  Historical information is rather kept at the client, which at each round performs a local training with knowledge distillation from the candidate model selected by the server during the previous communication round to which the client participated.  As a consequence the method does not seem suited for large-scale cross-device settings where clients may be selected only a few times. The authors have considered clients' sampling rates between 1/3 and 1/10. I expect performance to decrease significantly for lower rates.
+* The proposed solution requires the server to maintain the identity of the each client (to be able to send back the relevant candidate model). This prevents the applicability of privacy-preserving techniques like secure aggregation. Note that there are other personalized approaches which do not have this constraints (e.g., Ditto, FedEM,...)
+* Computational overhead. If I understood correctly, the server needs to train the stitching part for every possible client/candidate-model pair, i.e., to train in total BM models, which poses a significant load on the server. 
+* Complexity of the proposed solution. It would have been good to perform an ablation study to evaluate if all pFedHR steps are really needed. For example, what if the clients' models are directly compared and the closest one is sent as candidate model to the client without performing any reassembly and stitching?
+* The candidate model can be more complex than the client's model. There is then an implicit assumption that, while the client has selected a given model size for example on the basis of its computational and memory capabilities, it is still able to use a more complex model for knowledge distillation at training time
+* The comparison with the previous literature is not always clear. Two examples:
+	1. a limitation of previous literature would be that ""the averaging process significantly diminishes the characteristics of individual local models"" I found this sentence too vague.
+	2. ""however, FedDF trains a global model with different settings compared with our approach.""  Again, this is too vague, what is the difference with FedDF in a few words?
+* compute
+	* the authors checked the compute checkbox but I was not able to find any information about computation in the paper or in the supplementary material
+* reproducibility
+	* while the code is provided there is no readme file about how to use it and how to reproduce the results in the paper.
+* minors:
+	* footnote numbers should go after punctuation marks
+	* report the number of clients for table 4
+	* typos: bettwen and cadidates 
+","* in the homogeneous setting, candidate model generation reduces to simply swapping layers across clients' models? or is it still possible to obtain different models' architectures (e.g. with a higher number of layers than any of the original models?)
+* are results reported averages over different experiments or single-run experiments? I am also asking because some of the reported differences are really small (e.g., in table 2 pFedHR outperforms sota by less than 1 percentage point in many configurations)","I think the paper should have discussed the following limitations (see corresponding weaknesses above)
+* performance under low clients' sampling rate
+* the server keeps track of clients' update
+* Computational overhead
+* The clients need to work with models more complex than its own.",['No ethics review needed.'],"5: Borderline accept: Technically solid paper where reasons to accept outweigh reasons to reject, e.g., limited evaluation. Please use sparingly.","4: You are confident in your assessment, but not absolutely certain. It is unlikely, but not impossible, that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work.",,Yes,2 fair,3 good,3 good,1687542767917,,,NeurIPS.cc/2023/Conference,zpVCITHknd,"['NeurIPS.cc/2023/Conference/Submission8250/-/Official_Review', 'NeurIPS.cc/2023/Conference/-/Edit']",CC BY 4.0,1702411158431,[],1,,,['everyone'],zpVCITHknd,['NeurIPS.cc/2023/Conference/Submission8250/Reviewer_xdZD'],1687542767917,1702411158431,"['NeurIPS.cc/2023/Conference', 'NeurIPS.cc/2023/Conference/Submission8250/Reviewer_xdZD']","Yes
+
+The peer review suggests that the authors should refer to additional literature on personalized federated learning approaches, specifically mentioning ""Ditto"" and ""FedEM"", as alternatives that do not have the constraints mentioned in the paper (e.g., requiring the server to maintain client identities)."
+vWJZ4U5TUT,"This paper explores the subject of representation learning, focusing on two aspects: discrimination and diversity. Contrastive learning (CL) exhibits superior discrimination capabilities but suffers from limited diversity. Conversely, masked image modeling (MIM) offers greater diversity but shows weaker discrimination abilities.
+
+The paper presents three insightful observations and integrates the benefits of both approaches, optimizing them for downstream tasks. In this context, ""hybrid distillation"" refers to the process where models are distilled using both contrastive learning (CL) for discrimination enhancement, and masked image modeling (MIM) for improving diversity. To reduce the training cost, the paper also proposes a token dropping strategy.","The paper has a solid experimental design to first re-examine discrimination and diversity, then propose its method and last to show its improvements on different downstream tasks. The idea is simple but effective and intuitive.","- Please ensure that the term ""asymmetric X"" is used consistently throughout the paper. The document refers to several variants of the term, including ""asymmetric attention,"" ""asymmetric architecture,"" ""asymmetric decoder,"" and ""asymmetric designs."" It would be beneficial to differentiate between these concepts and clarify which is the primary focus of the paper.
+
+- On line 104, the paper introduces the notation I() and H() to represent the mutual information and entropy, respectively, but does not explain how these quantities are calculated. For clarity, consider adding a brief explanation or citation for the methods used to estimate mutual information and entropy from the data. 
+
+- Similarly, on line 156 the notation S' is introduced without explanation. Please consider defining or explaining how S' is derived.
+
+- When ""feature distillation"" is mentioned on line 106, adding a reference to the specific feature distillation approach used in the experiments would help clarify this concept for readers. Providing a citation would allow readers to refer to details of the feature distillation method.",-,-,['No ethics review needed.'],"6: Weak Accept: Technically solid, moderate-to-high impact paper, with no major concerns with respect to evaluation, resources, reproducibility, ethical considerations.",5: You are absolutely certain about your assessment. You are very familiar with the related work and checked the math/other details carefully.,,Yes,3 good,3 good,4 excellent,1690326191085,,,NeurIPS.cc/2023/Conference,ztqf6bzuqQ,"['NeurIPS.cc/2023/Conference/Submission801/-/Official_Review', 'NeurIPS.cc/2023/Conference/-/Edit']",CC BY 4.0,1702410758029,[],5,,,['everyone'],ztqf6bzuqQ,['NeurIPS.cc/2023/Conference/Submission801/Reviewer_gLfn'],1690326191085,1702410758029,"['NeurIPS.cc/2023/Conference', 'NeurIPS.cc/2023/Conference/Submission801/Reviewer_gLfn']","Yes
+
+The peer review suggests that the authors should refer to other literature for clarification on certain concepts and methods used in the paper.
+
+Specifically, it recommends adding a brief explanation or citation for:
+
+1. Calculating mutual information (I()) and entropy (H()) from data.
+2. Defining or explaining how S' is derived.
+3. Clarifying the specific feature distillation approach used in the experiments with a relevant citation.
+
+This suggests that the authors should consider referencing additional literature to provide clarity on these points, potentially enhancing the paper's overall quality and comprehensiveness."
+oZJ4QZwTaZ,"This paper proposes an algorithm, TAILOR, that iteratively and adaptively selects candidate active learning algorithm to gather class-balanced examples. Experimental results demonstrate that TAILOR achieves comparable or better performance than the best of the candidate algorithms. ",The paper presents a new active learning algorithm and provides some theoretical analysis. Good empirical results are reported. ,"The presentation of the paper leaves much to be desired, and its contribution appears to be quite limited. Additionally, the paper contains improper or insufficiently supported claims, such as “meta algorithm”, “focus on class imbalanced setting”, and “the first adaptive algorithm selection strategy”. 
+
+
+1. The organization and content selection are unsatisfactory. 
+
+(1) The introduction is not well motivated or presented. The framework illustrated in Figure 1 is an adaptive active learning procedure, and it is difficult to build connection with a multi-armed bandit problem from such a figure. It is not very proper to report a result figure in the introduction as well. 
+
+(2) Algorithm 1 is not the contribution of this paper but was included on page 4 with a lot of space.  Since most contents of section 3.2 are from the literature, the presentation can be largely compressed. 
+
+(3) Much space of the paper is not on the main contribution of the paper. The proposed algorithm TAILOR is only presented in 4.3.  
+
+(4) Throughout the overall paper (in particular section 4), method presentation, previous work review, and contribution claims are jumbled together without a clear and logical structure of presentation.
+
+
+
+2. The presentation of the paper lacks sufficient clarity.   
+
+(1) In 4.2, the notations and concepts are not well explained. For example, what is the 1-sub-Gaussian distribution?  What does it mean by stating “Nature reveals weighting vector v^t”?  
+
+(2) Section 4.2 also fails to present a clear and principled connection of the proposed active learning setting to the bandit problem. 
+
+(3) The Equations are not well explained. For example, the “\lor” operator in the class diversity reward is not described. 
+
+
+
+3. Authors claim the algorithm as a meta algorithm. The TAILOR algorithm in Algorithm 2 didn’t show any meta-learning process. The meta concept needs to be clarified. 
+
+
+
+4. The paper claims on focusing on class imbalanced setting,  but  fails to provide any substantial discussion or analysis on this aspect, except for conducting experiments on datasets with class-imbalance. 
+
+
+
+5. The reward functions proposed in 4.1 are heuristic and lack principled connections to the model performance. There are no discussions on how to choose reward functions on different datasets.   
+
+
+
+6. The claim of “the first adaptive algorithm selection strategy for deep active learning” is not proper. Adaptive active learning has been studied in the active learning literature. Most active learning strategies developed in the literature are not dependent on the classifiers, and hence there is no need to distinguish linear models from deep models from the active learning perspective. In particular, the proposed active learning method has no special ties to deep models. 
+
+
+
+7. Many related works on adaptive active learning or meta active learning are missing, e.g., [1,2,3]. 
+[1] “Adaptive Active Learning for Image Classification”. 2013. 
+[2] “Active Learning with Multi-label SVM Classification”. 2013. 
+[3] “Meta-Learning for Batch Mode Active Learning”, 2018.
+",Please see the weaknesses above.,,['No ethics review needed.'],"3: Reject: For instance, a paper with technical flaws, weak evaluation, inadequate reproducibility and incompletely addressed ethical considerations.",3: You are fairly confident in your assessment. It is possible that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work. Math/other details were not carefully checked.,,Yes,2 fair,1 poor,2 fair,1690252533966,,,NeurIPS.cc/2023/Conference,zrUEHZ6s9C,"['NeurIPS.cc/2023/Conference/Submission8399/-/Official_Review', 'NeurIPS.cc/2023/Conference/-/Edit']",CC BY 4.0,1702411167025,[],5,,,['everyone'],zrUEHZ6s9C,['NeurIPS.cc/2023/Conference/Submission8399/Reviewer_Ra5K'],1690252533966,1702411167025,"['NeurIPS.cc/2023/Conference', 'NeurIPS.cc/2023/Conference/Submission8399/Reviewer_Ra5K']","Yes
+
+The peer review suggests that the authors should consider referring to additional literature on adaptive active learning and meta-learning, specifically:
+
+1. ""Adaptive Active Learning for Image Classification"" (2013)
+2. ""Active Learning with Multi-label SVM Classification"" (2013)
+3. ""Meta-Learning for Batch Mode Active Learning"" (2018)
+
+These references may provide relevant background information or related work that could strengthen the paper's contribution and connections to existing research."
+tkhjzMGH9Y,"Having had my concerns addressed by the authors I have updated my score.
+-----------------------------------------------------------------------------------------
+
+
+
+* The paper proposes an explanation for why neural networks tend to learn spurious features over stable fratures which lead to a lower loss and better performance.
+* The main argument for this is due to the maxmargin losses induced through cross entropy, to counter this the authors propose several losses which induce a uniform margin.
+* The authors propose a nice example and demonstrate the results on vision and language datasets.","* The paper addresses a very important topic of the simplicity bias, and goes a significant way in addressing it. 
+* The comments and explanations are clear and concise, and follow a clear narrative.
+* I find the arguments that inductive bias towards uniform margins for perception tasks to be convincing.
+* The experiments are well conducted and clearly support their statements","* I find the scatter approach to testing many margin based losses a little un elegant, I would rather know which is the most effective in the paper and then see the results for other attempted losses in the Appendix. But this is just me preference.
+* Is Corollary one explicitly followed up with an experiment? I would like to know if it actually exhibits this behaviour or is there just the potential to?
+* The experimental datasets are rather limited, Waterbirds, CelebA, Wilds etc. Not a negative per se, but it would be nice to see authors trying to improve the testing framework for this probelm.","* The examples in the paper tend to be restricted to linear models, which is not the case in most perception systems, do you have any intuition if these conclusions carry through to a non-linear case? I'm aware it makes the analysis harder, and I'm not asking you to perform it. But it would be nice to hear any issues that may arrise.
+* Are there any experiments in the non over-parameterised setting? As this is discussed in the paper, I would have expected to see them in the experiments.
+* Do you think these shortcuts are a bit artifificial? For instance in the waterbirds dataset, the background should be an important feature in the decision, but not the primary feature, does this method enable predictions from multiple features? Or do you think it will just rely on one?",Not explicitly discussed,['No ethics review needed.'],"6: Weak Accept: Technically solid, moderate-to-high impact paper, with no major concerns with respect to evaluation, resources, reproducibility, ethical considerations.",3: You are fairly confident in your assessment. It is possible that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work. Math/other details were not carefully checked.,,Yes,3 good,3 good,3 good,1688686540169,,,NeurIPS.cc/2023/Conference,zyZkaqNnpa,"['NeurIPS.cc/2023/Conference/Submission15594/-/Official_Review', 'NeurIPS.cc/2023/Conference/-/Edit']",CC BY 4.0,1702411520381,[],3,,,['everyone'],zyZkaqNnpa,['NeurIPS.cc/2023/Conference/Submission15594/Reviewer_Xk5J'],1688686540169,1702411520381,"['NeurIPS.cc/2023/Conference', 'NeurIPS.cc/2023/Conference/Submission15594/Reviewer_Xk5J']","Yes 
+
+The reviewer suggests that the authors may want to consider additional experiments in the non-overparameterized setting (as discussed in the paper) and also explore whether their method can handle predictions from multiple features, rather than just relying on one primary feature. Additionally, they mention that the experimental datasets are limited and suggest trying to improve the testing framework for this problem.
+
+The reviewer might recommend considering literature or techniques related to:
+
+1. Handling non-linear cases in perception systems
+2. Improving testing frameworks for overparameterization issues
+3. Developing methods that can handle predictions from multiple features"
+N1iZVpqdC6,"This paper theoretecally and empirically showed that the inductive bias of default- ERM maximizing the margin causes shortcut learning in  a linear perception task.
+It proposed uniform margins that leads to models that depend more on the stable than the shortcut feature and suggested loss functions encourage uniform-margin solutions.","This paper analyzes shortcut learning theoretically in terms of margin maximization.
+I have not seen an analysis from this perspective before.
+It also proposes the concept of uniform margin from theory and suggests a method to prevent shortcut learning.","The theory itself has limited applicability due to the linear model, and we do not know how well it can actually be explained in general terms in actual deep learning models.","It seems that this paper forcus on a theoretical analysis in a situation like background shortcuts, where shortcut features make up a large portion of the data as shown in term B. 
+Learning  features with a large B preferentially is intuitively reasonable in such a simple situation; however, reading the proof in the Appendix, it seems to require a very tough proof to show that. 
+I would like to know where the difficulty of the proof lies, what you devised in the Appendix proof ,and where you derived the key inequality.
+
+Shortcut features do not always occupy as much space as stable features as background features. For example, in the following paper, the percentage of partial input is much smaller.
+>Overinterpretation reveals image classification model pathologies Brandon Carter, Siddhartha Jain, Jonas Mueller, David Gifford
+Isn't Bz>y important for the theoretical analysis?
+If Bz<y, what part of the proof is more difficult? Or what other assumptions are necessary?
+
+
+
+","The theory itself has limited applicability due to the linear model, and we do not know how well it can actually be explained in general terms in actual deep learning models.",['No ethics review needed.'],"6: Weak Accept: Technically solid, moderate-to-high impact paper, with no major concerns with respect to evaluation, resources, reproducibility, ethical considerations.",3: You are fairly confident in your assessment. It is possible that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work. Math/other details were not carefully checked.,,Yes,3 good,3 good,3 good,1688617232745,,,NeurIPS.cc/2023/Conference,zyZkaqNnpa,"['NeurIPS.cc/2023/Conference/Submission15594/-/Official_Review', 'NeurIPS.cc/2023/Conference/-/Edit']",CC BY 4.0,1702411520565,[],1,,,['everyone'],zyZkaqNnpa,['NeurIPS.cc/2023/Conference/Submission15594/Reviewer_9QKU'],1688617232745,1702411520565,"['NeurIPS.cc/2023/Conference', 'NeurIPS.cc/2023/Conference/Submission15594/Reviewer_9QKU']","Yes.
+
+The reviewer highlights several points that need attention:
+
+1. The theory has limited applicability due to its reliance on a linear model. The authors may want to explore how their findings can be extended to more general deep learning models.
+2. The assumption that Bz>y (i.e., the percentage of shortcut features is larger than the stable features) may not always hold in practice, as pointed out by the example from the ""Overinterpretation reveals image classification model pathologies"" paper. This suggests that a more nuanced understanding of the relationship between B and y is needed.
+3. The reviewer appreciates the technically solid approach to analyzing shortcut learning through the lens of margin maximization but recommends exploring other assumptions or perspectives to strengthen the theory.
+
+To address these concerns, the authors may want to consider referencing additional literature on:
+
+1. Generalizing their linear model framework to more complex deep learning architectures (e.g., convolutional neural networks, recurrent neural networks).
+2. Investigating the relationship between B and y in different settings, including cases where Bz<y.
+3. Developing alternative theoretical frameworks or assumptions that can capture the nuances of shortcut learning in more general scenarios.
+
+These suggestions can help improve the paper's impact and applicability to real-world deep learning models."
+AfAM6DaMHo,"The paper offers a new perspective on the problem of role extraction while defining node roles based on the ideas of equitable partitions and and graph-isomorphism tests, the Weisfeiler-Leman algorithm. The paper studies two associated optimization problems (cost functions) inspired by graph isomorphism testing and provides theoretical guarantees for their solutions.  To validate the approach, a novel ""role-infused partition benchmark"" is introduced, enabling the generation of networks where nodes possess different roles in a stochastic manner.","(+) The paper offers a new perspective on node role extraction, focusing on equitable partitions and providing a principled stochastic notion of node roles. This approach adds to the existing methods in the field and offers a new way to define and quantify node roles in complex networks.
+
+(+) The paper presents a quantitative definition of node roles based on equitable partitions, allowing for the numerical measurement of deviation from an exact equivalence. This provides a more nuanced understanding of node roles compared to traditional definitions.
+
+(+) The technical aspects of the paper are thorough and detailed. Also, the technical details aeem to be correct. 
+
+(+) Numerical experiments show the effectiveness and superiority of the proposed method over a graph neural network, GIN, for three different tasks. ","(-) While the paper briefly mentions different categories of node role extraction approaches (graphlet-based, walk-based, and matrix-factorization-based), it does not provide a detailed comparison or analysis of how the proposed equitable partitions approach compares to these existing methods. A more rigorous comparative analysis, including performance metrics and evaluation on benchmark datasets, would strengthen the paper's contribution and demonstrate the advantages of the proposed approach.
+
+(-)  The idea of Equitable partitions for node role discovery is interesting. However, the details regarding ""why this approach"" makes sense is missing. There can be other ways too? Why this method should work? At a conceptual level, a more rigorous explanation related to the definition of roles based on equitable partition is missing. I think this is crucially important. In other words, the paper focuses on providing details of ""designing"" and approach based on EP, while leaving details of ""why this is appropriate""
+
+(-) A more thorough literature review might be needed. For instance, the following paper provides a nice simple algorithm for computing equitable partitions. (I am not sure it is better or worse; however it might be handy to have a look at it.)
+    
+- Zhang et al., ""Upper and Lower Bounds for Controllable Subspaces of Networks of Diffusively Coupled Agents,"" IEEE Transactions on Automatic control, 2014.
+
+Also, there is some recent work on counting subgraphs (that may define node roles based on the structural attributes of the graph), for instance, 
+
+- Hassan et al., ""Computing Graph Descriptors on Edge Streams."" ACM Transactions on Knowledge Discovery from Data, 2023.
+
+(-) The paper introduces a family of cost functions to assess the quality of a role partitioning. However, it does not thoroughly discuss the selection, design, or properties of these cost functions. Providing a more in-depth exploration and analysis of the different cost functions, their properties, and how they relate to the problem of node role extraction would enhance the technical understanding of the proposed approach.
+
+(-) It is unclear how the ground truth for the sampled adjacency matrices is computed  in Experiment 1 of Section 5. Moreover, GIN is a relatively old graph neural network. There are recent methods that show better results on several downstream tasks and could have been considered for baseline comparisons. Some of these works include the work of Bouritsas et al, and Ramp\'a\v{s}ek et al, below.
+
+- Bouritsas et al., ""Improving graph neural network expressivity via subgraph isomorphism counting,"" IEEE Transactions on Pattern Analysis and Machine Intelligence. 2022 Feb 24;45(1):657-68.
+
+- Ramp\'a\v{s}ek, et al., ""Recipe for a general, powerful, scalable graph transformer,"" Advances in Neural Information Processing Systems. 2022.","(-) It is mentioned that Equitable partitions imply an upper bound on the expressivity of Graph Neural Networks while citing references [26] and [43]. There is nothing of that sort in these papers. Could you point out where such results are mentioned in the said references. 
+
+(-) As coarsest equitable partition is an important concept for the paper, an example to illustrate this concept or a proper reference to another paper is vital and missing in the draft.
+
+(-)  As mentioned in the ""weakness"", can you explain more rigorously the motivation for using equitable partitions for node role discovery.
+
+(-)  In Theorem 3, what is the interpretation of the parameter $\delta$ and what is the computational complexity to calculate it?
+
+(A minor comment) There are minor grammatical errors, e.g.,
+
+-  ""Thus, from any node $v$ within in the same class ..."" (in is not needed).
+
+- ""This also allows for Gradient Descent approaches like e.g. GNNs."" (like and e.g., are used simultaneously).
+
+",The limitations and possibly approaches to tackle these limitations are presented in the paper.,['No ethics review needed.'],"5: Borderline accept: Technically solid paper where reasons to accept outweigh reasons to reject, e.g., limited evaluation. Please use sparingly.",3: You are fairly confident in your assessment. It is possible that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work. Math/other details were not carefully checked.,,Yes,3 good,2 fair,3 good,1688626829175,,,NeurIPS.cc/2023/Conference,ztDxO15N7f,"['NeurIPS.cc/2023/Conference/Submission7411/-/Official_Review', 'NeurIPS.cc/2023/Conference/-/Edit']",CC BY 4.0,1702411111578,[],1,,,['everyone'],ztDxO15N7f,['NeurIPS.cc/2023/Conference/Submission7411/Reviewer_rRxj'],1688626829175,1702411111578,"['NeurIPS.cc/2023/Conference', 'NeurIPS.cc/2023/Conference/Submission7411/Reviewer_rRxj']","Yes
+
+The reviewer suggests that the authors consider referring to the following papers:
+
+- Zhang et al., ""Upper and Lower Bounds for Controllable Subspaces of Networks of Diffusively Coupled Agents,"" IEEE Transactions on Automatic control, 2014.
+- Hassan et al., ""Computing Graph Descriptors on Edge Streams."" ACM Transactions on Knowledge Discovery from Data, 2023.
+- Bouritsas et al., ""Improving graph neural network expressivity via subgraph isomorphism counting,"" IEEE Transactions on Pattern Analysis and Machine Intelligence. 2022 Feb 24;45(1):657-68.
+- Ramp\'a\v{s}ek, et al., ""Recipe for a general, powerful, scalable graph transformer,"" Advances in Neural Information Processing Systems. 2022.
+
+These papers may provide relevant background or related work that could enhance the technical understanding and strengthen the paper's contribution."
+UmOVoudwXL,"This paper proposes to tackle adversarial contrastive learning via causal reasoning. Specifically, the authors discuss the scenario where adversarial examples are involved in standard invariant regularization. The authors also provide analysis of proposed invariant regularization to justify the rationality. The experiments on different datasets show improvement compared with baselines.","1. The paper is well-written and easy to follow.
+2. Taking adversarial example in the SIR via Markov condition seems natural and the analysis could provide some insights.
+3. The experiments on various datasets show improvement.
+","I have several concerns:
+
+1. The comparison with other baselines is missing in Table 4, such as ACL with SIR and DynACL with SIR.
+2. The authors conduct experiments on ResNet family. However, WideResNet backbone networks are always evaluated in the field of adversarial robustness. I wonder whether the superiority of IR can be generalized to different networks.
+
+Minors:
+
+It seems a typo in Eq. 8, the KL divergence should be computed between $\tau_i$ and $\tau_j$.
+
+","1. Please include the comparison with baseline in Table 4.
+2. Please include more evaluation on WideResNet.
+",The authors have discussed the limitations.,['No ethics review needed.'],"6: Weak Accept: Technically solid, moderate-to-high impact paper, with no major concerns with respect to evaluation, resources, reproducibility, ethical considerations.","4: You are confident in your assessment, but not absolutely certain. It is unlikely, but not impossible, that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work.",,Yes,3 good,3 good,3 good,1688468187665,,,NeurIPS.cc/2023/Conference,zuXyQsXVLF,"['NeurIPS.cc/2023/Conference/Submission327/-/Official_Review', 'NeurIPS.cc/2023/Conference/-/Edit']",CC BY 4.0,1702410738918,[],3,,,['everyone'],zuXyQsXVLF,['NeurIPS.cc/2023/Conference/Submission327/Reviewer_ZaSM'],1688468187665,1702410738918,"['NeurIPS.cc/2023/Conference', 'NeurIPS.cc/2023/Conference/Submission327/Reviewer_ZaSM']","Yes
+
+The reviewer suggests that the authors should include a comparison with other baselines in Table 4, specifically ACL with SIR and DynACL with SIR, which could strengthen their results. They also recommend including more evaluation on WideResNet backbone networks to generalize their findings.
+
+Additionally, considering the reviewer's comment about the typo in Eq. 8, it is likely that they would suggest correcting this equation as well.
+
+To address these suggestions, the authors may want to refer to additional literature related to adversarial robustness and invariant regularization, such as papers on ACL (Adversarial Contrastive Learning), DynACL, and WideResNet architectures."
+irTIXc30vx,"In this paper, the authors present a unique approach for classifying uncertainty into distinct categories, providing insights into the reasons behind labeling a particular sample as suspicious or highly uncertain. They develop a kernel density-based confusion density matrix for any neural network which separates suspicious data samples from the uncertainty estimator into three categories: out-of-distribution (OOD), samples near the decision boundary, and misclassified samples. The paper outlines the methodology for constructing this density-based matrix and compares the performance of existing uncertainty estimators using this proposed categorization. Empirical studies and results are provided, demonstrating how this classification can in fact improve the training of predictive models and highlight the reasons for model failure. ","In my opinion, this categorization process of determining what uncertainties actually flag (OOD, bnd etc.) is the main contribution. Importantly, the paper shows that this is a general framework applicable to any classification model (having a reasonably sized no. of classes). The paper demonstrates experiments on a variety of benchmarks contributing to its efficacy. Also, the paper is well written and simple to follow.",See questions.,"* In my opinion, at a high level, this method basically computes the kernel similarity scores between the test data and the samples in the train/val distribution in the latent space to find out whether the test sample is OOD, bnd etc. How does the choice of the layer chosen impact the categorization ? Does this change ? This is because, the earlier layers can capture only the basic semantics and the discrepancies between inliers and the suspicious samples may not be captured.
+
+* How exactly is uncertainty from the model computed ? Is epistemic uncertainty alone computed for first filtering the suspicious vs safe samples, or the total uncertainty ? Writing a brief section about the same either in the main/supplement will be beneficial for the reader.
+
+* Can the authors comment on how effective the proposed approach will be to handle open-set data or OOD/anamolous data samples for e.g,  classes unseen during training ? Consider that there is an unc. estimator that is sensitive to open-set data and flags the sample as suspicious. Will the kernel density estimate score that categorizes OOD data in your formulation be able to capture such subtle shifts ? These open-set data need not share the same labels as that of your training data, but share a large amount of semantic information ?
+
+* For computing the confusion density matrix elements for the bnd and IDM samples, how does the properties of the validation data impact the estimation ? For e.g., A certain class c1 can offer no misclassification while another class c2 offers a greater amount of misclassification. 
+
+* Can the authors comment on the scalability of the algorithm ? For instance, if the number of classes exceeds K (K>=100),  it is required to obtain a K x K matrix.
+","Yes, the limitations have been listed by the authors in the supplementary.  However, in my opinion,  I am skeptical about the scalability of the approach as well as its ability to handle data from open-set recognition conditions.  ",['No ethics review needed.'],"6: Weak Accept: Technically solid, moderate-to-high impact paper, with no major concerns with respect to evaluation, resources, reproducibility, ethical considerations.","4: You are confident in your assessment, but not absolutely certain. It is unlikely, but not impossible, that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work.",,Yes,4 excellent,3 good,3 good,1688505633161,,,NeurIPS.cc/2023/Conference,zyhxRc9bew,"['NeurIPS.cc/2023/Conference/Submission10819/-/Official_Review', 'NeurIPS.cc/2023/Conference/-/Edit']",CC BY 4.0,1702411303319,[],2,,,['everyone'],zyhxRc9bew,['NeurIPS.cc/2023/Conference/Submission10819/Reviewer_7E4k'],1688505633161,1702411303319,"['NeurIPS.cc/2023/Conference', 'NeurIPS.cc/2023/Conference/Submission10819/Reviewer_7E4k']","Yes
+
+Based on the peer review, it seems that the authors should consider referring to additional literature in the following areas:
+
+1. Handling open-set data or OOD/anomalous data samples: The reviewer suggests that the proposed approach may not be effective in handling such scenarios and recommends exploring sensitivity to open-set data.
+
+2. Scalability of the algorithm: The reviewer is skeptical about the scalability of the approach, particularly when dealing with a large number of classes (K >= 100). 
+
+3. Uncertainty computation: The reviewer suggests that the authors should provide more details on how uncertainty from the model is computed and whether epistemic uncertainty alone or total uncertainty is used for filtering suspicious vs safe samples.
+
+4. Effectiveness in real-world scenarios: While the paper demonstrates experiments on various benchmarks, the reviewer emphasizes the need to assess the approach's efficacy in real-world scenarios involving open-set recognition conditions."
+iwnqLUfXbz,"This paper explores the phenomenon of models using easy-to-learn spurious features (aka, shortcuts) instead of reliable but harder-to-learn true features. They find in their theoretical that max-margin relies on the spurious feature while controlling for uniforming margin induces learning the true feature. With this insight, they try numerous loss functions that provide a bias towards uniform margins and find improved worst-group accuracy on a variety of tasks.",* Experiments show good results for their methods.,"* The informal statement of Theorem 1 in the main text is too vague in my opinion. In particular, it's not stated what the regime of $n$ is and how these other quantities interact with it. 
+* The graphs are tough to read (too small) and the legends overlap with the plots.","* How does the dimensionality (e.g., choosing $d=100$) come into play? The story setting up the analogy does not in principle rely on the dimensionality all, just the gradient sizes of the noisy and true signals. I'm guessing it has something to do with interpolation, but I think it'd be good to have further discussion of this.
+* What's the connection between the neural network trained in section 2.1 and the linear model theorems? What happens if you train a logistic regression model instead?
+* Similar toy settings as in this paper (such as (Sagawa et al., 2020)) have been examined in the past and seemed to rely on overparameterization for their phenomena. What are the particulars in this paper's setup that allow us to observe phenomena in the underparameterized setting?
+* How should I think of the different MARG-CTRL? What factors cause their difference in performance and how should I make the decision in which to pick?",The authors adequately addressed the limitations.,['No ethics review needed.'],"6: Weak Accept: Technically solid, moderate-to-high impact paper, with no major concerns with respect to evaluation, resources, reproducibility, ethical considerations.",3: You are fairly confident in your assessment. It is possible that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work. Math/other details were not carefully checked.,,Yes,3 good,2 fair,3 good,1688704489779,,,NeurIPS.cc/2023/Conference,zyZkaqNnpa,"['NeurIPS.cc/2023/Conference/Submission15594/-/Official_Review', 'NeurIPS.cc/2023/Conference/-/Edit']",CC BY 4.0,1702411520262,[],4,,,['everyone'],zyZkaqNnpa,['NeurIPS.cc/2023/Conference/Submission15594/Reviewer_8MoS'],1688704489779,1702411520262,"['NeurIPS.cc/2023/Conference', 'NeurIPS.cc/2023/Conference/Submission15594/Reviewer_8MoS']","Yes.
+
+The reviewer mentions that similar toy settings have been examined in the past and seemed to rely on overparameterization for their phenomena. They then ask about the particulars in this paper's setup that allow us to observe phenomena in the underparameterized setting, which implies that the authors may need to refer to other literature or studies comparing overparameterization and underparameterization settings.
+
+Additionally, when discussing the different MARG-CTRL methods, the reviewer asks how these differences in performance should be considered. This suggests that a comparison of existing work on loss functions and their effects on model behavior might be relevant for the authors' discussion."
+x97rl3Vl7k,"I have read the other reviews and all rebuttals. The other reviewers are positive overall, and the authors provided very detailed and thorough rebuttals. I have increased my score from ""5: Borderline accept"" to ""6: Weak Accept"".
+***
+***
+***
+***
+
+
+The authors propose an approach for categorizing examples which are flagged as uncertain by uncertainty estimation methods (e.g., deep ensembles, MC-dropout) into three classes: out-of-distribution examples (OOD), boundary examples (Bnd) and examples in regions of high in-distribution misclassification (IDM). They propose  a method for post-hoc uncertainty categorization, utilizing latent space / feature-space based density models.","The paper is very well written overall, I enjoyed reading it. More or less everything is clearly described and explained. The authors definitely seem knowledgeable, they have done a thorough job putting together the paper. I liked the color coding in Section 4. 
+
+Section 3.3 is interesting. The proposed confusion density matrix is novel (I think) and makes some intuitive sense, it is a pretty neat idea.
+
+The example in Section 4.1 is quite neat, it provides good intuition.
+
+The use case in Section 4.4 seems potentially useful.","I find it quite difficult to judge the technical contribution and impact of the proposed approach. Doing OOD detection based on feature-space density is not new (see e.g. Sun et al., ""Out-of-distribution detection with deep nearest neighbors"", ICML 2022), and I am not sure how useful the Bnd/IDM categorization actually is in practice.
+
+The authors show two use cases in Section 4.3 and 4.4. However, in Section 4.3 the only concrete conclusion seems to be that DE is most apt at flagging the OOD class, but this is not really a new finding? And while the results in Section 4.4 do seem quite promising, the method is here only applied to MNIST?
+
+In fact, the proposed method is never applied to any dataset with more than ~10 classes? Can it be difficult to apply to a dataset with e.g. 1000 classes? What happens to the confusion density matrix computation, does it become expensive? And what happens if the corpus C_{c1 --> c2} is empty for some pairs of classes?
+
+
+Small thing:
+- I found Section 3.3.1 a bit confusing at first, I had to get through Definition 4 before I understood the paragraph above. In particular, I was a bit confused by ""The first situation where high uncertainty arises, is when g(x) is close to latent representations of validation examples that have been correctly assigned a label that differs from the predicted one"".","1. Can the proposed method be applied to datasets with a lot more classes (e.g. 1000 classes)? Does the confusion density matrix become expensive to compute? What happens if the corpus C_{c1 --> c2} is empty for some pairs of classes?
+
+2. Does the validation set have be large, to ensure that the corpus C_{c1 --> c2} contains at least a few examples for each pair of classes? Does it have to be much bigger for e.g. 1000 classes than 10 classes?
+
+3. For the use case in Section 4.3, could you clarify how the Bnd/IDM categorization is useful? What type of conclusions does it enable? Could it be used as evidence that uncertainty estimation method X is better than method Y?
+
+4. Would it be possible to repeat the experiment in Section 4.4 on a larger dataset with more classes?
+
+
+Minor things:
+- Figure 1 caption: ""into four classes"" --> ""into three classes""?
+- Line 104: ""for what a"" --> ""for why a""?
+- Line 197: ""an different"" --> ""a different"".
+- In Section 3.1 the term ""inference-time""/""inference time"" is used, but in the rest of the paper ""test-time""/""test time"" is used?
+- In Definition 3 - 5 the full term ""confusion density matrix"" is used, but in the text in Section 3.3.1 and 3.3.2 just ""confusion matrix"" is used. Would it be more clear to always use the full term?",Yes.,['No ethics review needed.'],"6: Weak Accept: Technically solid, moderate-to-high impact paper, with no major concerns with respect to evaluation, resources, reproducibility, ethical considerations.","4: You are confident in your assessment, but not absolutely certain. It is unlikely, but not impossible, that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work.",,Yes,2 fair,3 good,3 good,1688552936677,,,NeurIPS.cc/2023/Conference,zyhxRc9bew,"['NeurIPS.cc/2023/Conference/Submission10819/-/Official_Review', 'NeurIPS.cc/2023/Conference/-/Edit']",CC BY 4.0,1702411303221,[],3,,,['everyone'],zyhxRc9bew,['NeurIPS.cc/2023/Conference/Submission10819/Reviewer_hHZH'],1688552936677,1702411303221,"['NeurIPS.cc/2023/Conference', 'NeurIPS.cc/2023/Conference/Submission10819/Reviewer_hHZH']","Yes
+
+The reviewer suggests that the authors should consider referring to Sun et al., ""Out-of-distribution detection with deep nearest neighbors"", ICML 2022, as their proposed method for OOD detection based on feature-space density is not new and has been previously explored in this paper. 
+
+Additionally, the reviewer raises questions about the scalability of the proposed approach to large datasets with many classes (e.g., 1000 classes), which may require further investigation and discussion in the paper."
