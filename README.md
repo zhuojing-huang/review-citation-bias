@@ -12,13 +12,6 @@ This project provides a framework for analyzing biases induced by citation sugge
 
 ### Python scripts for Data Retrieval via OpenReview API
 
-For different Research Questions (RQ), different review data are fetched. The following is a list of different data and the scirpts that were used to accquire them:
-- Reviews from all the reviewers for each paper. 
-- Decision with meta review for all the papers. 
-- All the rebuttals for each paper. 
-- Submission data (data about the submitted paper, e.g., abstract, key word, primary topcis, etc.)
-- Attachments (PDF) for all the submitted papers.
-
 OpenReview has different API versions, API v2.0 and v1.0. The following are examples of how to fetch data with different API versions. 
 Make sure to install dependencies first:
 ```bash
@@ -55,13 +48,15 @@ review_name = venue_group.content['review_name']['value']
 reviews=[openreview.api.Note.from_json(reply) for s in submissions for reply in s.details['replies'] if f'{venue_id}/{submission_name}{s.number}/-/{review_name}' in reply['invitations']]
 ```
 
+For different Research Questions (RQ), different review data are fetched. 
+
 - The retrieved reviews are defaultly saved in JSON format under `raw_data` with the naming format of `<venue+year>_reviews.json`, e.g., `EMNLP2023_reviews.json`
 
-- The retrieved decisions and metareviews are saved in JSON format under `raw_data` with the naming format of `<venue+year>_decisions.json`, e.g., `EMNLP2023_decisions.json`
+- The retrieved decisions and metareviews are saved in JSON format under `raw_data` with the naming format of `<venue+year>_decisions.json`, e.g., `EMNLP2023_decisions.json`.
 
-- The retrieved rebuttals are saved in JSON format under `raw_data` with the naming format of `<venue+year>_rebuttals.json`, e.g., `EMNLP2023_rebuttals.json`
+- The retrieved rebuttals are saved in JSON format under `raw_data` with the naming format of `<venue+year>_rebuttals.json`, e.g., `EMNLP2023_rebuttals.json`. All the rebuttal data are compressed under `all_rebuttals.zip` due to git size limit. 
 
-- The retrieved submission data are saved in JSON format under `raw_data` with the naming format of `<venue+year>_submissions.json`, e.g., `EMNLP2023_submissions.json`
+- The retrieved submission data are saved in JSON format under `raw_data` with the naming format of `<venue+year>_submissions.json`, e.g., `EMNLP2023_submissions.json`.  All the ICLR submission data are compressed under `ICLR_submissions.zip` due to git size limit. 
 
 - The retrieved PDFs are saved in Google Drive whose link is provided in a text file: `raw_data/all_venues_papers.txt`
 
