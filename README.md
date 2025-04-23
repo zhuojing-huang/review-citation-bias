@@ -1,6 +1,6 @@
 # Quantifying Biases in Peer Review: Analyzing Reviewer Suggestions in Artificial Intelligence Publications
 
-This project provides a framework for analyzing biases induced by citation suggestions from peer review at major AI conferences. It includes tools for retrieving, converting, annotating, and shuffling review data, as well as sending prompts together with review data to open-source large language models via API to evaluate their performance in suggesting additional citations based on the reviews.
+This project provides a framework for analyzing biases induced by citation suggestions from peer review at major AI conferences. It includes tools for retrieving, converting, annotating, and shuffling review data, as well as sending prompts together with review data to open-source large language models via API to evaluate their performance in suggesting additional citations based on the reviews. The project also analyses different aspects of biases in peer review suggestions. 
 
 **Prerequisites**
 - Python 3.x
@@ -10,12 +10,7 @@ This project provides a framework for analyzing biases induced by citation sugge
 
 ## Data Retrieval
 
-The peer review data for the following conferences was gathered using the **OpenReview API**:
-
-### Python scripts / notebooks for Data Retrieval
-- `scripts/API2.0_get_data.ipynb`: Uses OpenReview API v2.0 to fetch peer review data for **EMNLP 2023** and **NeurIPS 2023 & 2024**.
-- `scripts/API1.0_get_data.ipynb`: Uses OpenReview API v1.0 to fetch peer review data for **ICLR 2023**.
-- `scripts/API_get_submission_pdf.ipynb`: Uses OpenReview API to fetch submission PDF data for **EMNLP**, **NeurIPS** and **ICLR**. The notebook provides both API v2.0 and v1.0 in different cells.
+### Python scripts for Data Retrieval via OpenReview API
 
 For different Research Questions (RQ), different review data are fetched. The following is a list of different data and the scirpts that were used to accquire them:
 - Reviews from all the reviewers for each paper. 
@@ -33,7 +28,7 @@ pip install openreview-py
 For API v1.0 (all the ICLR venues in this project), use the following:
 
 ```python
-#### Example usage for getting all reviews using API v1.0
+#### Example usage for getting all the reviews using API v1.0
 import openreview
 
 client = openreview.Client(baseurl='https://api.openreview.net')
@@ -45,7 +40,7 @@ submissions = client.get_all_notes(
 
 For API v2.0 (all the EMNLP and NeurIPS venues in this project), use the following:
 ```python
-#### Example usage for getting all reviews using API v2.0
+#### Example usage for getting all the reviews using API v2.0
 import openreview
 client = openreview.api.OpenReviewClient(
     baseurl='https://api2.openreview.net',
@@ -60,14 +55,37 @@ review_name = venue_group.content['review_name']['value']
 reviews=[openreview.api.Note.from_json(reply) for s in submissions for reply in s.details['replies'] if f'{venue_id}/{submission_name}{s.number}/-/{review_name}' in reply['invitations']]
 ```
 
+*Note: For different type of data other than reviews, e.g., PDFs of all the submissions, please refer to the official documentation of OpenReview API (see https://docs.openreview.net/how-to-guides/data-retrieval-and-modification).*
 
-Note: data accquired by different scripts sometimes have overlaps. However, they can always be merged when needed according to the review ID or the paper ID (details will be introduced in the Workflow section).
+*Note: data accquired by different scripts sometimes have overlaps. However, they can always be merged when needed according to the review ID or the paper ID (details will be introduced in the Workflow section).*
 
 The retrieved reviews are defaultly saved in JSON format:
 - `raw_data/EMNLP2023.json`
 - `raw_data/NeurIPS2023.json`
 - `raw_data/NeurIPS2024.json`
 - `raw_data/ICLR2023.json`
+
+The retrieved decisions and metareviews are saved in JSON format:
+- `raw_data/EMNLP2023_decisions.json`
+- `raw_data/NeurIPS2023_decisions.json`
+- `raw_data/NeurIPS2024_decisions.json`
+- `raw_data/ICLR2023_decisions.json`
+
+The retrieved rebuttals are saved in JSON format:
+- `raw_data/EMNLP2023_rebuttals.json`
+- `raw_data/NeurIPS2023_rebuttals.json`
+- `raw_data/NeurIPS2024_rebuttals.json`
+- `raw_data/ICLR2023_rebuttals.json`
+
+The retrieved submission data are saved in JSON format:
+- `raw_data/EMNLP2023_submissions.json`
+- `raw_data/NeurIPS2023_submissions.json`
+- `raw_data/NeurIPS2024_submissions.json`
+- `raw_data/ICLR2023_submissions.json`
+- `raw_data/ICLR2019_submissions.json`
+- `raw_data/ICLR2017_submissions.json`
+- `raw_data/ICLR2014_submissions.json`
+- `raw_data/ICLR2013_submissions.json`
 
 The retrieved PDFs are saved in Google Drive whose link is provided in a text file:
 - `raw_data/all_venues_papers.txt`
@@ -165,8 +183,5 @@ The years extracted in last step are analyzed and visualized through the followi
 - Paper decisions in JSON format are acquired via OpenReview API. The raw data is saved under `raw_data`
 
 #### 2. Combine paper decision and review data
-- Scripts for merging review JSON and decision JSON are: `scripts/merge_review_decision_api1` (for processing ICLR) and `scripts/merge_review_decision_api2` (for processing EMNLP and NeurIPS)
-
-#### 3. Acceptance and Rejection Analysis
-- Scripts for TFIDF comparison
+- Scripts for merging review JSON and decision JSON are: `scripts/merge_review_decision_api1` (for processing ICLR) and `scripts/merge_review_decision_api2` 
 - Scirpts for top n-gram comparison 
