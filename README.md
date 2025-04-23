@@ -70,13 +70,13 @@ For different Research Questions (RQ), different review data are fetched.
 
 ### 0: General Pre-processing
 Python scripts are provided to convert the JSON files into CSV format for easier processing for later manual annotation:
-- `scripts/convert_json_csv_API2_reviews.py`: Converts **EMNLP** and **NeurIPS** JSON data to CSV.
-- `scripts/convert_json_csv_API1_reviews.py`: Converts **ICLR** JSON data to CSV.
+- `scripts/Preprocessing/convert_json_csv_API2_reviews.py`: Converts **EMNLP** and **NeurIPS** JSON data to CSV.
+- `scripts/Preprocessing/convert_json_csv_API1_reviews.py`: Converts **ICLR** JSON data to CSV.
 For other data like submission data, only minor adjustments, i.e., changing column names, need be to done. All the converted CSVs are also saved under `raw_data`.
 
 ### RQ A1: Analysing Review Texts
 
-#### Step 1. Manual Annotation
+#### 1. Manual Annotation
 After converting the JSON files to CSV:
 - 50 reviews where reviewers suggest authors cite additional literature are manually marked as **positive cases** (`1`).
 - 50 reviews without such suggestions are manually marked as **negative cases** (`0`).
@@ -86,7 +86,7 @@ After converting the JSON files to CSV:
    - `processed_data/annotated_data_for_reviews/NeurIPSwithLabels.csv`
    - `processed_data/annotated_data_for_reviews/ICLRwithLabels.csv`
 
-#### Step 2. Shuffle Labeled Data
+#### 2. Shuffle Labeled Data
 The labeled data is shuffled to ensure random distribution:
 - **Issue**: Positive cases were originally at the beginning, and negative cases were at the end.
 - **Solution**: `shuffle_csv.py` shuffles the labeled data files.
@@ -95,23 +95,24 @@ The labeled data is shuffled to ensure random distribution:
   - `processed_data/annotated_data_for_reviews/shuffled_EMNLPwithoutLabels.csv`
   - `processed_data/annotated_data_for_reviews/shuffled_NeurIPSwithoutLabels.csv`
 
-#### Step 3. Language Model Response Collection
+#### 3. Language Model Response Collection
 The shuffled data is used to evaluate language model performance in identifying citation suggestions:
-- `scripts/get_lm_response.py` sends each review plus a **prompt** to a **llama8b** via **LM Studio** API.
-- `scripts/get_response_csv_70b.py`sends each review plus a **prompt** to **llama70b** via **LM Studio** API running on server from **GippLab**.
+- `scripts/RQ_A/get_lm_response.py` sends each review plus a **prompt** to a **llama8b** via **LM Studio** API.
+- `scripts/RQ_A/get_response_csv_70b.py`sends each review plus a **prompt** to **llama70b** via **LM Studio** API running on server from **GippLab**.
 - All the prompts can be found in `processed_data/prompts_for_models.txt`
 - The model's response is saved in a new column, `response`, in the output CSV files.
 - Responses from different models/prompts are saved in different csv with the naming pattern of `venue_model_promptX.csv`.
 - All the files can be found at `processed_data/annotated_data_for_reviews` 
 
-#### Step 4. Language Model Response Comparison 
+#### 4. Language Model Response Comparison 
 The responses returned by the models are evaluated against golden data annotated at **Step 1 Manual Annotation**:
-- `scripts/compare_prompts.py` calculates and compares acc., recall, precision, f1 scores of all the responses returned by different models/prompts.
+- `scripts/RQ_A/assign_tags.py` gives binary tags for reviews based on the model response -- containing "yes" for `1` else `0`.
+- `scripts/RQ_A/compare_prompts.py` calculates and compares acc., recall, precision, f1 scores of all the responses returned by different models/prompts.
 
 ![PR-Curves from Models for NeurIPS Reviews](visualization/NeurIPS_models_pr_curves.png)
 
-#### Step 5. Get Responses Using the Best Models and Prompts
-- `scripts/get_response_csv_70b.py` is used to get all the responses from the best models and prompts.
+#### 5. Get Responses Using the Best Models and Prompts
+- `scripts/RQ_A/get_response_csv_70b.py` is used to get all the responses from the best models and prompts.
 - CSVs with all the responses from best models and prompts are saved under `processed_data/processed_data_for_citations_in_review`.
 
 
@@ -119,27 +120,25 @@ The responses returned by the models are evaluated against golden data annotated
 
 #### 1. Extract Citation Years 
 Python scripts are provided to extract all the years from all the submission PDFs:
-- `scripts/extract_citation_years.py`uses regular expression to extract all the citatoin years under various patterns.
+- `scripts/RQ_A/extract_citation_years.py`uses regular expression to extract all the citatoin years under various patterns.
 - CSVs with all the citatoin year data are saved under `processed_data/processed_data_for_citations_in_paper`.
 
 #### 2. Extract Suggested Years 
 Python scripts are provided to extract all the years from all the submission PDFs:
-- `scripts/extract_suggested_years.py`uses regular expression to extract all the suggested years under various patterns.
+- `scripts/RQ_A/extract_suggested_years.py`uses regular expression to extract all the suggested years under various patterns.
 - CSVs with all the citatoin year data are saved under `processed_data/processed_data_for_citations_in_review`.
 
 #### 3. Analyse and Visualize
 The years extracted in last step are analyzed and visualized through the following scripts:
-- `scripts/violin_plot.py` visualize the distribution of all the citation years across the venues.
+- `scripts/RQ_A/violin_plot.py` visualize the distribution of all the citation years across the venues.
 ![Distribution of Citation Years Across the Venues](visualization/violin_plot_citation_years.png)
-- `scripts/violin_plot_combined.py` visualize the distribution of all the citation years and suggested years across the venues.
+- `scripts/RQ_A/violin_plot_combined.py` visualize the distribution of all the citation years and suggested years across the venues.
 ![Distribution of Citation and Suggested Years Across the Venues](visualization/violin_plot_citation_and_suggested_years_2.png)
-- `scripts/citation_age.py` calculates average ages of paper being cited in different venues and visualize the averages and medians.
-![Average Citation Years & Ages of All Venues](visualization/citation_years_ages.png)
-- `scripts/citation_age_combined.py` calculates average ages of paper being cited and suggested in different venues and visualize the averages and medians.
+- `scripts/RQ_A/citation_age_combined.py` calculates average ages of paper being cited and suggested in different venues and visualize the averages and medians.
 ![Ages of Cited Papers vs. Ages of Suggested Papers](visualization/suggested_and_citation_years_ages.png)
 
 
-### Question 3: Analysing Topics Distribution in Suggested Papers
+### RQ A3: a. How often do the recommended references fall into the field of ML/AI as opposed to fall in other fields? How many recommendations are outside of CS?; b. Is the distribution of fields of study different from that of papers cited in the submissions?
 
 #### 1. Extract Suggested Papers
 
@@ -152,5 +151,5 @@ The years extracted in last step are analyzed and visualized through the followi
 - Paper decisions in JSON format are acquired via OpenReview API. The raw data is saved under `raw_data`
 
 #### 2. Combine paper decision and review data
-- Scripts for merging review JSON and decision JSON are: `scripts/merge_review_decision_api1` (for processing ICLR) and `scripts/merge_review_decision_api2` 
+- Scripts for merging review JSON and decision JSON are: `scripts/RQ_A/merge_review_decision_api1` (for processing ICLR) and `scripts/RQ_A/merge_review_decision_api2` 
 - Scirpts for top n-gram comparison 
