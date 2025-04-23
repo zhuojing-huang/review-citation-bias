@@ -1,0 +1,17 @@
+Prompt A "Does this peer review explicitly suggest the authors of the paper to cite any specific literature?"
+Prompt B "Does this peer review suggest the authors of the paper to refer to any other literature?"
+Prompt C "Does this peer review suggest the authors of the paper to refer to any other additional literature? Answer yes or no at the beginning."
+Prompt D "Does this peer review suggest the authors of the paper to refer to specific literature that are not already discussed in the original paper?"
+Prompt E "Does this peer review suggest the authors of the paper to refer to specific literature that are not already discussed in the original paper? Note that sometimes the reviewers mention some literature in their reviews but those could be already included in the original paper."
+Prompt F
+"""
+You are reviewing a peer review for a research paper submitted to OpenReview. Your task is to determine whether the peer review suggests the authors should cite additional relevant papers that are not already included in the original manuscript.
+Please answer with "Yes" if the review suggests new citations, or "No" if it does not. Then, provide the following:
+List any suggested papers or references not cited in the manuscript.
+Briefly explain why those citations might be necessary, based on the reviewer's comments.
+"""
+Prompt G
+"""
+Does this peer review explicitly say the paper is missing relevant literature? Or should the paper compare to relevant baselines/benchmarks? Answer with yes or no at the very beginning, and give brief explanation.
+"""
+
