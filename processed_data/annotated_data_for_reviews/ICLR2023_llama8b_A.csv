@@ -1,0 +1,891 @@
+id,summary_of_the_paper,strength_and_weaknesses,"clarity,_quality,_novelty_and_reproducibility",summary_of_the_review,confidence,correctness,technical_novelty_and_significance,empirical_novelty_and_significance,flag_for_ethics_review,recommendation,cdate,ddate,forum,invitation,mdate,nonreaders,number,original,readers,replyto,signatures,tcdate,tddate,tmdate,writers,response,binary_label
+OP22Ykrg2_,"This paper proposes an adaptive entropy-regularization framework (ADER) to address the multi-agent exploration-exploitation trade-off problem in MARL. The key insight of ADER is that the amount of exploration every agent needs to perform is different and can change over time, so we need to adaptively control the amount of exploration each agent conducts and learn this amount across agents and over time. To achieve this, ADER adaptively learn an individual target entropy for each agent over time (to control the amount of exploration for each agent), assuming a fixed total entropy budget. And it uses the change in the joint pure-return value w.r.t. the change in agent $i$'s policy entropy to estimate the benefits of increasing the target entropy of agent $i$.  In addition, in ADER, the exploration and exploitation is disentangled by disentangling the return from the entropy (i.e., the joint soft Q-function is decomposed into one joint Q-function for reward and one joint Q-function for the entropy). ","- Strengths:
+	- The proposed framework is well motivated and seems to work well in a variety of complex cooperative tasks that require adaptive exploration across agents over time.
+	- The main idea of adaptively learning an individual target entropy for each agent over time to better balance the exploration and exploitation in the dimension of agents is very interesting and seems novel to me. 
+	- The paper is well-written and easy to follow overall. 
+- Weaknesses:
+	- It is not clear how the proposed method performs in cooperative tasks that do not require adaptive exploration across agents over time.","The paper has good clarity overall. Most of the key components of ADER are well motivated and clearly explained, although the necessity of using monotonic value function factorization is not very clear to me. 
+
+The key idea of ADER looks novel to me. ","I like the main idea of ADER. It seems to provide a simple yet effective way to better coordinate the level of exploration across different agents over time in cooperative tasks. I think the authors do a very good job at explaining the main intuitions of the proposed method. For instance, the motivation example is quite nice. It clearly explains how one agent's exploration can change over time and how it can hinder other agents' exploitation, thus showing the necessity of adaptively controlling the trade-off between exploitation and exploration across multiple agents. 
+
+My only (small) concern of the paper is most of the cooperative tasks tested (e.g., predator-prey and SMAC) in the experiments were different from the original settings. They were specifically designed to be difficult for the agents to gain positive rewards under simultaneous exploration (or similar levels of exploration). While I understand this might be because exploration is not a big problem in these original tasks, it seems that the authors could have evaluated their method on MARL benchmark like Google Research Football (with the original setting), which is known to have hard exploration issues. Also, it'd be nice to know if ADER could perform well in the original SMAC tasks, such that we could know if continuously learning the target entropy for each agent could hurt performance in cooperative tasks that do not require adaptive exploration across agents. 
+
+Some minor comments/suggestions:
+- I think the introduction could be improved some. For example, the introduction says ""This disentanglement alleviates instability which can occur due to the updates of the temperature parameters and enables applying value factorization to return and entropy separately."" It suddenly mentions value function factorization, but does not explain the motivation/necessity for using it. 
+- The related work section mentions that LICA does not maximize the cumulative sum of entropy but regularize the action entropy. Why maximizing the cumulative sum of entropy can be better than regularizing the action entropy? This could be explained some. 
+- The ablation study section mentions ""we compare ADER with and without the monotonic constraint to show the necessity of the monotonic constraint."" For ADER without the monotonic constraint, how does it learn the joint $Q$ or $V$? Does it learn a centralized critic that directly conditions on the global state and joint action of agents? Also, I do not understand why it is necessary to use a *monotonic* value factorization. ADER learns both actors and critics and only the actors are needed during execution. So one can also use a *nonmonotonic* value function factorization. ","4: You are confident in your assessment, but not absolutely certain. It is unlikely, but not impossible, that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work.",4: All of the claims and statements are well-supported and correct.,"4: The contributions are significant, and do not exist in prior works.",3: The contributions are significant and somewhat new. Aspects of the contributions exist in prior work.,NO.,"8: accept, good paper",1666543387728,,zzL_5WoI3I,ICLR.cc/2023/Conference/Paper1739/-/Official_Review,,[],2,,['everyone'],zzL_5WoI3I,['ICLR.cc/2023/Conference/Paper1739/Reviewer_dyHK'],1666543387728,,1666543387728,"['ICLR.cc/2023/Conference', 'ICLR.cc/2023/Conference/Paper1739/Reviewer_dyHK']","Yes, the peer review suggests that the authors should explain why they used monotonic value function factorization and provide more clarity on how ADER (without the monotonic constraint) learns the joint Q or V. Additionally, it would be beneficial for them to explain why maximizing the cumulative sum of entropy is better than regularizing action entropy.",1
+bt5n0vS9GaF,"This paper provides convergence bounds for score-based models under the assumption that score estimate is $L^2$ accurate. Provided that, the paper derives some remarkable bounds for the score-based sampling methods under pretty weak assumptions.","Strength: The results are pretty impressive given the state of the field.
+
+Weakness: The results shown under the manifold hypothesis seem incomplete.",Clearly written and novel results.,"The paper reads well and presents important results which provides clarity to the field. I have the following comments for the authors:
+
+1) It looks like their rate matches the convergence of Langevin diffusions to the target measure under the LSI assumption - but without any stringent assumption on the target (just good score estimates). However, intuitively (or fundamentally), it was left unclear what actually enables this. Perhaps this is not so surprising, since the forward diffusion starts from actual samples from the target (rather than, like in a classical setting, from an arbitrary point in space) - and provided that the gradient is well estimated, sampling does not require any assumptions. Can authors comment clearly about the differences between their setup and a regular Langevin sampling setup where the initialisations are from arbitrary distributions? This can be perhaps done by assuming no gradient error (exact gradients) and discussing the difference between a Langevin diffusion sampler and a forward-backward score based sampler.
+
+2) It would be also nice if the authors clarified the Remark after Corollary 4. As showed in multiple prior works, the real world data structure supports the manifold hypothesis -- therefore, the impressive convergence results presented in the first part may not apply, as authors pointed out (but still valuable). The remark states that a unified error bound can be obtained in the bounded Lipschitz metric but this was not completed. It would be nice if this is done.
+
+3) Assumption 2 might be OK, assuming finite datasets, however, in a realistic setting where the data stream is observed, this may not hold. Can authors comment if this assumption can be relaxed and at what cost?",3: You are fairly confident in your assessment. It is possible that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work. Math/other details were not carefully checked.,4: All of the claims and statements are well-supported and correct.,"4: The contributions are significant, and do not exist in prior works.","4: The contributions are significant, and do not exist in prior works.",NO.,"8: accept, good paper",1666701352153,,zyLVMgsZ0U_,ICLR.cc/2023/Conference/Paper5148/-/Official_Review,,[],3,,['everyone'],zyLVMgsZ0U_,['ICLR.cc/2023/Conference/Paper5148/Reviewer_ner6'],1666701352153,,1666701919109,"['ICLR.cc/2023/Conference', 'ICLR.cc/2023/Conference/Paper5148/Reviewer_ner6']","No, the peer review does not explicitly suggest the authors to cite any specific literature. It only mentions that ""as shown in multiple prior works"" and refers to these prior works as supporting the manifold hypothesis. However, it does not provide explicit references or citations. The reviewer assumes that the readers are already familiar with these prior works.",0
+Az1mDQkwYc,"In this paper, the authors propose a new sparse neural network training method. The key component in the proposed method is called Gradient Annealing (GA). GA can automatically find a sparse subnetwork in the end of training. The authors also propose some tricks to sparsify the computation in training. A series of experiments are used to evaluate the performance of the proposed method. ","Strength:
+1.	This paper is well written and easy to read. 
+2.	The experiments show that the proposed method can find a sparse subnetwork during training. 
+
+Weaknesses:
+
+1. Some overclaim statements. In page 4, the authors claim that “minimize sparsification overhead” and “optimal trade-off”. How to prove these optima, as the proposed method is heuristic?
+
+2. This paper is not well motivated. In the abstract, the authors say that the proposed method eliminates the need for sparsity inducing regularizer. I don’t think this is an advantage. Moreover, in the proposed method, it seems that it is difficult to control the sparsity of the finally trained neural networks, which is very important in real applications.
+
+3. The authors propose some tricks to sparisfy the computation in training, such as in sparsifying the weight gradient. It is unclear whether these tricks would produce bad impacts in training as no theoretical analysis is provided in this paper. 
+
+4. The authors claim that the proposed method can reduce the FLOPS in training. Since the structure of sparse computation in this method is complicated, how to calculate/count the computational savings in FLOPs? The authors are recommended to release the code to  show this counting procedure. 
+",See the strength and weaknesses. ,"1. The proposed method seems tricky and not elegant. It is unclear whether these tricks would produce negative impacts in training. 
+
+2. This paper is not well motivated. 
+
+3. It is difficult to control the final sparsity in the proposed method, which is very important in real applications. 
+
+4. Some details, such as how to calculate the computational saving, are missing.  
+",5: You are absolutely certain about your assessment. You are very familiar with the related work and checked the math/other details carefully.,2: Several of the paper’s claims are incorrect or not well-supported.,2: The contributions are only marginally significant or novel.,1: The contributions are neither significant nor novel.,NO.,"3: reject, not good enough",1666894494836,,zyfEWkV6it,ICLR.cc/2023/Conference/Paper1417/-/Official_Review,,[],4,,['everyone'],zyfEWkV6it,['ICLR.cc/2023/Conference/Paper1417/Reviewer_5Hu8'],1666894494836,,1666894494836,"['ICLR.cc/2023/Conference', 'ICLR.cc/2023/Conference/Paper1417/Reviewer_5Hu8']","No, this peer review does not explicitly suggest the authors of the paper to cite any specific literature. The reviewer mentions ""related work"" and familiarity with it in the confidence section, but there is no direct request or suggestion for the authors to cite a particular article or study.",0
+CEHznpxY-uM,"The paper addresses the problem of time series forecasting.
+The authors propose a model that combines convolutions and
+min, max and average poolings, aiming to mimick a first order
+approximation of a Fourier transformation. In experiments
+they show that their method outperforms existing baselines.
+","s1. very simple method.
+s2. promising experimental results.
+
+w1. misses a closely related, even more simple work.
+w2. how the proposed model mimicks the Fourier transform is not clear.
+w3. the concept of irregularity and the derivation of the approximation 
+  is unclear.
+","The paper is mostly well written, but sufferes from
+a. unexplained symbols in the formulas (e.g. ""R_CAV"" in eq. 7,
+  you only explain ""R""; what is ""t_{a~b}"" ?),
+b. many typos, e.g.,
+  p. 2 ""models is""
+  p. 2 ""the increasing the number""
+
+Smaller points:
+- tab. 3 and 4 are hard to read and miss some information:
+  - mixing MSE and MAE rows makes not so much sense, as you never want to compare
+    them.
+  - standard deviations would make it easier to assess if we see significant differences
+    or noise.
+
+The proposed method combines standard components like convolutions
+and pooling layers, but the specific cell that is constructed from those
+components is novel.
+
+The reproducibility is medium (experiments explained clearly, but no code
+provided).
+","I see three issues with the paper:
+
+w1. misses a closely related, even more simple work.
+
+  The DLinear model by Zeng et al. 2022 proposes an even simpler model with
+  comparable results to yours. What advantages does your model have?
+
+w2. how the proposed model mimicks the Fourier transform is not clear.
+
+  In eq. 9, you define a layer conv-relu-conv-tanh and claim that it approximates
+  the sine basis function. But there is nothing in your layer that would be geared
+  specifically to model a sine function, you could claim that it approximates any
+  function. To me it looks like your derivation breaks here.
+
+w3. the concept of irregularity and the derivation of the approximation 
+  is unclear.
+
+  You claim that there is a third component in time series analysis besides
+  seasonality and trend, ""irregularity"". To me this looks wrong and seems to
+  misunderstand what a trend usually models in time series: often it is just
+  a linear trend, and then you are perfectly right, there is room for further
+  basis functions. But generally, trends can be any non-periodic basis functions,
+  e.g. exponentials or logarithms etc. Between periodic (""seasonality"") and
+  non-periodic (""trend"") basis functions I do not see a third type of basis
+  functions.
+
+  The basis function you model in the end (eq. 5) actually **is** a simple
+  seasonality, a single sine function.
+
+  The derivation of eq. 5 is problematic: the higher order terms do not
+  ""correspond to the vertical shift"", because they also are periodic. If you
+  want to make an approximation argument here, that **locally** the
+  higher order terms can be approximated by a constant, you need to be
+  more specific, esp. you need to say explicitly that n-th regular waves
+  are the waves with **slower** angular velocity (as your fig. 3a suggests, but
+  you never say that). However, in Fourier analysis by default basis functions
+  are order by **increasing** angular velocity for good reasons, because
+  only if you go to arbitrary high velocities you have arbitrary good
+  approximations.
+
+  So both, your concept of irregularity and the derivation of your layer
+  function look problematic to me.
+
+
+references:
+  Ailing Zeng, Muxi Chen, Lei Zhang, Qiang Xu:
+  Are Transformers Effective for Time Series Forecasting? CoRR abs/2205.13504 (2022)
+","4: You are confident in your assessment, but not absolutely certain. It is unlikely, but not impossible, that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work.",2: Several of the paper’s claims are incorrect or not well-supported.,2: The contributions are only marginally significant or novel.,2: The contributions are only marginally significant or novel.,NO.,"3: reject, not good enough",1666683624051,,zuQQ7GrDFfH,ICLR.cc/2023/Conference/Paper4304/-/Official_Review,,[],3,,['everyone'],zuQQ7GrDFfH,['ICLR.cc/2023/Conference/Paper4304/Reviewer_ZKbd'],1666683624051,,1666683624051,"['ICLR.cc/2023/Conference', 'ICLR.cc/2023/Conference/Paper4304/Reviewer_ZKbd']","No, this peer review does not explicitly suggest the authors of the paper to cite any specific literature. However, it mentions a related work by Zeng et al. (2022) that is mentioned in the references section at the end of the peer review, but it is not a direct suggestion from the reviewer.",0
+m-GXnLW_A_,"The paper tackles the problem of generating counterfactual examples that are robust to distribution shifts.
+To this regard, the authors first formulate a framework for this problem that considers a tri-level optimization problem.
+Second, they propose a methodology, RoCourseNet, that solves a tri-level optimization problem.
+They perform experiments on three standard benchmarks and find their results to be highly robust counterfactual explanations against data shifts that consistently outperform previous state of the art.
+","## Strenghts:
+
+The authors are effective in inserting their work in the current state of the art, with a satisfactory related work and introduction section.
+The methodology introduced is clear with helpful pseudo algorithms as accompaniment.
+The authors include anonymized code with their submission, which helps in the reproducibility compartment.
+
+
+## Weaknesses:
+
+My main concern with this paper is the intuitive explanation of the underlying problem and, as a result, its lack of a formal definition.
+
+The authors provide the classic example of an applicant to a loan bank.
+Their goal is to provide a counterfactual explanation to a rejected applicant that is “robust” in the sense that the following time, if the conditions are met, the applicant will see its loan accepted.
+What is then the definition of “robust” in this case? What if interest rates drastically change in the meanwhile? Should the application still be accepted? Or is it more a sort of “ceteris paribus” change considered here? 
+
+This leads to the next point. The authors consider a worst case scenario, and use an adversarial technique to represent this.
+It is the opinion of this reviewer that the authors did not really justify this choice.
+As seen in the literature (Goodfellow 2014 and many others), adversarial attacks are often random to the human eye. Why then assume a worst case scenario, maybe even an unfeasible one? What is the probability of observing such a change?
+
+Finally, it could be argued that this method  ends up just trading off validity and robust validity with an increased proximity, as it seems to be the case in at least two of the three datasets considered in figure 2.
+
+The fact that all comparisons are performed against methods that make stronger assumptions does not help in evaluating the method, the addition of a heuristic based similar technique would have helped in this regard (even a simple random baseline).
+","The paper explanation of the method is clear with the nice addition of suitable pseudo algorithms.
+Code is provided as well, which helps reproducibility.
+
+However caption 1 is insufficient and should be more detailed.
+The same can be said basically for all captions in this paper.
+
+In table 1, first row, first column, is Counternet the right value to be put in bold?
+
+Regarding novelty, while the authors are the first to consider this problem, it is not clear if the problem itself is rightly formulated or interesting enough in this form, limiting the overall impact.
+","While the paper has some strengths, as highlighted in the relevant strength section, the lack of a clear and formal definition of the problem they are facing severely limits their chance of acceptance for this paper as it is. 
+Addressing the points listed in the weaknesses section could improve the rating of this paper according to this reviewer.
+","4: You are confident in your assessment, but not absolutely certain. It is unlikely, but not impossible, that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work.","3: Some of the paper’s claims have minor issues. A few statements are not well-supported, or require small changes to be made correct.",2: The contributions are only marginally significant or novel.,Not applicable,NO.,"3: reject, not good enough",1666646145553,,zufPou5foW,ICLR.cc/2023/Conference/Paper4444/-/Official_Review,,[],3,,['everyone'],zufPou5foW,['ICLR.cc/2023/Conference/Paper4444/Reviewer_GDb3'],1666646145553,,1666646145553,"['ICLR.cc/2023/Conference', 'ICLR.cc/2023/Conference/Paper4444/Reviewer_GDb3']","No, the peer review does not explicitly suggest the authors of the paper to cite any specific literature. However, it mentions that ""As seen in the literature (Goodfellow 2014 and many others)"" which implies that Goodfellow's work is already well-known and should be cited, but this is not a suggestion made by the reviewer. The mention of Goodfellow's work is used to support the reviewer's argument.",0
+bQV9VleRaN3,"The paper under consideration proposes a method (DGGF) for solving generative modeling related problems. The method is based on Wasserstein gradient flows with potential function given by entropy-regularized $f$-divergence. Essentially, the authors try to approximate density ratio function (DRE) via Bregman divergence combined with Euler-Maruyama simulation. The density ratio function is used at the inference stage allowing a practitioner to sample from target distribution.","**Strength**
+
+* The paper provides a comprehensive list of practical applications and shows practical advantages of the method in several use cases. For example, the proposed density-ratio based method could be adapted for conditional generation on-the-fly. 
+* DGGF approach seems to overcome the alternative methods based on density ratio function (EPT) and doesn’t require additional latent space to data space generators. The proposed Algorithm is easy to implement (compared to JKO-based Wasserstein gradient flows methods)
+
+**Weaknesses**
+* My main concern regarding the proposed method is the lack of theoretical interpretability. The theory of Wasserstein gradient flows is nice but it is not clear if the Algorithm 1 is indeed turning the function $r_{\theta}$ to be the density ratio function $q_t(x)/p(x)$. At first, $r_{\theta}$ does not depend on time which limits the interpretability from a theoretical point of view. There are cases when the prior distribution $q_0(x)$ is significantly different from target distribution $p(x)$ and one can expect that the density ratio function significantly changes along the gradient flow (for example, when the uniform distribution is used as the prior). Secondly, the convergence analysis of the Algorithm 1 itself is also unclear. Bregman divergence optimization is anticipated by stochastic procedure (EM simulation) and it is hard to see if the optimization converges to something relevant. Therefore, special attention should be paid to the convergence analysis of the Algorithm 1 and what is the physical meaning of $r_{\theta^*}$ it converges to. How does $r_{\theta^*}$ resemble the real density ratio function? How does it depend on $K$?
+* In light of my previous point I have some doubts concerning the  interpretation of  “Model Estimate of KL over Flow” section. The Figure 4 shows that the quantity $E_{x_{t_k}} \log r_{\theta}(x_{t_k})$ is indeed converges to zero, but if we can interpret the charts as KL convergence remains unclear for me.","**Clarity:** The paper is over-all well-written.
+* The link to the article [1] seems to be missed (it introduces density ratio fitting under Bregman divergence):
+
+[1] Sugiyama et. al. Density-ratio matching under the Bregman divergence: a unified framework of density-ratio estimation https://doi.org/10.1007/s10463-011-0343-8
+
+What is `stop_gradient` procedure in the Alorithm 1 in the appendix?
+Some hrefs in the paper don’t work (do not redirect to the bibliography section). For example, Gao et. al., 2022. Song and Ermon et. al., 2019 
+
+**Quality and Novelty:** The idea of utilizing Wasserstein gradient flows (in particular, with entropy regularized $f$-divergence) is not new, therefore the main contribution the authors present is methodological. In spite of the proposed approach seems to work, there are some problems with theoretical interpretability listed in the weaknesses section. Therefore:
+* The questions raised in the weaknesses section should be answered. Probably it is worth considering some toy scenarios with known density ratio function or give up Wasserstein gradient flows interpretation in favor of some other theoretical basis.
+* Minor comment, but yet: please add the comparison with JKO-flow approach [2]. This related method seems to surpass the proposed one at CIFAR10 image generation problem. 
+[2] Fan et. al. Variational Wasserstein gradient flow, https://arxiv.org/pdf/2112.02424.pdf
+
+**Reproducibility:** I didn’t run the code provided but it seems to be clearly written and I have no special doubts regarding reproducibility. 
+","In spite of practical applicability of the proposed DGGF approach the theoretical interpretability should be significantly improved. For now there is a gap between Wasserstein gradient flows theory and proposed methodology. 
+","4: You are confident in your assessment, but not absolutely certain. It is unlikely, but not impossible, that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work.",2: Several of the paper’s claims are incorrect or not well-supported.,2: The contributions are only marginally significant or novel.,3: The contributions are significant and somewhat new. Aspects of the contributions exist in prior work.,NO.,5: marginally below the acceptance threshold,1666360263547,,zjSeBTEdXp1,ICLR.cc/2023/Conference/Paper2542/-/Official_Review,,[],1,,['everyone'],zjSeBTEdXp1,['ICLR.cc/2023/Conference/Paper2542/Reviewer_YDPG'],1666360263547,,1666360263547,"['ICLR.cc/2023/Conference', 'ICLR.cc/2023/Conference/Paper2542/Reviewer_YDPG']","Yes, this peer review explicitly suggests the authors of the paper to cite a specific literature:
+
+* They mention that the link to the article [1] seems to be missed and ask them to include the reference: Sugiyama et. al. Density-ratio matching under the Bregman divergence: a unified framework of density-ratio estimation (https://doi.org/10.1007/s10463-011-0343-8)
+* They also mention that it would be worth considering some toy scenarios with known density ratio function or giving up Wasserstein gradient flows interpretation in favor of some other theoretical basis.
+* Additionally, they suggest comparing the proposed method to JKO-flow approach [2] and cite: Fan et. al. Variational Wasserstein gradient flow (https://arxiv.org/pdf/2112.02424.pdf)",1
+PotYogaR7c,"The paper proposes a deep learning model for time series forecasting that reflects the irregularity in time series. Irregularity is based on Fourier series and and the authors employ it to design the Irregularity Representation Block  that captures, preserves, and learns the irregularity representation of time series data. Experiments on a variety of realworld datasets show the efficiency of the method.
+
+","Mathematical models are used to explain the methodology and extensive experiments on a variety of real word datasets are provided. 
+
+The code of the work is not available making difficult to evaluate if the result can be reproduced easily
+",The paper is well written overall ,"The paper is interesting overall with mathematical models helping to understand the main concepts. Several experiments are provided to show the efficiency of the method, but we do not have access to the code.",3: You are fairly confident in your assessment. It is possible that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work. Math/other details were not carefully checked.,"3: Some of the paper’s claims have minor issues. A few statements are not well-supported, or require small changes to be made correct.",3: The contributions are significant and somewhat new. Aspects of the contributions exist in prior work.,3: The contributions are significant and somewhat new. Aspects of the contributions exist in prior work.,NO.,6: marginally above the acceptance threshold,1666639213847,,zuQQ7GrDFfH,ICLR.cc/2023/Conference/Paper4304/-/Official_Review,,[],1,,['everyone'],zuQQ7GrDFfH,['ICLR.cc/2023/Conference/Paper4304/Reviewer_aUx9'],1666639213847,,1666969164154,"['ICLR.cc/2023/Conference', 'ICLR.cc/2023/Conference/Paper4304/Reviewer_aUx9']","No, this peer review does not explicitly suggest that the authors of the paper cite any specific literature. It provides an assessment and feedback on the paper, but it does not mention citing particular references or papers.",0
+MXV1TACjo_,"This paper deals with safe exploration in reinforcement learning in which an agent is required to ensure safety during training. The authors present a neuro-symbolic approach called SPICE. based on symbolic weakest preconditions. Empirically, they evaluate their approach on toy benchmarks, and show that it is able to achieve comparable performance to existing safe learning techniques while incurring fewer safety violations. ","### Strength
+- Interesting and importance problem formulation on safe exploration.
+- Unique approach for safe exploration. As far as I know, there is no existing method using weakest precondition.
+
+### Weakness
+- Though the number and quality of baselines looks sufficient to me, benchmark problem is very easy. I think the authors should have tested their method in MuJoCo or SafetyGym benchmarks. The proposed method depends on environment approximation; hence, it is particularly important to know whether it is applicable to non-linear complicated system (I think even negative results are ok, and it is significant to know the limitations).
+- Low applicability to real problems. As the authors discuss the experimental results in the first paragraph on page 8, the proposed method works better than baselines when the environment can be approximated with linear equations. I think this is a huge limitation of the proposed method. I personally recommend the authors to connect this work with Linear MDP (https://arxiv.org/pdf/1907.05388.pdf), which would provide much richer theoretical results and good empirical results under the assumption of feature mapping functions.
+
+### Questions
+- How did the author choose weakest preconditions for each experiments? Is it possible to decrease the constraints violation while tuning the parameter of the weakest preconditions?
+
+### Other comments
+- The equation in Section 2 should be rewritten
+    - (Section 2) $\text{Safe}(\pi)$ is not defined.
+    - Is $P_{x∼S{_{\pi_i}}}(x \in S_U ) < \delta$ really what the authors want to represent? I think the probability of an agent's trajectory being safe is $(1-\delta)^N$ when the length of episode is $N$. I guess the authors should have represented in other equations.","### Clarity
+This paper is mostly well-written and easy to follow.
+
+### Quality
+I have several concerns regarding the quality of experiments and method itself. Especially, I am not fully convinced whether this proposed method is really useful or not.
+
+### Novelty
+As far as I know, the proposed approach using weakest precondition is new.
+
+### Reproducibility
+The source-doe is attached, and reproducibility is high.","Though this paper presents a new, promising method for an interesting problems, there are several issues and concerns about the applicability and empirical evaluations. Hence, I recommend rejection for now.","4: You are confident in your assessment, but not absolutely certain. It is unlikely, but not impossible, that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work.",2: Several of the paper’s claims are incorrect or not well-supported.,3: The contributions are significant and somewhat new. Aspects of the contributions exist in prior work.,2: The contributions are only marginally significant or novel.,NO.,6: marginally above the acceptance threshold,1666251648361,,zzqBoIFOQ1,ICLR.cc/2023/Conference/Paper3283/-/Official_Review,,[],1,,['everyone'],zzqBoIFOQ1,['ICLR.cc/2023/Conference/Paper3283/Reviewer_aN3N'],1666251648361,,1669196188530,"['ICLR.cc/2023/Conference', 'ICLR.cc/2023/Conference/Paper3283/Reviewer_aN3N']","Yes, the peer reviewer suggests that the authors should cite Linear MDP (https://arxiv.org/pdf/1907.05388.pdf) in order to provide ""much richer theoretical results and good empirical results under the assumption of feature mapping functions."" This is mentioned in the ""Low applicability to real problems"" section of the review.",1
+UaxTjXeeu6,"The paper proposes a theoretical analysis of SGMs that extends Chen et al. (2022c) and the bad set approach from (Lee et al., 2022a).
+
+Compared to Chen et al. the analysis is much more general in a number of ways, and compared to Lee et al. the analysis relaxes an LSI assumption and is applicable to a larger class of generative models (CLD).
+
+More concretely, the claimed contributions are:
+- more general analysis without LSI assumption and applicable to CLDs
+- particularly interesting special case for distributions with a bounded support (which remove the necessity for a restrictive assumption of Lipschitz score estimate)
+- tight iteration complexity ","Despite the strong claims, the paper seems to deliver on most aspects so everything listed in the summary of contribution should be considered as a core strength of the paper.
+
+However each of the strong point presents some slight limitations that could be adressed more clearly.
+
+1) Removing the LSI assumption is a strong result, but ends up introducing new assumptions of smoothness, bounded moment, and of accurate estimation of the score function
+1.a) As the authors explain in the paper, this smoothness assumption is not satisfied when the input distribution lies on a manifold, which is probably the same regime where the accurate score function estimation is feasible at all. However most current SGM models also implicitely assume that q has full support, highlighting that this might be a limitation of the whole field. To make the analysis more relevant the failure modes of the theoretical analysis should shed some light on which modifications should be introduced in the models and training procedures to relax this assumption and be able to automatically detect the manifold and avoid this pitfall, but this would be an important contribution by itself. The authors instead give a good second choice by looking at a simplified but realistic model where the distribution lies in a ball around the origin. However the number of iterations grow quite quickly with the radius (e.g. ~R^8) making it vacuous.
+1.b) The accurate estimation of the score function is the central point of the paper, but the authors spend very little time explaining how this quantity is computed. Beyond a quick description of score matching, they mostly refer the reader to Vincent 2011, but this source actually highlights how minimizing (13) is actually very hard even after the score matching rewriting, and the authors even mention hardness results at the end of page 2. It would be good to point out some more context on when this estimation problem can be solved in an efficient manner.
+1.c) Unlike the other assumptions that are discussed mutliple times in the paper, the moment assumption receives very little attention. For example, the authors should try to justify why their proposed bound of m_2 < d in the discussion of Thm. 2 should hold, especially considering a bound e.g. m_2 < d^2 would result in different value for N and eps_score than the ones reported in the introduction.","The paper is very clear, despite the complex subject. It goes at great lengths to highlight strengths of the contributions without downplaying the limitations. The appendix is very thorough.
+
+Quality and reproducibility are both acceptable, but less obvious. In particular the quality (which usually for theoretical works corresponds to impact of the result and technical complexity of the novel tools) is made more confusing by the fact that the proof heravily rellies on Chen et al. (2022c) and the bad set approach from (Lee et al., 2022a). While the introduction makes an excellent work in describing how this paper improves over existing results in terms of generality, Sec. 4 could be streamlined to highlight better which novel technical contribution is introduced to improve over existing results. It seems to me that the core of the proof relies on a novel reduction from L_2 to L_infty which then allows to invoke results from (Lee et al., 2022a), but the authors do not clearly state if this reduction already existed in the literature. 
+
+Regarding reproducibility, the paper includes a 15 page appendix that heavily relies on two extremely recent results in Chen et al. (2022c) and (Lee et al., 2022a). Chen et al. (2022c) has been peer-reviewed, but for (Lee et al., 2022a) I could not find a peer-reviewed evaluation at all, requiring me to take their results at face value or have to review another 42 page work. This is not an immediate issue with the reproducibility of the result, but it does make it slightly less suitable to a venue with a short publication cycle like ICLR. ","Overall I think the paper introduces very strong, novel results that give a good foundation for the study of SGMs. Some limitations are present but they are to be expected due to the short format of the conference. Overall I think it's clearly above the bar for ICLR, but due to the close ties to several recent works it would be good to highlight more what separates the tools used in this paper with previous results. ",3: You are fairly confident in your assessment. It is possible that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work. Math/other details were not carefully checked.,"3: Some of the paper’s claims have minor issues. A few statements are not well-supported, or require small changes to be made correct.",3: The contributions are significant and somewhat new. Aspects of the contributions exist in prior work.,Not applicable,NO.,"8: accept, good paper",1666901372400,,zyLVMgsZ0U_,ICLR.cc/2023/Conference/Paper5148/-/Official_Review,,[],4,,['everyone'],zyLVMgsZ0U_,['ICLR.cc/2023/Conference/Paper5148/Reviewer_uWLa'],1666901372400,,1666901372400,"['ICLR.cc/2023/Conference', 'ICLR.cc/2023/Conference/Paper5148/Reviewer_uWLa']","Yes, the peer review suggests that the authors should:
+
+* Provide more context on how the score function is computed (specifically, they mention Vincent 2011 and should provide more information on when the estimation problem can be solved in an efficient manner).
+* Clarify why their proposed bound of m_2 < d holds, especially considering a different bound e.g. m_2 < d^2.
+* Highlight which novel technical contribution is introduced to improve over existing results (specifically, they mention a reduction from L_2 to L_infty, but it's unclear if this already existed in the literature).
+* Cite Lee et al. (2022a) and provide more information on their bad set approach.
+
+The peer review also suggests that the authors should address the limitations of their analysis and provide suggestions for relaxing assumptions such as the smoothness assumption when the input distribution lies on a manifold.",1
+tLSsnSAJhF,"This paper first introduces a technique called Gradient Annealing, which utilizes a similar concept of the straight-through estimator to enable weight updates on the pruned weights. Specifically, the gradient on the pruned weights will be shrunk by a factor, which is decaying over time. They argue that using a non-linear annealing scheme can help stabilize the sparse budgets. The authors further propose a sparse training algorithm called AutoSparse, that involves a layer-wise learnable threshold for pruning, and also applies the Gradient Annealing technique on a subset of parameters and can enhance efficiency as claimed by the authors. Experiments show performance gain on image classification and NLP tasks. 
+","Strengths:
+
+- Provided intuitive examples and explanations (Page 3-4)
+- Substantial amount of experiments on large-scale datasets (ImageNet and WMT). 
+
+Weakness: 
+
+- Some details are hard to follow.  
+- Evaluation is not sufficient to justify the effectiveness of the proposed techniques","Clarity & reproducibility:
+- Some hyperparameters are introduced but not introduced elsewhere, for example, the ``s_init'' on page 7 line 1. 
+- Some details are missing and hard to infer from the paper. What is the exact form of $g(\cdot)$ in Section 3? and $T_l$ is only defined but never used. 
+- (Cont'd) The gradient annealing technique is only applied for a few epochs. Is the value of $\alpha$ decayed to $0$ in, say 10 epochs, or just cut off after 10 epochs?
+- If decaying to $0$ in 10 epochs, then what is the value of $L_0$, $L_1$, etc. that helps control the sparsity level? Also, I was wondering if one wants to achieve $70\%$ sparsity, could the proposed method achieve this goal? 
+- Reporting FLOPs is helpful and fair, but it would be better to see the reduction in wall-clock time if any. Structured pruning methods may save fewer FLOPs but can lead to a reduction in training time. 
+
+Quality & Novelty:
+- The division of sparse training methods missed some pruning methods that are (1) not using fixed sparsity budget and (2) not using learnable threshold pruning methods, such as CS [1], supermasks [2,3], GDP [4]. It would be helpful to discuss these works (and maybe compare them). 
+- I am not fully convinced of the practical benefits of gradient annealing due to (1) the gradient annealing is only applied on a small subset of weights (B\A); (2) the technique is only applied for a short time; (3) the advantage of the non-linear scheme over linear decay is not justified in terms of the performance of the trained model. To be more specific, using layerwise learned threshold with a constant 0, constant 1, or linearly decay $\alpha$ may also achieve good performance. The same for the experiments combining TopKAST with GA: using a constant or linear decay $\alpha$ may also improve the performance. 
+- Threshold-based methods are commonly used for pruning, for example K Azarian et al. [5] proposed a very similar formulation. The authors should consider cite this work and compare with them. 
+
+[1] Winning the Lottery with Continuous Sparsification
+
+[2] Deconstructing lottery tickets: Zeros, signs, and the supermask
+
+[3] Signing The Supermask: Keep, Hide, Invert
+
+[4] GDP: Stabilized Neural Network Pruning via Gates with Differentiable Polarization
+
+[5] Learned Threshold Pruning ","Overall I appreciate the authors' work, and it could be the community's interest and inspire future research. However, there are still several things that I believe are necessary to address. Therefore I give a marginal score, but I am also open to changing my score based on the authors' responses.","4: You are confident in your assessment, but not absolutely certain. It is unlikely, but not impossible, that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work.","3: Some of the paper’s claims have minor issues. A few statements are not well-supported, or require small changes to be made correct.",3: The contributions are significant and somewhat new. Aspects of the contributions exist in prior work.,2: The contributions are only marginally significant or novel.,NO.,5: marginally below the acceptance threshold,1666595754176,,zyfEWkV6it,ICLR.cc/2023/Conference/Paper1417/-/Official_Review,,[],1,,['everyone'],zyfEWkV6it,['ICLR.cc/2023/Conference/Paper1417/Reviewer_EMVQ'],1666595754176,,1666595754176,"['ICLR.cc/2023/Conference', 'ICLR.cc/2023/Conference/Paper1417/Reviewer_EMVQ']","Yes, the peer review explicitly suggests the authors to cite some specific literature:
+
+* CS [1], supermasks [2,3], GDP [4] for comparison and discussion.
+* K Azarian et al. [5] for their similar formulation of threshold-based pruning methods.
+
+The peer review also asks the authors to consider comparing their work with these existing works.",1
+1EyS9U3Rku,"This paper explores a unconditional learning generation model using Wasserstein Gradient Flow directly on the data space. To make the training feasible, the authors propose to use a deep density ratio estimator for learning in Wasserstein space.Authors demonstrate the proposed method on Cifar10 and CelebA, and the result shows that DGGF is able to generate high-quality images.
+
+From a conceptual point of view, the work differs from related approaches, in the sense that it tackles the problem of learning unconditional generative models directly on data space. However, from computational point of view, I found it quite simililar to Energy-based models.","Strengths
+* [S1]: The paper addresses an important problem in an interesting way, based on a clear motivation.
+* [S2]: The method is sensible and clearly presented, I enjoyed reading it.
+
+Weaknesses
+*[W1] Insufficient empirical evidence; several experimental comparisons are absent and should be included (see below for further details).
+
+
+Details:
+* Experiments(baselines):  Considering there are few related work that addressing the intractable chanlledge, some baseline method([1][2]) should be included for comparision.
+* Can you further investigate the algorithm's computational complexity considering the training is ? Is it possible to quantify the performance on larger data sets?
+* Can a pseudo-code be added to the training/inference procedures?
+* Can a discussion be included to this concurrent work? https://arxiv.org/pdf/2209.11178v4.pdf 
+
+[1] Large-scale wasserstein gradient flows. 
+[2] Variational wasserstein gradient flows.",The submission is concise and of excellent quality. The submission consists of code.,"Overall, I tend to give a negative vote, but the score can still be adjusted if my concerns can be addressed. My main concern comes from the fact that the experimental results of the article are not strong, and there are still many aspects that could be discussed quantitatively (e.g. on a larger datasets, reporting the training speed of the algorithm, etc.), which makes the strengths of WGGF unclear to me.
+","2: You are willing to defend your assessment, but it is quite likely that you did not understand the central parts of the submission or that you are unfamiliar with some pieces of related work. Math/other details were not carefully checked.","3: Some of the paper’s claims have minor issues. A few statements are not well-supported, or require small changes to be made correct.",3: The contributions are significant and somewhat new. Aspects of the contributions exist in prior work.,2: The contributions are only marginally significant or novel.,NO.,5: marginally below the acceptance threshold,1666666709965,,zjSeBTEdXp1,ICLR.cc/2023/Conference/Paper2542/-/Official_Review,,[],3,,['everyone'],zjSeBTEdXp1,['ICLR.cc/2023/Conference/Paper2542/Reviewer_yo3y'],1666666709965,,1666666709965,"['ICLR.cc/2023/Conference', 'ICLR.cc/2023/Conference/Paper2542/Reviewer_yo3y']","Yes, the peer review explicitly suggests that the authors of the paper should include some baseline methods ([1] and [2]) in their experiments for comparison.",1
+JNPFJET4R6,"This paper proposes a method for multi-objective Bayesian optimization for molecular optimization. The proposed method uses GFlowNets to optimize the acquisition function in BO, and uses a hypernetwork-based method to incorporate the preference vector into GFlowNets such that a diverse set of points can be sampled from the Pareto front.","Strengths:
+- The proposed method is intuitive and modifies GFlowNets in a reasonable way to facilitate multi-objective optimization.
+- The experiments are nicely done, and the experimental results look promising.
+- The paper is in general well written, and the proposed method is well motivated.
+
+Weaknesses:
+- I feel that some of the algorithmic details are not clearly explained, particularly the connection between Algorithm 1 (for training HN-GFN) and BO. For example, does the dataset $\mathcal{D}$ correspond to the currently available observations from all previous iterations of BO? Does the reward function $R$ here correspond to the acquisition function calculated in BO? How is the set of target preference vectors built? More importantly, do you need to run Algorithm 1 after every iteration (or every batch) of BO? If yes, then the computational costs may become an issue and hence should discussed.
+- I think Section 4.3 needs to be revised to make it clearer, in the current form, it's not easy to understand.
+- Top paragraph of page 2: it's still unclear to me why limitation 1) makes ""existing discrete molecular optimization methods"" not applicable as ""acquisition function optimizer"". Can't you simply use those acquisition functions which directly take diversity into account? For example, if you use the GP-BUCB acquisition function from paper [1] below, to select an input in a batch, you can simply invoke an existing discrete molecular optimization method to maximize the acquisition function (whose GP posterior standard deviation is updated every time a new input is selected), which will naturally lead to a diverse set of inputs in a batch.       
+[1] Parallelizing Exploration-Exploitation Tradeoffs in Gaussian Process Bandit Optimization, JMLR 2014
+- Top paragraph of page 9: the number of rounds $N=8$ is in fact unusually small in BO, and the batch size $b=100$ is also unusually large for BO as well. Are these choices the common practice in molecular optimization using GFlowNet?
+- (minor) In the Related Work section, the previous works on multi-objective BO should also be discussed.
+","Clarify: The paper is well written in general, but some of the algorithmic details can be better explained, as I discussed above.
+
+Quality: The algorithmic design and the experiments are of high quality.
+
+Novelty: The problem of multi-objective BO for molecular optimization is intuitive and hence not novel, but the use of the hypernetwork to condition on different preference vectors in GFlowNets is novel as far as I know.
+
+Reproducibility: Some experimental details are discussed, but the code is not uploaded.","The paper solves an important problem for molecular optimization using GFlowNets, and I don't have major concerns about the paper. The concerns I listed under ""Weaknesses"" are mostly regarding the writing of the paper.",3: You are fairly confident in your assessment. It is possible that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work. Math/other details were not carefully checked.,"3: Some of the paper’s claims have minor issues. A few statements are not well-supported, or require small changes to be made correct.",3: The contributions are significant and somewhat new. Aspects of the contributions exist in prior work.,"4: The contributions are significant, and do not exist in prior works.",NO.,"8: accept, good paper",1666623475740,,ztgT8Iok130,ICLR.cc/2023/Conference/Paper4367/-/Official_Review,,[],2,,['everyone'],ztgT8Iok130,['ICLR.cc/2023/Conference/Paper4367/Reviewer_ZgdY'],1666623475740,,1666623475740,"['ICLR.cc/2023/Conference', 'ICLR.cc/2023/Conference/Paper4367/Reviewer_ZgdY']","Yes, the peer review suggests that the authors should cite a specific literature:
+
+[1] Parallelizing Exploration-Exploitation Tradeoffs in Gaussian Process Bandit Optimization, JMLR 2014
+
+The reviewer mentions that this paper proposes a GP-BUCB acquisition function which directly takes diversity into account, and suggests that the authors could use this existing approach to address the limitations of their method.",1
+3MB7g0ICwd5,"The paper proposes Gradient Annealing (GA) and AutoSparse, two complementary approaches to achieve a towards optimal sparsity-accuracy trade-off during the training of sparse neural networks.","Strength:
+* Interesting idea with a small level of novelty
+* The proposed method seems to be able to slightly improve the performance on top of the baselines.
+* Experiments performed on large datasets and models
+
+Weaknesses:
+* The categorization of sparse training methods from the first page and the related work is shallow and misleading. For instance, “deterministic pruning” takes the reader to the idea of a deterministic process, while in reality just the sparsity level may be fixed (or some rules of pruning a part of the connections, etc.), but the output itself (e.g., the sparse connectivity) is a result of (in most cases) a random process (e.g, random pruning, random sparse initialization, stochastic gradient descent, etc). This needs serious adjustment (including of a number of statements in the paper) to reflect better the state-of-the-art and to clarify sharply the paper contributions on top of the existing work. One could start from latest survey papers such as [1]
+* The proposed method has a small level of novelty. Some of the main paper claims are perhaps too strong.
+* The improvement achieved by the proposed method over the baselines seems marginal. The statistical significance of the results has to be studied in order to boost the paper quality. If the large datasets/models hinder this operation then smaller datasets and other type of layers (e.g., fully-connected) could contribute in offering a more comprehensive understanding of the proposed method behaviors. 
+* Minor: TopKAST doesn't achieve anymore the state of the art performance. For instance, the results reported in [2] seems higher than the results achieved in this paper. A direct comparison or a study to see if the proposed method can improve also MEST is necessary. Please note that this may lead to claims re-adjustments.
+* Minor: Some parts of the used terminology can bring confusion. It has to be made more rigorous. For instance, GA is an acronym typically used for Genetic Algorithms. 
+
+Non-exhaustive list of missing references:
+
+[1] Torsten Hoefler, Dan Alistarh, Tal Ben-Nun, Nikoli Dryden, Alexandra Peste, Sparsity in Deep Learning: Pruning and growth for efficient inference and training in neural networks.
+Authors, JMLR 2021, https://www.jmlr.org/papers/volume22/21-0366/21-0366.pdf 
+
+[2] Geng Yuan, Xiaolong Ma, Wei Niu, Zhengang Li, Zhenglun Kong, Ning Liu, Yifan Gong, Zheng Zhan, Chaoyang He, Qing Jin, Siyue Wang, Minghai Qin, Bin Ren, Yanzhi Wang, Sijia Liu, Xue Lin, MEST: Accurate and Fast Memory-Economic Sparse Training Framework on the Edge, NeurIPS 2021, https://arxiv.org/abs/2110.14032 
+
+
+","Clarity: The paper writing style is a bit verbose and perhaps misleading in some places. In needs a careful revision in order to make sharp clear the actual paper contributions, the underlying mechanisms/behaviour behind the proposed methodology, while reflecting accurately the literature. The paper would benefit also from a discussion in conclusion about the limitations of the work.
+
+Quality: Can be improved considerably.
+
+Originality: Likely, small but ok.
+
+Reproducibility: I see that the code of the proposed method is printed in an appendix. It would be much more beneficial for the reader to provide a full prototype open-source code which runs at a click.
+","Interesting work, but it seems to be a bit immature and not ready yet for publication.",3: You are fairly confident in your assessment. It is possible that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work. Math/other details were not carefully checked.,2: Several of the paper’s claims are incorrect or not well-supported.,2: The contributions are only marginally significant or novel.,2: The contributions are only marginally significant or novel.,NO.,5: marginally below the acceptance threshold,1667211471986,,zyfEWkV6it,ICLR.cc/2023/Conference/Paper1417/-/Official_Review,,[],5,,['everyone'],zyfEWkV6it,['ICLR.cc/2023/Conference/Paper1417/Reviewer_7rY9'],1667211471986,,1667211471986,"['ICLR.cc/2023/Conference', 'ICLR.cc/2023/Conference/Paper1417/Reviewer_7rY9']","Yes, this peer review suggests that the authors should cite specific literature:
+
+* The reviewer mentions that the categorization of sparse training methods is shallow and misleading, and recommends starting from a ""latest survey papers such as [1]"".
+* The reviewer provides two specific references:
+	+ [1] Torsten Hoefler, Dan Alistarh, Tal Ben-Nun, Nikoli Dryden, Alexandra Peste, Sparsity in Deep Learning: Pruning and growth for efficient inference and training in neural networks (2021).
+	+ [2] Geng Yuan, Xiaolong Ma, Wei Niu, Zhengang Li, Zhenglun Kong, Ning Liu, Yifan Gong, Zheng Zhan, Chaoyang He, Qing Jin, Siyue Wang, Minghai Qin, Bin Ren, Yanzhi Wang, Sijia Liu, Xue Lin, MEST: Accurate and Fast Memory-Economic Sparse Training Framework on the Edge (2021).
+
+The reviewer suggests that these references should be cited to improve the paper's accuracy and clarity.",1
+3p0T6wFwc0,"This paper studies the optimality issue of cooperative multi-agent reinforcement learning and claims that the independent policy factorization may lead to learning suboptimal policies. The authors propose a conditional policy factorization method, where an agent’s policy conditions on other agents (e.g., with lower indices). This paper claims that learning with such factorization theoretically leads to the optimal joint policy. It also shows that there exists an independent policy factorization that has the same value as conditional policy factorization, which enables decentralized execution. This paper empirically demonstrates the outperformance of the proposed method over baselines in a set of cooperative MARL tasks.","**Strengths**
+1. This paper studies the optimality of cooperative multi-agent reinforcement learning (MARL), which is an important problem. 
+2. Although the idea of conditional policy factorization is not novel, it is interesting to see this idea to be implemented with the deep neural network.
+3. Empirical results on both a simple matrix game and more complex SMAC tasks show the effectiveness of the proposed method, compared to the baseline methods.
+
+**Weaknesses**
+1. The motivating example in Section 2.3 is confusing. From Section 2.2, FOP seems to have very limited expressiveness, the same capacity as a linear value factorization, e.g., VDN. This is because IGO factorization with the Boltzmann policy is equivalent to the linear value factorization. Therefore, FOP may not be a good candidate to show the limitations of independent policy factorization.
+2. The idea of conditional policy factorization has been proposed in [1], which shall be cited and discussed.
+3. Given the motivating example and the didactic matrix game, this paper seems to study multi-modality problems in cooperative MARL. This problem has been studied in [2], which should also be discussed or compared. 
+4. The reviewer tried QTRAN on the matrix game in Figure 4 and found it could quickly learn the optimal policy, which has different results from the paper and may invalidate the claim of this paper. 
+5.  Does the proposed method have a larger number of parameters than other methods, like FOP? If so, does this contribute to its outperformance?
+6. How does the proposed method perform against baselines on all benchmark tasks in SMAC?
+7. The paper is well-organized, but the presentation can be improved. The reviewer strongly suggests the authors use multi-agent MDPs to rewrite theorems and their proofs because Dec-POMDP with the infinite horizon is an undecidable problem. In addition, the approximation in Theorem 1 is quite informal.
+
+[1] Dimitri Bertsekas. Multiagent rollout algorithms and reinforcement learning, 2019. https: //arxiv.org/abs/1910.00120
+[2] Wei Fu, Chao Yu, Zelai Xu, Jiaqi Yang, Yi Wu. Revisiting Some Common Practices in Cooperative Multi-Agent Reinforcement Learning. ICML 2022.
+",The proposed method looks novel by simultaneously learning both independent and dependent policies. The presentation is generally well-structured but can be improved with rigorousness. ,"The proposed method is interesting and shows outperformance over baselines. However, it is still not quite intuitive to understand why the proposed method outperforms baselines (see weaknesses above). In addition, the motivation of this paper shall be strengthened. ","4: You are confident in your assessment, but not absolutely certain. It is unlikely, but not impossible, that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work.",2: Several of the paper’s claims are incorrect or not well-supported.,3: The contributions are significant and somewhat new. Aspects of the contributions exist in prior work.,3: The contributions are significant and somewhat new. Aspects of the contributions exist in prior work.,NO.,6: marginally above the acceptance threshold,1666671245385,,znLlSgN-4S0,ICLR.cc/2023/Conference/Paper3709/-/Official_Review,,[],2,,['everyone'],znLlSgN-4S0,['ICLR.cc/2023/Conference/Paper3709/Reviewer_Eh9U'],1666671245385,,1669566609963,"['ICLR.cc/2023/Conference', 'ICLR.cc/2023/Conference/Paper3709/Reviewer_Eh9U']","Yes, the peer review explicitly suggests the authors to cite two pieces of literature:
+
+1. [1] Dimitri Bertsekas. Multiagent rollout algorithms and reinforcement learning, 2019. https://arxiv.org/abs/1910.00120
+2. [2] Wei Fu, Chao Yu, Zelai Xu, Jiaqi Yang, Yi Wu. Revisiting Some Common Practices in Cooperative Multi-Agent Reinforcement Learning. ICML 2022.
+
+The reviewer recommends discussing or comparing these works with the current paper to strengthen the motivation and novelty of the research.",1
+aib0K4Qbbj,"The paper proposes a method for safe reinforcement learning whereby it uses a
+learnt environment to not only optimise policies but also to improve safe
+exploration. Concretely, this is realised by taking a linear approximation of
+the environment, which in conjunction with the safety specification gives
+linear constraints (called weakest preconditions in the paper) on the actions
+that are safe to be performed.","+ The approach reduces the number of safety violations during training when
+compared with the state-of-the-art in the area.
+
+- Somewhat straightforward and incremental: straightforward in that it relies
+  on linear approximations of the environment and incremental in that the
+  contribution is limited to the derivation of safety predicates within a
+  previously studied framework.","The paper is overall well written and presented. The contribution includes some
+novel aspects pertaining to the computation of the weakest preconditions. The
+significance of the overall method is adequately evaluated.","The paper builds on previous work on safe reinforcement learning  to derive a
+method which although makes strong, linearity assumptions on the environment is
+able to outperform the state-of-the-art in terms of the number of safety
+violations during training.",3: You are fairly confident in your assessment. It is possible that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work. Math/other details were not carefully checked.,4: All of the claims and statements are well-supported and correct.,3: The contributions are significant and somewhat new. Aspects of the contributions exist in prior work.,2: The contributions are only marginally significant or novel.,NO.,6: marginally above the acceptance threshold,1666735486524,,zzqBoIFOQ1,ICLR.cc/2023/Conference/Paper3283/-/Official_Review,,[],3,,['everyone'],zzqBoIFOQ1,['ICLR.cc/2023/Conference/Paper3283/Reviewer_HV3z'],1666735486524,,1666735486524,"['ICLR.cc/2023/Conference', 'ICLR.cc/2023/Conference/Paper3283/Reviewer_HV3z']","No, this peer review does not explicitly suggest the authors of the paper to cite any specific literature. The review mentions ""previously studied framework"" and ""state-of-the-art in the area"", but it does not provide specific references or citations for the readers to consult.",0
+1JFpPf30yT,"This paper proposes gradient annealing method in dynamic sparse training to improve the performance. Based on gradient annealing, the author of the paper proposes AutoSparse algorithm that uses a learnable threshold to find better sparse topology and sparsity distribution during DST. Multiple experiments are conducted on ImageNet.","Strengths
+
+1. This paper investigates different types of non-linear annealing methods and did a thorough analysis
+
+2. The author of the paper not only performs experiments on CV models but also on Language models.
+
+
+Weaknesses
+
+1. The overall contribution is incremental to existing approaches. Investigating and adding different annealing methods to sparse training is not a major contribution. Additionally, I don’t see a very strong motivation for using this GA method. It is more like a training “trick” of dynamic sparse training.
+
+2. The accuracy improvements are not significant. Many existing works on sparse training are not compared, such as MEST (NeurIPS 2021) or GradMax (ICLR 2022).
+
+3. Writing is not clear. For example, in the introduction, the author first claims deterministic pruning sets desired fixed sparsity for each layer before training, then at the deterministic pruning subsection, they claim method [26] (DSR) is belong to deterministic pruning. However, DSR changes sparsity distribution during training, which is not what the author claimed in the earlier part of this paper. So I think some of the writing is not rigorous.
+
+4. It is not true that non-uniform sparsity distribution “did not show any improvement” to uniform distribution. RigL (ICML 2020) and GaP (ICLR 2022, Effective Model Sparsification by Scheduled Grow-and-Prune Methods) are all showing non-uniform sparse distribution achieves lot more better accuracy. So it is not rigorous to have that strong claim in this paper without any experimental data to prove such claim.
+
+5. The overall writing and paper organization is not good. The introduction part is not entirely clear to me, and the structure is confusing. Some part of the introduction feels like a related work survey.
+
+6. Very limited experimental results in this paper. The author didn’t show any data for motivation, and no ablation study showing why the proposed method is effective. No analytical or empirical experiments are performed to convince the reader on why the results is outperforming others.
+","To sum up, the clarity and quality of this paper need to be improved. The novelty is lacking since the proposed method is incremental. Please refer to strengths and weaknesses for more information. "," I think this paper needs major revision, both on the technical contribution and writing. My suggestion is reject.",5: You are absolutely certain about your assessment. You are very familiar with the related work and checked the math/other details carefully.,"3: Some of the paper’s claims have minor issues. A few statements are not well-supported, or require small changes to be made correct.",1: The contributions are neither significant nor novel.,1: The contributions are neither significant nor novel.,NO.,"3: reject, not good enough",1666841526437,,zyfEWkV6it,ICLR.cc/2023/Conference/Paper1417/-/Official_Review,,[],3,,['everyone'],zyfEWkV6it,['ICLR.cc/2023/Conference/Paper1417/Reviewer_G8BR'],1666841526437,,1666841526437,"['ICLR.cc/2023/Conference', 'ICLR.cc/2023/Conference/Paper1417/Reviewer_G8BR']","No, this peer review does not explicitly suggest the authors to cite any specific literature. However, it mentions several papers that should have been cited or compared in the original paper, such as MEST (NeurIPS 2021), GradMax (ICLR 2022), RigL (ICML 2020), and GaP (ICLR 2022). These citations are presented as examples of existing works on sparse training that were not mentioned or compared in the original paper.",0
+c1Ef_XDl1bl,"The paper introduces Gradient Annealing (GA) as a key component for learnable sparsity training to further improve training and inference efficiency alongside accuracy. The authors propose AutoSparse, a training sparse training algorithm that combines GA with the generalized formulation of STR (Kusupati et al., ICML 2020). The paper argues that GA is a crucial component and improves accuracies further compared to vanilla STR formulation, at the same time also improving accuracy for deterministic pruning methods like TopKAST.
+
+The paper also provides the choices for the GA hyperparameter ($\alpha$) alongside an analysis of why having a GA-style non-linear decay of gradients of potentially inactive weights helps in having higher accuracy than an STR + STE variant or STR with no GA. 
+
+The paper also supports the method with extensive experimentation on ImageNet with MobileNet and ResNet50 compared against various baselines across efficiency and accuracy metrics both for STR style methods and deterministic methods. Auto Sparse was also extended to an LM task. 
+
+Note that the brevity of the review should not be taken as a negative aspect, as the paper's point is clear and direct given the similarity to STR in the formulation. ","I will go sequentially for both strengths and weaknesses.
+
+Strengths:
+1) The paper is well motivated and understands the one major problem plaguing learnable sparsity methods and exposits well.
+2) The related work is well-placed.
+3) The explanation and exposition of the GA method, design choices, and analysis are done well. 
+4) The experiments are thorough and in line with the baseline papers like STR. 
+5) The experiments with training and inference metrics are appreciated. 
+6) Backward sparsity results showcase the generality of GA
+
+Weakness:
+1) The writing is not clear and would definitely benefit from revision during the course of the discussion. This also includes the aesthetics and the issues with citation style (whatever is used is not the default for ICLR 2023) -- The second aspect has not affected my perception of the paper, but I would recommend a revision to fix them.
+2) While the proposed solution of GA is interesting and states that it alleviates some of the hparam issues of learnable sparsity, its design choices often are indicative of the potential search through human function design. For example, the non-linear decay comes from the observation of not letting sparsity hit 100% soon for STR when the s_init is small in magnitude. While I like that the design helps with better scalability and applicability, it feels like each of the aspects is being handled specifically -- not a major weakness but something that struck me.
+3) AutoSparse is a generalized formulation of STR, however, when comparing, AutoSparse was only compared to STR. I think it makes a lot of sense to compare AustoSparse to STR + STE (by setting $\alpha=1$) -- This experiment would show if GA is the major factor for the gains or if is it just the dead gradients through ReLU -- this is a major concern. 
+4) In Table 2, why don't we have an apples to apples comparison with the same sparsity for TopKAST as it is deterministic -- I would love to see the accuracy of 85% sparse topKAST solution.
+5) While the application to LM is interesting, it serves little purpose in helping us understand without any baseline -- Please add a strong baselines like STR on AutoSparse for this -- I understand STR might not have done this, but it is the duty of the authors to apply an existing technique and its obvious variants as baselines for a strong paper. 
+6) Lastly, I also do not agree with the claim that the top-k sorting in deterministic pruning is a compute-intensive step. -- any thoughts?
+
+I am open to discussion when the rebuttal and revisions come with answers to my mentioned weaknesses. I am looking forward to it and potentially changing my score. ","The code snippets are provided in the appendix along with the required params for each of adoption.
+
+The rest of the points are covered in the earlier section.","While the idea of GA alleviates some of the issues in learnable sparsity, it brings in a bit of design complication -- which is fine. However, the bigger concerns are with comparisons to some missing baselines as well as the writing. I think the paper has potential and with a strong revision is worth publishing. 
+
+----
+After rebuttal, I think the paper might be a good  addition to the iclr community. However, it still has issues that need to be addressed as pointed by the other reviewers as well.",5: You are absolutely certain about your assessment. You are very familiar with the related work and checked the math/other details carefully.,"3: Some of the paper’s claims have minor issues. A few statements are not well-supported, or require small changes to be made correct.",2: The contributions are only marginally significant or novel.,2: The contributions are only marginally significant or novel.,NO.,6: marginally above the acceptance threshold,1666830817420,,zyfEWkV6it,ICLR.cc/2023/Conference/Paper1417/-/Official_Review,,[],2,,['everyone'],zyfEWkV6it,['ICLR.cc/2023/Conference/Paper1417/Reviewer_djDX'],1666830817420,,1670202088340,"['ICLR.cc/2023/Conference', 'ICLR.cc/2023/Conference/Paper1417/Reviewer_djDX']","No, this peer review does not explicitly suggest the authors of the paper to cite any specific literature. The reviewer mentions that ""whatever is used is not the default for ICLR 2023"" when referring to the citation style, implying that they would recommend a revision to use the standard citation style for the conference, but there is no specific suggestion to include or exclude any particular reference in the paper's citations.",0
+t9q7LF5_9b,This work re-explores deep generative modeling by minimizing the entropy regularized f-divergence in the Wasserstein-2 space of probability measures and derives an algorithm based on an ambiguous discretization method of the relevant Wasserstein gradient flows. Some experimental results on image synthesis are presented to support the proposed method.,"The work is not theoretically sound, and the proposed algorithm lacks justifications of its correctness both intuitively and technically.
+It is well-known that Wasserstein gradient flows can be utilized in deep generative modeling. There are a series of publications that have introduced Wasserstein gradient flows in deep generative modeling and explored their potential in analyzing or developing deep generative modeling algorithms, for example please see [1-9]. Most of these relevant papers are not mentioned in the related work. It is not novel to leverage the Wasserstein gradient flow of the entropy regularized f-divergence in deep generative modeling and to further simulate the gradient flow with a density ratio estimation procedure [8, 9]. The empirical evaluation of the proposed method seems reasonable.
+
+The central part of the proposed method is to numerically simulate the relevant Wasserstein gradient flows with density ratio estimation between the pushforward distribution $q_t$ and the target distribution $p$. According to the authors on page 4, “The simulation of Eq. 8 requires a time-dependent estimate of the density ratio; however, we train the density ratio estimator $r_\theta$ without explicit dependence on time”. As far as I’m concerned, the numerical simulation formula in Eq. 8 should explicitly depend on a time-dependent density ratio which is a basic result of Euler-Maruyama discretization. It is hard to capture the basic intuition of recasting this density ratio as a time-independent one, especially from a perspective of simulating a time-dependent Wasserstein gradient flow path. In practice, the proposed method does only estimate a time-independent density ratio and plugs it in Eq. 8 as indicated by the pseudocode of the training algorithm in the appendix. Furthermore, a natural question would be raised regarding the convergence properties of the proposed algorithm. Suppose that the training of the proposed model is completed, the pushforward distribution $q_{t_K}$ is approximately equal to the target distribution $p$ when $t_K$ is large enough. Accordingly, the estimated density ratio between $q_{t_K}$ and $t_K$ would be expected to approximate a constant 1 almost everywhere. This observation is basically inspired by the convergence behavior of Wasserstein gradient flows. Then a straightforward question is how to generate new samples at test time just using a time-independent density ratio while the estimated density ratio is approximately equal to 1. Due to this possible issue, it is recommended to justify the convergence property of the iterations in Eq. 8 when a claimed time-independent density ratio estimator is deployed.
+ 
+[1] Geometrical Insights for Implicit Generative Modeling, 2017.
+[2] Sliced-Wasserstein Flows: Nonparametric Generative Modeling via Optimal Transport and Diffusions, ICML 2019.
+[3] Sobolev Descent, AISTATS 2019.
+[4] Maximum mean discrepancy gradient flow, NeurIPS 2019.
+[5] Deep generative learning via variational gradient flow, ICML 2019.
+[6] Refining deep generative models via discriminator gradient flow, ICLR 2021.
+[7] On the convergence of gradient descent in GANs: MMD GAN as a gradient flow, AISTATS 2021.
+[8] Reﬁning deep generative models via discriminator gradient ﬂow, ICLR 2021.
+[9] Deep generative learning via Euler particle transport, MSML 2022.
+","It is suggested to provide a pseudocode of the training algorithm in the main body instead of the appendix. If possible, please also include a sampling algorithm for reference.
+ The results might be important for developing deep generative models if the correctness can be justified.",The paper lacks of both theoritical and computational justification.,"4: You are confident in your assessment, but not absolutely certain. It is unlikely, but not impossible, that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work.","3: Some of the paper’s claims have minor issues. A few statements are not well-supported, or require small changes to be made correct.",2: The contributions are only marginally significant or novel.,2: The contributions are only marginally significant or novel.,NO.,"3: reject, not good enough",1666591693790,,zjSeBTEdXp1,ICLR.cc/2023/Conference/Paper2542/-/Official_Review,,[],2,,['everyone'],zjSeBTEdXp1,['ICLR.cc/2023/Conference/Paper2542/Reviewer_NwTe'],1666591693790,,1666591693790,"['ICLR.cc/2023/Conference', 'ICLR.cc/2023/Conference/Paper2542/Reviewer_NwTe']","Yes, the peer review suggests that the authors should mention a series of publications (papers [1-9]) in their related work section, which have introduced Wasserstein gradient flows in deep generative modeling and explored their potential. The review states: ""Most of these relevant papers are not mentioned in the related work.""",1
+AQTBBXOc898,"This paper adapts ideas from formal program analysis, i.e. weakest preconditions, to the constrained  reinforcement learning. Here an emphasis is made for (i) working in an a-priori unknown MDP and (ii) minimizing constraint violations during deployment *and* training. 
+
+The key idea is to alternate (i) shielded exploration (ii) system identification/ model learning and (iii) computing a new avoid predicate for the shield. Again, this is done by adapting a classic idea from program analysis (called weakest preconditions) where one tries to identify the largest set such of inputs (the precondition) that guarantees the property (here not violating the constraint) is satisfied.
+
+Technically, this by linearizing the learned model and learning a (union) of precondition polyhedra. These polyhedra are then used to project the actions proposed by the learned control policy to a safe action (according the learned model).
+
+Empirically this seems to be very effective and future extensions are proposed (using non-linear models) that would likely yield unambigously state-of-the-art performance.","# Strengths
+
+The technique is well motivated and a good proof of concept regarding combining model based safety analysis with model free RL. There is a clear path towards having robust theoretical guarantees (see weaknesses below) and a there is a literature of techniques on abstract interpretation that are likely to improve the representations of the preconditions.
+
+# Weaknesses
+
+1. Some of the assumptions in the theorems seems difficult to realize. In particular, because the learned safety shield biases the exploration, it seems difficult to assert that the final model will always achieve a given PAC bound. Perhaps I am missing something.
+
+2. The analysis is done using a linearization of the model. This limits the class of models for which the shield can accurately forecast safety. This is acknowledged in the paper and the proposed directions for mitigation seem reasonable.
+
+3. Missing from the related work seems to the literature on abstract interpretation that (from my outsider knowledge) offers a similar promise of learning pre-conditions for safety. Since the preconditions considered in this work are (under?) approximations for the learned model, it seems good to compare.","The technique and motivation are clearly communicated and the algorithm is (to my knowledge) distinct from other shielding techniques. While the individual building blocks are well established, this seems to be a novel application well worth studying.","The paper contributes a novel algorithm for creating safety shields during the training of RL-agents. It provides a nice demonstration of the power of alternating model learning and state-of-the-art RL techniques for safe RL. In particular, the paper highlights how model learning in this setting need only deal with qualitative semantics (i.e., is it possible to reach state s) and can let the RL algorithm handle the quantitative optimizations.",3: You are fairly confident in your assessment. It is possible that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work. Math/other details were not carefully checked.,4: All of the claims and statements are well-supported and correct.,3: The contributions are significant and somewhat new. Aspects of the contributions exist in prior work.,3: The contributions are significant and somewhat new. Aspects of the contributions exist in prior work.,NO.,"8: accept, good paper",1666651351449,,zzqBoIFOQ1,ICLR.cc/2023/Conference/Paper3283/-/Official_Review,,[],2,,['everyone'],zzqBoIFOQ1,['ICLR.cc/2023/Conference/Paper3283/Reviewer_PYp3'],1666651351449,,1666651351449,"['ICLR.cc/2023/Conference', 'ICLR.cc/2023/Conference/Paper3283/Reviewer_PYp3']","No, the peer review does not explicitly suggest that the authors of the paper should cite any specific literature. However, it mentions ""the literature on abstract interpretation"" as a related work and notes that ""it seems good to compare"" with this literature. This implies that the reviewer thinks the authors might want to consider citing or comparing their work with this existing literature in future versions.",0
+d3-kXa-Agu,"The paper proposes a safe RL algorithm, Symbolic Preconditions for Constrained Exploration (SPICE), that uses a model-based shielding mechanism to produce safe actions. A linearization of the model and polyhedral state constraints are used to determine which actions are safe, and then the proposed action is projected onto the space of safe actions. The paper provides a regret bound for the algorithm and demonstrates that SPICE can attain fewer safety violations during training than model-free baselines.","Strengths:
+* SPICE’s use of formal methods provides strong safety guarantees if the assumptions hold. This is very desirable in safety critical applications.
+* In experiments, SPICE substantially reduces the number of violations substantially compared to CPO and CSC.
+
+Weaknesses:
+* A footnote states ""We use a modified version of our approach instead of comparing to Bharadhwaj et al. (2021) directly because the code for that paper is unavailable."" While this is reasonable, the present paper does not provide a description of your modifications. It is difficult for the reader to compare the performance of SPICE vs. “CSC” without knowing exactly what “CSC” means.
+* From Figure 3, the variance of the policy’s performance appears extremely high for both SPICE and CSC. The plots in the CSC paper look much less noisy. This raises questions about the quality of the implementation.
+* SPICE converges to a suboptimal policy (worse than CPO) in many cases.
+* The experiments do not compare to any other model-based safe RL algorithms.
+* Linearization of the model may limit what types of problems SPICE can solve effectively.","The paper is generally clear. I appreciate the use of examples to demonstrate the approach.
+However, the statement of theorem 2 should be improved:
+* Some of the symbols that appear in the regret bound are only defined in the appendix ($L_R$, $\sigma$) or in the following text ($\zeta$).
+* To be precise, $\epsilon_m$ and $\epsilon_\pi$ are upper bounds on the divergences that hold for all $T$. (This is stated in the appendix, but not in the main text.) The actual divergences are changing throughout training as the model and policy are updated.
+
+The proposed approach is novel, to my knowledge.
+
+Regarding reproducibility, the lack of details regarding the CSC implementation is a significant concern.
+
+The paper is missing some relevant references to model-based safe RL papers, such as
+* Safe Reinforcement Learning Using Robust MPC. M. Zanon, S. Gros
+* Safe Reinforcement Learning by Imagining the Near Future. G. Thomas, Y. Luo, T. Ma
+","I like the proposed approach and its associated guarantees. My main issues are in the experiments, as detailed above. The state of the experiments makes it hard to recommend acceptance in the paper’s current form, in spite of other positive attributes of the paper.","4: You are confident in your assessment, but not absolutely certain. It is unlikely, but not impossible, that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work.",4: All of the claims and statements are well-supported and correct.,3: The contributions are significant and somewhat new. Aspects of the contributions exist in prior work.,2: The contributions are only marginally significant or novel.,NO.,6: marginally above the acceptance threshold,1667459319188,,zzqBoIFOQ1,ICLR.cc/2023/Conference/Paper3283/-/Official_Review,,[],4,,['everyone'],zzqBoIFOQ1,['ICLR.cc/2023/Conference/Paper3283/Reviewer_euEh'],1667459319188,,1670985996556,"['ICLR.cc/2023/Conference', 'ICLR.cc/2023/Conference/Paper3283/Reviewer_euEh']","Yes, the peer review suggests that the authors should cite two specific papers:
+
+1. ""Safe Reinforcement Learning Using Robust MPC"" by M. Zanon and S. Gros
+2. ""Safe Reinforcement Learning by Imagining the Near Future"" by G. Thomas, Y. Luo, and T. Ma",1
+bS2ow8MJMEx,"The paper proposes the Multi-scale Isometric Convolution Network, which can efficiently capture
+local-global interaction of time series data for long-term forecasting. It uses multi-scaled
+convolutions for local information extraction and isometric convolution to capture the global
+relationship. In general, it achieves the state-of-the-art accuracy in five time series benchmarks
+with linear complexity.","Strength:
+The overall paper is well written and most of the concepts are concisely explained. As the paper
+stated, both local patterns and global dependency are crucial for long-term time series
+forecasting. The design is well motivated. The benchmark results are also promising to
+demonstrate the effectiveness of the framework.
+
+Weaknesses:
+Despite the state-of-the-art accuracy, it seems that the main improvement comes from the
+regression-based trend-cyclical prediction. Trend-cyclical analysis in section 4.2 is not enough to
+understand how the regression influence the prediction. I suggest evaluating the regression and
+the mean prediction separately from the full benchmark performance. Also, the results show that
+MICN-mean has comparable performance (sometimes even worse) than FEDformer, while
+FEDformer is using mean trend prediction. I can’t help but thinking if FEDformer with regression
+trend prediction can surpass MICN. More discussion in trend-cyclical prediction is needed.
+Another thing that can be discussed more is the intuition behind isometric convolution. The
+motivation of the linear complexity is good, but the paper is unclear about how isometric
+convolution is going to capture the correlations between local time region. Besides, there exists
+many works that focus on the efficiency of self-attention and many has linear complexity as well
+(e.g., Linformer [1], Fastformer [2], …). If the primary motivation behind isometric convolution is
+the complexity then these works should be discussed as well.
+I also have concerns over the explainability of the local-global structure. Self-attention is good at
+making interpretable prediction (can be crucial for real-life application, as the paper mentioned),
+whereas I don’t see how MICN can be interpreted at a first glance. It is sad when the paper
+argues “the framework can deeply mine the intricate temporal patterns” but fails to interpret them.
+This is also one of the reasons I am curious about how linear self-attention can perform instead of
+isometric convolution.
+Other minor suggestion:
+1. The abstract says that the structure can model patterns separately and “purposefully”. The
+wording is vague and confusing. Does it indicate that we can incorporate external knowledge
+into the model?
+2. In section 3.1, briefly mentions that the term (e.g., “AvgPool”, “kernel”) is from the convolution
+perspective. I first thought the “kernel” represents the kernel function.
+3. The difference between ablation table 5 and table 13 can be explained more.
+[1] Wang, Sinong, et al. “Linformer: Self-Attention with Linear Complexity.” ArXiv.org, 14 June
+2020, https://arxiv.org/abs/2006.04768.
+[2] Wu, Chuhan, et al. “Fastformer: Additive Attention Can Be All You Need.” ArXiv.org, 5 Sept.
+2021, https://arxiv.org/abs/2108.09084.","The paper is well written with detailed appendix. The general idea of using a hierarchy alike
+structure for capturing local-global interaction, plus solving the self-attention complexity issue, are
+not completely novel (many works in vision transformer field), but the authors manage to design a
+structure specifically for time series forecasting.","As I mentioned above, the overall method is well motivated and the benchmark results are
+promising, whereas the paper can be further improved by more ablation studies and discussions.","4: You are confident in your assessment, but not absolutely certain. It is unlikely, but not impossible, that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work.","3: Some of the paper’s claims have minor issues. A few statements are not well-supported, or require small changes to be made correct.",3: The contributions are significant and somewhat new. Aspects of the contributions exist in prior work.,3: The contributions are significant and somewhat new. Aspects of the contributions exist in prior work.,NO.,6: marginally above the acceptance threshold,1666670185482,,zt53IDUR1U,ICLR.cc/2023/Conference/Paper2222/-/Official_Review,,[],3,,['everyone'],zt53IDUR1U,['ICLR.cc/2023/Conference/Paper2222/Reviewer_eyrH'],1666670185482,,1666670185482,"['ICLR.cc/2023/Conference', 'ICLR.cc/2023/Conference/Paper2222/Reviewer_eyrH']","Yes, the peer review explicitly suggests that the authors of the paper should cite two specific literature:
+
+1. Linformer [1]: ""Linformer: Self-Attention with Linear Complexity"" by Wang et al. (2020)
+2. Fastformer [2]: ""Fastformer: Additive Attention Can Be All You Need"" by Wu et al. (2021)
+
+The reviewer mentions that these works focus on the efficiency of self-attention and have linear complexity, and therefore should be discussed in the paper to provide a more comprehensive comparison with the proposed MICN method.",1
+2LsyxIaEBNi,"The authors propose combining adversarial training with recourse generation methods to produce a robust recourse generation method, by solving a min-max-min tri-level optimization problem. They show that their method works better than competing state-of-art methods on several real world data shift datasets. 
+","Strengths: 
+- The method is fairly straightforward and easy to understand, combining adversarial training with recourse generation. 
+
+- The method works better than other state-of-art method in robust recourse generation, and the experimental evaluation is quite thorough. 
+
+Weaknesses: 
+- The method is a fairly direct combination of robustness through adversarial training and existing recourse generation methods. The novelty is not very high, although the authors did solve the technical difficulty of solving the tri-level optimization problem. 
+
+- The current work considers robustness to adversarial perturbations to inputs in generating counterfactual explanations. But adversarial perturbations is a fairly specific and strong type of data shift, which does not cover all the cases suggested in the introduction. Have the authors considered robustness to other types of common data shifts such as covariate shifts or label shifts?  
+
+- It is odd that while the algorithm is trained on adversarial perturbations, the evaluation is focused on temporal data shifts, which is a mismatch. Are there any explanations on why models trained on adversarial data shifts work well on temporal data shifts? 
+","- This paper is quite clearly written, and the technical quality is high. However the novelty aspect of the paper is relatively low.  
+","This work is of high technical quality and the method produced by the authors can beat other state-of-art methods in generating robust recourse. The main limitation is the relative lack of novelty of the method or any new understanding or insights. 
+",3: You are fairly confident in your assessment. It is possible that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work. Math/other details were not carefully checked.,4: All of the claims and statements are well-supported and correct.,2: The contributions are only marginally significant or novel.,2: The contributions are only marginally significant or novel.,NO.,"3: reject, not good enough",1666577053555,,zufPou5foW,ICLR.cc/2023/Conference/Paper4444/-/Official_Review,,[],2,,['everyone'],zufPou5foW,['ICLR.cc/2023/Conference/Paper4444/Reviewer_N727'],1666577053555,,1666577053555,"['ICLR.cc/2023/Conference', 'ICLR.cc/2023/Conference/Paper4444/Reviewer_N727']","No, the peer review does not explicitly suggest the authors of the paper to cite any specific literature. It only mentions that the novelty aspect of the paper is relatively low and implies that there may be related work in the field, but it does not provide a specific reference or recommendation for additional literature to be cited.",0
+njBG88-OAz,"The paper proposes novel methods for few-shot KG completion. They identify two issues with existing methods for this task -- (a) They learn entity-level information from local nbr aggregators. (the paper jointly takes into account the nbr of head and tail entity for triple context) (b) They learn relation-level information using a sequential model (while the sequentiality assumption is invalid -- the paper use transformers instead). The authors proposed HiRe, which takes into account triplet-level interactions, context-level interactions, and entity-level information for query (h,r,?). MAML based training strategy used to train the model. The model shows improved performance on 2 benchmark datasets - Nell-One and Wiki-One. The ablation study demonstrates the importance of the key components of the model, where transformer-based MRL outshined.","The paper address an important problem in KBC. It identifies valid issues in existing methods. However:
+1. Paper writing can be improved. Certain sections are hard to understand (especially sections 4.2/4.3/4.4). Since these sections form the core of the paper it is imperative to write them very clearly. 
+Adding details of MAML training startegy, MSA and SAB in appendix should be helpful.
+2. \bigoplus used before definition
+3. Some comments on the scalability of the model will be insightful.
+4. Why did the authors not look at (?, r, t_j) queries along with (h_j, r, ?) and report the mean (the standard way of evaluation in KBC).
+5. Definition 2: Consider adding an \exist r.
+6. Some understanding of how the models perform on conventional KG completion datasets (where relations are associated with many more triples) is also important.
+7. Authors should use a more competitive version of ComplEx (ComplEx-N3) for comparison. (See Lacroix, Timothée, Nicolas Usunier, and Guillaume Obozinski. ""Canonical tensor decomposition for knowledge base completion."" International Conference on Machine Learning. PMLR, 2018.)
+Also why did the authors choose a translation model (sec 4.3) in place of more competitive KBC models like ComplEx?","
+1. It is imperative to share the code of the model, to be able to reproduce the results.
+2. The paper identifies valid gaps/issues in previous techniques and provides sensical first steps to address them.
+3. Further see answer to Q2",I feel the paper has interesting contribution but I believe the quality of paper writing needs to be improved.,3: You are fairly confident in your assessment. It is possible that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work. Math/other details were not carefully checked.,"3: Some of the paper’s claims have minor issues. A few statements are not well-supported, or require small changes to be made correct.",3: The contributions are significant and somewhat new. Aspects of the contributions exist in prior work.,3: The contributions are significant and somewhat new. Aspects of the contributions exist in prior work.,NO.,6: marginally above the acceptance threshold,1667503030419,,zlwBI2gQL3K,ICLR.cc/2023/Conference/Paper315/-/Official_Review,,[],4,,['everyone'],zlwBI2gQL3K,['ICLR.cc/2023/Conference/Paper315/Reviewer_Pexb'],1667503030419,,1667545822780,"['ICLR.cc/2023/Conference', 'ICLR.cc/2023/Conference/Paper315/Reviewer_Pexb']","Yes, the peer review explicitly suggests citing a specific literature. It mentions that the authors should use a more competitive version of ComplEx (ComplEx-N3) for comparison, as mentioned in the following paper:
+
+Lacroix, Timothée, Nicolas Usunier, and Guillaume Obozinski. ""Canonical tensor decomposition for knowledge base completion."" International Conference on Machine Learning. PMLR, 2018.
+
+This suggests that the authors should include a citation to this paper in their work.",1
+apmjMXvpru,"This paper focuses on sparse training, which aims to reduce the computational overhead of deep neural networks. Specifically, this work proposes a non-linear gradient-based method, namely, Gradient Annealing (GA), to address the trade-off between model sparsity and accuracy. Meanwhile, this paper combines one latest sparse training method with GA, arriving at a unified training algorithm, i.e., AutoSparse. Extensive experimental results demonstrate that the proposed method could achieve the state-of-the-art model sparsity of 80% on ResNet and of 75% on MobileNetV1. Besides, GA outperforms TopKAST+PP by 0.3% in terms of classification accuracy on ImageNet.","### Strengths
+
+- This paper is well-written and easy to follow.
+
+- The technical contributions,  i.e., GA, a gradient-based non-linear method, for addressing the trade-off for model sparsity and accuracy, are novel.
+
+- The experimental evaluation is solid, including baseline comparisons in the main paper and ablation studies in the appendix.
+
+  
+
+### Weaknesses
+
+- Vision Transformers (ViT) is a popular backbone network in recent years. The empirical evaluations shall conduct baseline comparisons by using ViT on ImageNet.
+
+
+
+[1] An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale, ICLR 2021.","- The quality of the writing is good, though there are some typos:
+
+  - In Section 5.1, ""largescale"" -> ""large-scale"".
+
+  - In Section 5.1, ""warm up 4000,,"" -> ""warm up 4000,""
+
+    
+
+- The technical contributions seem to be novel, though I am not an expert in this field.
+
+- This paper provides the demo code in the appendix, so it appears to me that this work can be reproduced based on the current version.","This paper proposes Gradient Annealing (GA) to address the trade-off between model sparsity and accuracy, and then, combine GA with the recent state-of-the-art method, arriving at a unified training algorithm called AutoSparse. The technical contributions seem to be novel. Meanwhile, this paper is well-written and the proposed method is reproducible. Based on the above consideration, I recommend accepting this paper. But, since I am not an expert in this field, I am open to changing my score, based on the authors' responses and other reviewers' comments.","2: You are willing to defend your assessment, but it is quite likely that you did not understand the central parts of the submission or that you are unfamiliar with some pieces of related work. Math/other details were not carefully checked.","3: Some of the paper’s claims have minor issues. A few statements are not well-supported, or require small changes to be made correct.",3: The contributions are significant and somewhat new. Aspects of the contributions exist in prior work.,3: The contributions are significant and somewhat new. Aspects of the contributions exist in prior work.,NO.,6: marginally above the acceptance threshold,1667337552704,,zyfEWkV6it,ICLR.cc/2023/Conference/Paper1417/-/Official_Review,,[],6,,['everyone'],zyfEWkV6it,['ICLR.cc/2023/Conference/Paper1417/Reviewer_Xqxh'],1667337552704,,1667663184614,"['ICLR.cc/2023/Conference', 'ICLR.cc/2023/Conference/Paper1417/Reviewer_Xqxh']","No, this peer review does not explicitly suggest the authors of the paper to cite any specific literature. However, it does mention a reference [1] in the original text, which is ""An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale, ICLR 2021"", but this is more like a background information rather than an explicit suggestion to cite something.",0
+AnYgpOo3eFK,"The paper proposes a method for prompt learning in vision and language models that aims at producing a variety of templates that can be used by the text encoder to provide better classification weights in a few-shot scenario. 
+
+In particular, the paper observes that learning a single prompt is not sufficient to represent a class, and proposes a variety of prompt candidates that can be used to cover a wider variety of concepts within the same image. The authors note that using a distribution of prompts that are learned independently using a standard contrastive learning will result in some of the prompts to collapse to the same centroid, and propose an optimal transport scheme to avoid such behaviour. 
+
+The methodology goes as follows: 1) a set of different visual features are computed for a given image (using different backbone exits); then 2) the scores for the pairs visual/text features are computed using the learnable prompts; then 3) a transport matrix is computed to minimize the total cost of assigning a feature vector a weighted combination of the text features (i.e. the transport matrix is the soft-extension of the permutation matrix that would assign vision/text features through the typical CLIP matching). Finally, for a fixed transport matrix 4) the prompts are learned using the standard cross-entropy where the class assignment is given by the computed combination of the weights produced by the prompts. 
+
+The use of a transport matrix allows to assign to each feature vector a weighted combination of the prompts, thus making the latter have a broader ""semantic"" capacity. The use of different feature vectors for each image rather than a global CLIP-based visual feature vector allows the prompt to describe different concepts that might co-occur in the same image, making the prompts having more ``local"" capacity. 
+
+The paper is validated in the same setting as CoOp for few-shot learning, using 11 visual recognition datasets, delivering consistently better results than the competing method. 
+","Strengths: 
+
+The paper is technically solid and contributes enough novelty to the domain of prompt learning which is of growing interest to the research community devoted to exploring pre-trained vision/language models. The use of a diverse set of prompts to generate different text classifiers that can all contribute to a single class prediction is of interest and the methodology is well developed. 
+
+The results seem to consistently outperform CoOp, showing the need of having a large set of prompts that require proper use to be able to generalize better to new classes.
+
+Weaknesses:
+
+While the core methodology is new, the idea of learning a distribution of prompts is not new, and indeed the authors do not include a discussion on why their proposed approach would be a better choice than CoCoOp which produces prompts for each image. Additionally, the authors need to consider, discuss, and compare, against 
+
+[Lu et al.] Prompt Distribution Learning. CVPR 2022
+
+which is a method that learns a collection of prompts that produce a distribution of per-class weights, increasing their expressivity. Some analysis in terms of methodology and computation against [Lu et al.] should be included in the paper in my opinion.","The method is novel and the code is provided, hence reproducibility and novelty are properly covered in the manuscript.
+
+The paper could benefit from better writing and clarity in the presentation; in my humble opinion, writing the paper top to bottom (i.e. presenting first optimal transport and then the problem) is more confusing than writing it bottom to top (i.e. the problem of prompt learning and the intuition behind the optimal transport in ''assigning"" prompts to different visual features from the same image, there is barely discussion around it). ","In summary, the paper proposes an interesting approach to prompt learning that is technically sound and well motivated. However, the clarity and the lack of an exhaustive comparison against state of the art works ([Lu et al.] and CoCoOp) both experimentally and conceptually is needed. Should the authors be able to bring this up would further increase the quality of the paper. ","4: You are confident in your assessment, but not absolutely certain. It is unlikely, but not impossible, that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work.",4: All of the claims and statements are well-supported and correct.,3: The contributions are significant and somewhat new. Aspects of the contributions exist in prior work.,3: The contributions are significant and somewhat new. Aspects of the contributions exist in prior work.,NO.,"8: accept, good paper",1665673717186,,zqwryBoXYnh,ICLR.cc/2023/Conference/Paper898/-/Official_Review,,[],1,,['everyone'],zqwryBoXYnh,['ICLR.cc/2023/Conference/Paper898/Reviewer_RWPs'],1665673717186,,1669817521799,"['ICLR.cc/2023/Conference', 'ICLR.cc/2023/Conference/Paper898/Reviewer_RWPs']","Yes, the peer review suggests that the authors should include a discussion and comparison with Lu et al.'s (2022) method ""Prompt Distribution Learning"" in their paper. The reviewer recommends including some analysis in terms of methodology and computation against [Lu et al.] Prompt Distribution Learning. CVPR 2022.",1
+Pkt-3_ra1t8,"The paper proposes a multi-objective Bayesian optimization approach for the molecules design problem. The proposed approach uses the hypernetwork-based GFlowNets as an acquisition function optimizer and uses a scalarization approach to combine the multiple objectives.
+","Strengths: 
++ The paper presents an important scientific application. 
++ The paper presents some promising experimental results, though I have some reservations about the robustness of the results
++ The paper is easy to follow 
++ The paper addresses the multi-objective problem, which is relatively less studied in the context of molecules, but it is worth noting that it has been recently extensively studied in the general Bayesian optimization problem
+
+Weaknesses
+
++ The proposed technique is a direct combination of existing techniques with no new substantial addition. Therefore, the technical contribution and novelty are weak
++ The paper uses the following statement “We assume that the oracle can be called as many times as necessary.” In Expensive settings, this is not usually true. 
++ The paper does not provide any time complexity analysis of the training. This is problematic because existing approaches are actually very fast, while gflownet is certainly much more expensive, so a time comparison and a discussion about complexity and tradeoffs are important.
++ The paper discusses the sampling of the scalars extensively, but later in experiments, it is mentioned that 5 evenly-spaced preference vectors are used. It is not clear how this works exactly. 
++ State of the art 
+    - State-of-the-art methods in molecular optimization are not stated or compared to.  The following is considered SOTA work and covers a wide range of relevant methods and benchmarks that should be discussed for fairness. [1]
+    - Most multi-objective BO papers are not mentioned nor compared to. In batch optimization the most efficient and high-performing methods are [2,3,4]. It is also misleading to state that no previous paper discussed diversity while [2] is a diversity-oriented method, and several single objective batch BO papers discussed diversity. 
+    - The paper uses a scalarization technique where scalars are sampled from a distribution. This technique was previously proposed and used [5]. 
+    - The Preference-based problem has been studied beyond the discussion that was mentioned in the paper. It is concerning to completely ignore principled existing work and claim it as a novelty. The following are some of the approaches, to name a few [6,7,8]
+
++ The experimental setup is weak and surprising:
+- the paper states in the beginning that the evaluation was on several synthetic experiments and real-world experiments, but there are only two experiments. 
+    - The paper uses three runs only to report the mean and standard error. BO papers report AT LEAST 10 runs usually, and most recent papers report 50 to 100 runs. I don’t think 3 runs can provide any statistical significance or deliver any conclusions about performance. In fact, even expensive deep learning models are usually tested with a higher number of runs. 
+    - The diversity is not reported for some of the algorithms. If diversity is a metric applied to the Pareto front, why can’t it be applied to some of the approaches? 
+    - The paper reports results for batch size 100 only. Batch BO papers usually evaluate several batch sizes. 
+    - There is a total absence of many relevant baselines from molecular optimization, Bayesian optimization, and preference-based optimization. The paper is mainly experimental since the technical novelty is weak. Therefore, it needs to present a thorough experimental evaluation. 
+
+[1] Maus, Natalie, et al. ""Local Latent Space Bayesian Optimization over Structured Inputs."" arXiv preprint arXiv:2201.11872 (2022).
+
+[2] Konakovic Lukovic, Mina, Yunsheng Tian, and Wojciech Matusik. ""Diversity-guided multi-objective bayesian optimization with batch evaluations."" Advances in Neural Information Processing Systems 33 (2020): 17708-17720.
+
+[3] Eric Bradford, Artur M Schweidtmann, and Alexei Lapkin. Efficient multiobjective optimization employing gaussian processes, spectral sampling and a genetic algorithm. Journal of global optimization, 71(2):407–438, 2018.
+
+[4] Syrine Belakaria and Aryan Deshwal. Uncertainty-aware search framework for multi-objective bayesian optimization. In AAAI Conference on Artificial Intelligence (AAAI), 2020.
+
+[5] Paria, Biswajit, Kirthevasan Kandasamy, and Barnabás Póczos. ""A flexible framework for multi-objective bayesian optimization using random scalarizations."" Uncertainty in Artificial Intelligence. PMLR, 2020.
+
+[6] Abdolshah M, Shilton A, Rana S, Gupta S, Venkatesh S. Multi-objective Bayesian optimization with preferences over objectives. Advances in neural information processing systems. 2019;32.
+
+[7] Taylor, Kendall, et al. ""Bayesian preference learning for interactive multi-objective optimization."" Proceedings of the Genetic and Evolutionary Computation Conference. 2021.
+
+[8] Lin, Zhiyuan Jerry, et al. ""Preference Exploration for Efficient Bayesian Optimization with Multiple Outcomes."" International Conference on Artificial Intelligence and Statistics. PMLR, 2022.
+
+","The novelty is limited since the paper uses a combination of previous approaches. 
+
+Reproducibility is also concerning since the paper reports only three runs. ","The paper addresses an important problem however, the novelty and experimental setup are limited. ",3: You are fairly confident in your assessment. It is possible that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work. Math/other details were not carefully checked.,2: Several of the paper’s claims are incorrect or not well-supported.,2: The contributions are only marginally significant or novel.,2: The contributions are only marginally significant or novel.,NO.,5: marginally below the acceptance threshold,1667589293336,,ztgT8Iok130,ICLR.cc/2023/Conference/Paper4367/-/Official_Review,,[],4,,['everyone'],ztgT8Iok130,['ICLR.cc/2023/Conference/Paper4367/Reviewer_NQij'],1667589293336,,1670612754237,"['ICLR.cc/2023/Conference', 'ICLR.cc/2023/Conference/Paper4367/Reviewer_NQij']","Yes, the peer review explicitly suggests that the authors of the paper should cite several specific literatures in their work. The reviewer mentions:
+
+* ""The following is considered SOTA work and covers a wide range of relevant methods and benchmarks that should be discussed for fairness."" [1]
+* ""[2] is a diversity-oriented method, and several single objective batch BO papers discussed diversity.""
+* ""This technique was previously proposed and used [5].""
+* ""It is concerning to completely ignore principled existing work and claim it as a novelty. The following are some of the approaches, to name a few [6,7,8]""
+
+The reviewer also provides specific references for these works:
+
+[1] Maus et al. (2022)
+[2] Konakovic Lukovic et al. (2020)
+[3] Bradford et al. (2018)
+[4] Belakaria and Deshwal (2020)
+[5] Paria et al. (2020)
+[6] Abdolshah et al. (2019)
+[7] Taylor et al. (2021)
+[8] Lin et al. (2022)
+
+The reviewer is suggesting that the authors of the paper should cite these works to provide a more comprehensive and fair comparison with their own approach, as well as to acknowledge the contributions of others in the field.",1
+qMWH3Cpvn8D,"Summary: While time-series components like trends or seasonality have been extensively studied and been modeled in existing literature,
+ 	modeling residual or irregularity has been an under explored research area due to its inherent complexity. 
+	In this work, the authors propose a deep learning based model for time-series forecasting (TSF) that reflects this irregularity
+ 	by introducing a novel expression for residual and employing it in TSF.","Strength:
+1. Residual modeling of time-series data is quite under explored which gives the research direction of this literature great value. 
+2. Authors performed extensive experiments and ablation studies on number of real-world dataset to prove the validity of their approach
+
+Weakness:
+1. The authors didn’t provide any link to their code for reproducibility purpose, so it won’t be easy for peers to validate the experimental results
+2. The technical depth of the work is a tad limited",See Summary of the review,"Short review:
+1. The paper’s presentation is decent and comprehensible
+2. This work focuses on an under explored research area and shows great result when applied in real-world dataset
+3. The paper doesn’t show the best technical depth 
+4. No link to the code available","4: You are confident in your assessment, but not absolutely certain. It is unlikely, but not impossible, that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work.",4: All of the claims and statements are well-supported and correct.,3: The contributions are significant and somewhat new. Aspects of the contributions exist in prior work.,3: The contributions are significant and somewhat new. Aspects of the contributions exist in prior work.,NO.,6: marginally above the acceptance threshold,1666665040679,,zuQQ7GrDFfH,ICLR.cc/2023/Conference/Paper4304/-/Official_Review,,[],2,,['everyone'],zuQQ7GrDFfH,['ICLR.cc/2023/Conference/Paper4304/Reviewer_ppXw'],1666665040679,,1666665040679,"['ICLR.cc/2023/Conference', 'ICLR.cc/2023/Conference/Paper4304/Reviewer_ppXw']","No, this peer review does not explicitly suggest the authors of the paper to cite any specific literature. It only mentions that time-series components like trends or seasonality have been extensively studied and modeled in existing literature, but it does not provide a direct reference or recommendation for citing particular works.",0
+zoGhFXCYWM,"This submission proposed an approach to solving the data distributional shift problem in recourse models. A min-max-min learning objective is proposed to learn the predictions and enhance the robustness of future data shifts. Then an optimization framework, RoCourseNet, is designed to optimize the learning objective. Experiments on three datasets and comparisons with several existing baselines demonstrate the effectiveness of the proposed method. ","Strength:
+
+1. The paper is easy to follow.
+
+Weakness:
+
+1. The motivation is not clear. When I look at the title of this submission, I feel this paper is related to the distributionally robust optimization (DRO) topic. However, I find the main part of this paper is related to adversarial perturbations. Therefore, the title is easy to mislead the understanding of this paper. I do not mean this title is a mismatch with this paper. But 'DISTRIBUTIONALLY ROBUST' is not fit well in this paper. Most importantly, it seems like the robust recourse is dynamically generated during training. According to (4), $x^{cf}$ is generated by another model (i.e., neural network) $g$. The final model should be $f$. I guess the distribution shift only works on $x$ instead of $x^{cf}$. However, in Figure 1, it is not clear what the data shift is. One observation is the model shifted but the data is not shifted. Moreover, the experiments are based on three datasets. However, distributional shifts in the training data (as mentioned in the Abstract) are not demonstrated on these datasets.
+
+2. Notations are not clear. For example, in Section 3.1, what is the domain of $f$? Is it a real number or belongs to {0,1}? In addition, below (1), $\mathcal{F}={\theta'|\theta+\delta}$. This $\delta$ works on the model parameters. However, according to (3), $\delta$ seems working on features. I am very confused with this parameter. 
+
+3. In experiments, Table 1 is hard to read. For the three metrics, it is not clear whether the values large better or small are better. Most importantly, what is the meaning of bold values? If the bold value means the best result, why 6.746 $\pm$ 0.723(from Loan, Proximity) is the best? It seems like this value is not the best.
+
+4. In Section 4 (Cost-Validity Trade-Off), I am very confused with the discussion from the **Cost-Validity Trade-Off** paragraph. First, I am not sure how to define 'the three best performing models from Table 1'. Section, What is the meaning of ambiguity sizes $\epsilon_1$ $\epsilon_2$? Third, the authors mentioned 'These figures show that ...'. I do not know which figure is for this discussion.
+
+5. Since the proposed optimization framework has no convergency guarantee, the authors should show the tendency curve of training loss. Moreover, since this task is a classification task, the authors should show the accuracy performance besides the metrics only for CF. Even Upadhyay et al., 2021 show accuracy and AUC (See Table 2 in [Upadhyay et al., 2021] for evaluating the performance of generating robust recourse). Without accuracy, it is hard to say the applicability of the proposed model. ","The quality of this submission is not high. The motivation is not very clear. The evaluation metrics are not comprehensive. 
+
+Some notations are not clear.   
+
+The proposed methods seem original.  ","I suggest rejecting this paper. For details, please see my weakness. ","4: You are confident in your assessment, but not absolutely certain. It is unlikely, but not impossible, that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work.","3: Some of the paper’s claims have minor issues. A few statements are not well-supported, or require small changes to be made correct.",2: The contributions are only marginally significant or novel.,2: The contributions are only marginally significant or novel.,NO.,"3: reject, not good enough",1665939234395,,zufPou5foW,ICLR.cc/2023/Conference/Paper4444/-/Official_Review,,[],1,,['everyone'],zufPou5foW,['ICLR.cc/2023/Conference/Paper4444/Reviewer_KsVC'],1665939234395,,1665939234395,"['ICLR.cc/2023/Conference', 'ICLR.cc/2023/Conference/Paper4444/Reviewer_KsVC']","No, the peer review does not explicitly suggest the authors to cite any specific literature. However, it mentions ""Upadhyay et al., 2021"" as an example of a previous work that shows both accuracy and AUC for evaluating the performance of generating robust recourse, implying that the current paper should also include these metrics for a more comprehensive evaluation.",0
+3EILcfDnSF,"This paper aims to solve the exploration-exploitation tradeoff problem in the context of multi-agent reinforcement learning. While there have been a myriad of works on exploration-exploitation tradeoff on single age reinforcement learning, there are not many on the multi agent RL. This work proposes an adaptive entropy-regularization framework that learns adequate amount of exploration for each agent. To this end, this work proposes to decompose the joint soft value function into pure return and entropy sum. This disentanglements enable a more stable while updating the temperature parameters. This work focuses entropy-based MARL. ","- The strength of the paper comes from the idea that, while previous works encourage same level of exploration across agents, this work proposes to differentiate the level of exploration across agents in multi-agent RL setting. 
+- Another strength comes from the core idea of this work: joint soft value function decomposition / separated factorization. 
+- The motivation part 3.1 sounds convincing to me; one agent’s exploration can hinder other agent’s exploitation, resulting that simultaneous exploration of multiple agents can make learning unstable. Need a framework that can adaptively learn proper levels of exploration for each agent. 
+- Experiments are well done, not extensive though. 
+
+Questions. 
+
+Q1. Question about ADER performance shown in Figure 2a. It seems that ADER outperforms other methods like SER-DCE, SER-MARL, but there is a point where ADER’s performance suddenly jumps up in the middle. Is there any explanation on why this happens? 
+
+Q2. In Appendix B, could you give me more justification on setting the coefficient beta_i? Especially, line B.7, beta_i are defined as softmax of expectation of \partial V^R_{JT}(s,\tau) / \partial H (pi (|))) ? Could you give us more detailed explanations on it? And can you explain why it is difficult to directly obtain the partial derivative in discrete-action case, and using chain rule is justified? ","This paper is well-written with high clarity. Somewhat novel, but not groundbreakingly novel. I think the authors showed good amount of experiments and evaluations on various benchmarks, and ablation studies, which seem to be reproducible.  ","I would give marginally above the acceptance threshold. It would be good if the authors could answer my questions. There might be some issues that I didn’t catch, and if other reviewers have raised issues, I’m happy to discuss.  ",3: You are fairly confident in your assessment. It is possible that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work. Math/other details were not carefully checked.,4: All of the claims and statements are well-supported and correct.,3: The contributions are significant and somewhat new. Aspects of the contributions exist in prior work.,2: The contributions are only marginally significant or novel.,NO.,6: marginally above the acceptance threshold,1666643166239,,zzL_5WoI3I,ICLR.cc/2023/Conference/Paper1739/-/Official_Review,,[],3,,['everyone'],zzL_5WoI3I,['ICLR.cc/2023/Conference/Paper1739/Reviewer_5qy9'],1666643166239,,1666643166239,"['ICLR.cc/2023/Conference', 'ICLR.cc/2023/Conference/Paper1739/Reviewer_5qy9']","No, the peer review does not explicitly suggest the authors of the paper to cite any specific literature. The reviewer mentions that they have some questions about the paper (Q1 and Q2) and would like more information or explanations, but there is no mention of citing specific papers or literature. The reviewer also notes that the contributions are somewhat novel, but not groundbreakingly novel, suggesting that the authors may want to consider placing their work in a broader context by citing relevant prior research.",0
+f8lmUCwMFi,"This paper presents an MARL algorithm to adpatively handle the entropy regularization in multi-agent RL. In this method, the level of exploration of each agent is controlled by its time-varying target entropy, which severs as a constraint in the optimization problem. To determine a proper target entropy for each agent, the authors propose a partial derivative-based metric to evaluate the benefit of exploration and then use this term to decide the target entropy for each agent. Empirically, in a customized SMAC environment, their method is demonstrated to be better than other value-decomposition methods.
+","### Strengths
+
+1. This paper studies adaptive entropy regularization, which is important in entroy-regularized MARL and well-demonstrated in the motivation section.
+
+2. The authors provide a comprehensive literature review of entropy-based MARL algorithms.
+
+3. A variety of baselines is included in their SMAC experiments. 
+
+### Weaknesses
+
+1. **Standard SMAC maps and more baselines should be included.** In the experiment section, MAPPO should also be included as a baseline, as it is one of the SOTA MARL algorithms. Also, experiments on the *standard* (unmodified) SMAC environment should be included, as it is a standard of all MARL papers. Moreover, for the matrix game, FOP should also be included as a baselines. As far as I understand, FOP uses a weight network to determine individual temperature parameters in their tasks except SMAC. That said, adaptive entropy regularization over agents and time is indeed considered in FOP. 
+
+2. **The writing can be largely improved.** Some paragraphs are too long, e.g., Section 1 is one paragraph, and Section 3.1 is one paragraph. Some references to equations are misused in section 3.4. The authors should refer to where those equations appear in the main text, not where they are in the appendix. For example, eq B.7 should be eq 15 in the main text.
+
+4. **The presentation of the proposed method can be improved.** The overall workflow of this algorithm is complicated and unclear. An algorithm should be included to make it clear. Figure 6 does not provide a clear illustration. 
+
+### Questions
+
+1. Two mixer networks are used in this method. The update of Q-mixer and $Q_i$ is common and easy to understand. However, It seems two methods are mentioned for computing $V_{jt}$. One is using V-mixer $V_{jt} = f_{mix}(s, V_1, \cdots V_n)$ and another is using expectation $V_{jt} = E[Q_{jt}]$. Do these two methods result in the same value? Or do you use those two values in different places?
+
+2. As stated in eq 13, the policy update is achieved in a joint form using joint value function $Q_{jt}$, so the $Q_i$ will only be used for the computation of target entropy? If so, why do we need a mixer network for $Q_{jt}$, as we can directly parameterize $Q_{jt}$ via a single neural network? The learning of the proposed method is unclear in many ways, though I may misunderstand some parts. 
+
+3. As mentioned in Section 3.4, the partial derivative $\frac{\partial V_{jt}^{R}}{\partial H(\pi^i)}$ is used to determine the target entropy of agent $i$. For the categorical policy of discrete action space, as stated in eq 16, $\frac{\partial V_{jt}^{R}}{\partial H(\pi^i)} = \frac{\partial V_{jt}^{R}}{\partial V_i^R} \times \frac{\partial V_i^R}{\partial H(\pi^i)}$. The second term is approximated by $\frac{\Delta V_i^R(\tau^i)}{\Delta \mathcal{H}(\pi^i_t)}$. However, it is still unclear to me how it is computed numerically. ","The Clarity of this paper can definitely be improved. Some references to equations are misused. Also, the authors should shorten the length of the motivation section and spend more paragraphs explaining the purpose of each component, as this is a relatively complex framework. Moreover, I think figure 6 can be improved by associating the loss function in it to better explain how each component is trained.
+
+The Novelty of this paper heavily lies in the method of computing target entropy for each agent. However, as mentioned above, the computation of those partial derivative terms has to be further explained in order to judge the importance of this work.
+","This paper studies adaptive entropy regularization in MARL, and provides a naive yet reasonable solution for this problem. However, the presentation of this paper can be substantially improved, and some technical details about the computation of partial derivatives have to be further explained.  In short, I will not recommend acceptance of this paper, but I will be happy to reconsider it if the authors can address all those problems.
+","4: You are confident in your assessment, but not absolutely certain. It is unlikely, but not impossible, that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work.",2: Several of the paper’s claims are incorrect or not well-supported.,2: The contributions are only marginally significant or novel.,2: The contributions are only marginally significant or novel.,NO.,"3: reject, not good enough",1666264303145,,zzL_5WoI3I,ICLR.cc/2023/Conference/Paper1739/-/Official_Review,,[],1,,['everyone'],zzL_5WoI3I,['ICLR.cc/2023/Conference/Paper1739/Reviewer_mfnN'],1666264303145,,1666264303145,"['ICLR.cc/2023/Conference', 'ICLR.cc/2023/Conference/Paper1739/Reviewer_mfnN']","Yes, the peer review suggests that the authors should include MAPPO as a baseline in their SMAC experiments because it is one of the SOTA (state-of-the-art) MARL (Multi-Agent Reinforcement Learning) algorithms. Additionally, the review mentions FOP (Factorized Opponent Modeling) as another baseline that the authors should consider including, especially for the matrix game task, since FOP uses a weight network to determine individual temperature parameters in its tasks except SMAC.",1
+40ffXOujhg,"This paper examines the convergence of SGMs under fairly general assumptions. The main novelty compared to existing works is the $L^2$ error assumption on the score estimates, as opposed to the more common $L^\infty$.The main conclusion is that one can basically reduce the difficulty of SGMs to estimating the scores since the sampling part afterward is relatively easy: the authors proved a convergence bound that scales polynomially with respect to the relevant parameters. Extention to CLD is discussed.","Strength:
+
+- The presentation is clear.
+
+- The proof ideas are simple and fairly straightforward. As the authors mentioned, they seem robust enough to generalize to other settings beyond the OU process considered in the present work.
+
+Weaknesses: 
+
+- This paper does not really deal with DDPM in the sense of the cited (Song et al. 2021b). First, at least in (Song et al. 2021b), DDPM refers to a specific SDE with time-inhomogeneous diffusion. Although the authors briefly mention that the analysis can be extended to that case, I don't think it is such a straightforward matter. For instance,  the first step in Section 4 would break down, as $\tilde{p}_0 \neq \gamma^d$. How do we handle this? 
+
+    Another major difference is, in (Song et al. 2021b), the sampling part is done by a predictor-corrector sampler; see Appendix G. Incorporating this source of error is quite important as it does reduce the variance of the sampling procedure significantly. Instead, the authors opted for an exact sampler by taking advantage of the time-inhomogeneous OU process, which, echoing the above, is not available for DDPM.
+
+
+
+- One thing that is unclear to me is the scaling issue as follows. Since both TV and KL are invariant to scaling, instead of $q(x)$ one may consider a new measure $q(cx)$ for any $c >0$. Inspecting the bound in Theorem 2, it is clear that the first term is invariant, the second moment in the second term scales accordingly, whereas the $\varepsilon_{\text{score}}$ term is again left as constant. On the other hand, intuitively, as $c\rightarrow \infty$ the error in the score estimate might shrink (since this corresponds to shrinking the moments of $q$).
+
+    To conclude, the bound in Theorem 2 doesn't seem to capture the scale invariance of TV/KL, suggesting that there might be some artifact in the proof. (That being said, I acknowledge that my argument above is no less vague than the authors', so this should not be taken as a major criticism.)
+
+- I find the argument on the deficiency of underdamped Langevin fairly weak. On one hand, as the authors have noticed, no definitive statement is given. On the other hand, all of the bounds in this paper are either given by KL or TV, but these two are not really the ""right"" metric for underdamped Langevin (Desvillettes and Villani 2000).
+
+- The comparison to (De Bortoli 2022) is not entirely fair since the convergence metric there is given in the Wasserstein distance, which makes sense under the manifold hypothesis. The Wasserstein distance is ideal for this setting as it does not rely on the measures being absolutely continuous to each other.
+
+- As the authors acknowledged, a serious limitation is that the score estimate part is assumed away, whereas in practice estimating the score is the bottleneck.
+
+
+
+Desvillettes and Villani 2000, On the trend to global equilibrium in spatially inhomogeneous entropy-dissipating systems: The linear Fokker-Planck equation.","The presentation is clear except for a few minor issues below:
+ 
+- The statement ""LSI is slightly weaker than log-concavity"" is misleading.
+
+- Footnote on p.3: The error is fixed in the lastest version of (Block et al. 2020); see the new Proposition 21.
+
+- I'm not sure why $\sigma_t$ is needed in Section 2.1. The authors never invoked $\sigma_t\neq \sqrt{2}$.
+
+- The result of the overdamped Langevin process on p.5 is only for strongly log-concave distributions. The general implication is unclear.
+","This paper provides several convergence results for diffusion models with OU process. I think this is a solid paper, but can be significantly improved if the authors can:
+
+1. prove results on DDPM or other SDEs in (Song et al. 2021b).
+
+2. provide more context on the related work, for instance (De Bortoli 2022).
+
+3. figure out the scaling issue.
+
+4. improve the section on CLD.","4: You are confident in your assessment, but not absolutely certain. It is unlikely, but not impossible, that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work.","3: Some of the paper’s claims have minor issues. A few statements are not well-supported, or require small changes to be made correct.",3: The contributions are significant and somewhat new. Aspects of the contributions exist in prior work.,Not applicable,NO.,"8: accept, good paper",1666376481676,,zyLVMgsZ0U_,ICLR.cc/2023/Conference/Paper5148/-/Official_Review,,[],1,,['everyone'],zyLVMgsZ0U_,['ICLR.cc/2023/Conference/Paper5148/Reviewer_71Gb'],1666376481676,,1669569089442,"['ICLR.cc/2023/Conference', 'ICLR.cc/2023/Conference/Paper5148/Reviewer_71Gb']","Yes, the peer review explicitly suggests that the authors should cite De Bortoli (2022) in a more comprehensive way, as the comparison to this work is not entirely fair due to differences in convergence metrics. Additionally, it also mentions Song et al. (2021b), Desvillettes and Villani (2000), Block et al. (2020), but these are mentioned in context rather than being explicitly requested for citation.",1
+C6xz9G0pRf,"The paper proposes an architecture and a training methodology (termed RoCourseNet) to generate a robust counterfactual (cf) along with the prediction for a given factual point. RoCourseNet builds on earlier work CounterNet [1] by modifying its objective to generate robust cfs i.e cfs which stay valid even when the underlying model shifts. As part of the RoCourseNet objective, the inner ‘adversary’ itself is proposed as a bilevel problem (called VDS in the paper). The paper proposes to learn a ‘worst-case’ classifier by looking at how the training dataset can change such that a classifier learnt on this new dataset maximally invalidates the old cfs.  Experiments are performed on 3 real-world datasets and they compare against 4 baselines.
+","+ The paper deals with a practical problem; generating robust recourses is necessary for models which are to be deployed in the real world
++ RoCourseNet outperforms the baselines convincingly in generating robust recourses for the 3 datasets considered
++ RoCourseNet works with the full model and not its locally linear approximation (via LIME etc.) which allows it to model larger number of model shifts via the VDS algorithm
+
+- RoCourseNet involves a tri-level optimization problem. How much additional computational effort does ReCourseNet require? A comparison of the training time taken vs CounterNet seems necessary. 
+- The method lacks some flexibility of post-hoc counterfactual generation methods. Ex, different people have different notions of cost (proximity) or actionability. Can RoCourseNet solve this without retraining?
+
+Other points:
+* In Algorithm1 VDS line (8) how is this gradient w.r.t \delta computed? Is the only dependence of \delta through \theta(\delta)? 
+* Although not completely fair, a comparison of the training time w.r.t ROAR [2] may also be instructive.
+* Cite the published version of ROAR
+
+[1] Hangzhi Guo, Thanh Nguyen, and Amulya Yadav. Counternet: End-to-end training of counterfactual aware predictions. In ICML 2021 Workshop on Algorithmic Recourse, 2021.
+[2] Upadhyay, Sohini, Shalmali Joshi and Himabindu Lakkaraju. “Towards Robust and Reliable Algorithmic Recourse.” NeurIPS (2021).","The paper is written clearly and is easy to follow. Code and implementation details are provided for reproducibility. The paper builds on existing work (CounterNet [1]), and novelty is in learning the ‘adversarial model’ for which they propose the VDS algorithm.","The paper solves an important problem. The experimental protocol and results are convincing. The main issue I have is I feel the method is computationally expensive, and it lacks some flexibility that post-hoc cf-generation methods have. I propose acceptance, conditional on some time-complexity analysis.","4: You are confident in your assessment, but not absolutely certain. It is unlikely, but not impossible, that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work.",4: All of the claims and statements are well-supported and correct.,2: The contributions are only marginally significant or novel.,2: The contributions are only marginally significant or novel.,NO.,6: marginally above the acceptance threshold,1667067837791,,zufPou5foW,ICLR.cc/2023/Conference/Paper4444/-/Official_Review,,[],4,,['everyone'],zufPou5foW,['ICLR.cc/2023/Conference/Paper4444/Reviewer_hKo5'],1667067837791,,1667067837791,"['ICLR.cc/2023/Conference', 'ICLR.cc/2023/Conference/Paper4444/Reviewer_hKo5']","Yes, the peer review explicitly suggests the authors to cite a published version of ROAR [2] in addition to citing the conference version that is already mentioned.",1
+YpFe6UMejWg,"Practical molecule generation involve optimization of multiple objectives simultaneously. These objectives are often expensive to evaluate making sample-efficiency key. The paper proposes a multi-objective Bayesian optimization method leveraging GFlowNets for optimizing the acquisition function. GFlowNets learn stochastic policies to generate discrete objects proportionally to their rewards, resulting in diverse candidates. The authors consider a preference-based decomposition of the MOO problem. The paper proposes a hypernetwork-based parameterization for conditioning on preferences. The authors also propose a hindsight-experience replay based strategy for leveraging offline data during learning. The authors use an evidential regressor as the surrogate model within the multi-objective Bayesian optimization context. The authors then present results on a molecule generation task with 4 objectives. ","**Strengths**
+
+- The paper tackles an important and challenging problem of multi-objective optimization in the context of molecule generation. As shown in previous work, using GFlowNets for optimizing the acquisition function results in diverse candidates and sample-efficient optimization
+- The hypernetwork-based approach is an interesting way to implement conditioning, in contrast to FiLM based approaches. 
+
+**Weaknesses**
+- The paper overall is not very clearly written (I discuss this in more detail in the next section)
+- The paper uses the preference-conditional GFlowNet formulation originally proposed in [1], but does not cite the paper where the preference-conditional GFlowNet is introduced. There are also other other inconsistent citations which I discuss in the next section,
+- Multi-Objective REINFORCE [2] is very closely related to the proposed HN-GFN approach, differing only in the learning objective, but is not discussed / included as a baseline. Additionally the authors also do not include recent approaches such as LaMOO [3] in the baselines. 
+- Aside from the baselines, the experiments seem somewhat limited. While the method enjoys superior performance in the task studied in the paper, it is not clear how well it generalizes to different settings and even different rewards for instance. The authors also provide only limited ablations to investigate the method. For instance it is not clear how the set of preference vectors is selected and what is the effect of the distribution of preference vectors used in training. 
+- Minor: The authors use evidential regression for the surrogate model claiming ""evidential deep learning presents the
+advantages of faster inference speed and superior calibrated uncertainty"" however, recent work [4] has established that such approaches can be arbitrarily miscalibrated. 
+
+
+[1]  - GFlowNet Foundations
+
+[2] - Pareto Set Learning for Neural Multi-Objective Combinatorial Optimization
+
+[3] - Multi-objective Optimization by Learning Space Partitions
+
+[4] - Pitfalls of Epistemic Uncertainty Quantification through Loss Minimisation","**Clarity**
+
+For the most part the discussion in the paper is clear. However, there are several places where prior work is incorrectly cited / missed out completely. In addition to the preference-conditional GFlowNet mentioned in the previous section, on line 4 on page 4, the authors cite Daulton et al. 2020 for the basic terminology of MOO instead of classic work in MOO [1,2]. On the second line in the paragraph before equation 3 the authors cite Daulton et al 2020 again for  ""To support parallel evaluations in BO, one can obtain candidates according to different scalarizations"", however, Daulton et al. 2020 does not consider scalarization at all. In fact it is other work [3] which establishes such approaches. Aside from this, there are aspects of the method which are also not clear. For example, the authors mention they use UCB as the acquisition function, but do not discuss how the UCB is used in this multi-objective setting - is the UCB applied to each objective individually or to the scalarization?
+
+**Quality and Novelty** 
+
+While some of the underlying ideas are not particularly novel - preference conditioning was introduced in [4] and GFlowNets in the context of BO was studied in [5] - the hypernetwork-based conditioning and hindsight experience replay are novel in the context of GFlowNets. However, as discussed in the previous section the empirical evidence is not substantial enough. 
+
+**Reproducibility**
+
+The authors do not provide code with the submission. The appendix does contain some relevant hyperparameters but some implementation details are not discussed at all. For example, no details are discussed about the training of the surrogate model - for instance whether the surrogate for each property is trained independently or a single multi-task model is trained, as well as other training details. The authors also do not mention other important hyperparameters like the UCB parameter (controlling exploration and exploitation). 
+
+
+[1] Multicriteria optimization, Ehrgott, 2005
+
+[2] Nonlinear Multiobjective Optimization, Miettinen, 2012
+
+[3] A Flexible Framework for Multi-Objective Bayesian Optimization using Random Scalarizations
+
+[4] GFlowNet Foundations
+
+[5] Biological Sequence Design with GFlowNets","In summary, while the paper presents an interesting GFlowNet-based approach to tackle multi-objective optimization, there are several major shortcomings in the paper in terms of the empirical analysis, baselines and framing of contributions. In the current state I lean towards rejection but encourage the authors to incorporate the feedback to improve the paper during the discussion. ","4: You are confident in your assessment, but not absolutely certain. It is unlikely, but not impossible, that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work.","3: Some of the paper’s claims have minor issues. A few statements are not well-supported, or require small changes to be made correct.",2: The contributions are only marginally significant or novel.,2: The contributions are only marginally significant or novel.,NO.,6: marginally above the acceptance threshold,1666635008360,,ztgT8Iok130,ICLR.cc/2023/Conference/Paper4367/-/Official_Review,,[],3,,['everyone'],ztgT8Iok130,['ICLR.cc/2023/Conference/Paper4367/Reviewer_44K1'],1666635008360,,1669070186824,"['ICLR.cc/2023/Conference', 'ICLR.cc/2023/Conference/Paper4367/Reviewer_44K1']","Yes, the peer review explicitly suggests that the authors should cite certain literature. For example:
+
+* In the section on clarity, the reviewer mentions that on line 4 on page 4, the authors incorrectly cite Daulton et al. 2020 for the basic terminology of MOO instead of classic work in MOO [1,2], suggesting that they should be citing Multicriteria optimization by Ehrgott (2005) and Nonlinear Multiobjective Optimization by Miettinen (2012).
+* In the section on clarity, the reviewer also mentions that Daulton et al. 2020 does not consider scalarization at all, but another work [3] establishes such approaches, suggesting that they should be citing A Flexible Framework for Multi-Objective Bayesian Optimization using Random Scalarizations.
+* In the section on quality and novelty, the reviewer suggests that the authors should cite GFlowNet Foundations as it is relevant to their work.
+
+The peer review also mentions several other papers that are related to the topic of multi-objective optimization and suggests that the authors could include them as baselines or references in their paper.",1
+0biiQs1Alj,"This work provides a convergence guarantee for using a score-based diffusion model to sample from an arbitrary distribution. The method has significantly looser assumptions than previous work, and accounts for three sources of error: (1) L2 score estimation error, (2) discretization of the reverse SDE sampling algorithm, and (3) initializing the algorithm from noise rather than the true resulting distribution from the forward diffusion process. 
+
+","Strengths:
+- Well-written and presented clearly.
+- Clearly discusses the relationship to other work in this area. While I am not an expert in the area, I thought this was especially well-done. 
+- Bound is in terms of the L2 error of the score estimate.
+- Bound does not assume log-concave data distribution.
+- Assumptions and limitations of the results are described clearly.
+- Explores the consequences of this result with respect to critically damped Langevin diffusion, a variant of the simpler diffusion process.","This paper is exceptionally clear and well-written, considering that it is a theoretical analysis. I am not an expert in this field, so I am not the best judge of the novelty, but the author's take care to clearly explain the relationship to prior work. ","While this is a very technical paper, there is immense interest in diffusion models. I expect this will be of high interest to the community.",3: You are fairly confident in your assessment. It is possible that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work. Math/other details were not carefully checked.,4: All of the claims and statements are well-supported and correct.,"4: The contributions are significant, and do not exist in prior works.","4: The contributions are significant, and do not exist in prior works.",NO.,"8: accept, good paper",1666570425905,,zyLVMgsZ0U_,ICLR.cc/2023/Conference/Paper5148/-/Official_Review,,[],2,,['everyone'],zyLVMgsZ0U_,['ICLR.cc/2023/Conference/Paper5148/Reviewer_gx2o'],1666570425905,,1666570425905,"['ICLR.cc/2023/Conference', 'ICLR.cc/2023/Conference/Paper5148/Reviewer_gx2o']","No, this peer review does not explicitly suggest the authors of the paper to cite any specific literature. However, it does mention that ""I thought [the discussion of relationship to other work in this area] was especially well-done"", implying that the reviewer found the author's comparison with existing work to be a strength of the paper.",0
