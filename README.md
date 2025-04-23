@@ -68,20 +68,15 @@ For different Research Questions (RQ), different review data are fetched.
 
 ## Workflow
 
-### Question 1: Analysing Review Texts
-
-#### 1. JSON to CSV Conversion
+### 0: General Pre-processing
 Python scripts are provided to convert the JSON files into CSV format for easier processing for later manual annotation:
 - `scripts/convert_json_csv_API2_reviews.py`: Converts **EMNLP** and **NeurIPS** JSON data to CSV.
 - `scripts/convert_json_csv_API1_reviews.py`: Converts **ICLR** JSON data to CSV.
+For other data like submission data, only minor adjustments, i.e., changing column names, need be to done. All the converted CSVs are also saved under `raw_data`.
 
-Converted CSV files:
-- `raw_data/EMNLP2023.csv`
-- `raw_data/NeurIPS2023.csv`
-- `raw_data/NeurIPS2024.csv`
-- `raw_data/ICLR2023.csv`
+### RQ A1: Analysing Review Texts
 
-#### 2. Manual Annotation
+#### Step 1. Manual Annotation
 After converting the JSON files to CSV:
 - 50 reviews where reviewers suggest authors cite additional literature are manually marked as **positive cases** (`1`).
 - 50 reviews without such suggestions are manually marked as **negative cases** (`0`).
@@ -91,7 +86,7 @@ After converting the JSON files to CSV:
    - `processed_data/annotated_data_for_reviews/NeurIPSwithLabels.csv`
    - `processed_data/annotated_data_for_reviews/ICLRwithLabels.csv`
 
-#### 3. Shuffle Labeled Data
+#### Step 2. Shuffle Labeled Data
 The labeled data is shuffled to ensure random distribution:
 - **Issue**: Positive cases were originally at the beginning, and negative cases were at the end.
 - **Solution**: `shuffle_csv.py` shuffles the labeled data files.
@@ -100,7 +95,7 @@ The labeled data is shuffled to ensure random distribution:
   - `processed_data/annotated_data_for_reviews/shuffled_EMNLPwithoutLabels.csv`
   - `processed_data/annotated_data_for_reviews/shuffled_NeurIPSwithoutLabels.csv`
 
-#### 4. Language Model Response Collection
+#### Step 3. Language Model Response Collection
 The shuffled data is used to evaluate language model performance in identifying citation suggestions:
 - `scripts/get_lm_response.py` sends each review plus a **prompt** to a **llama8b** via **LM Studio** API.
 - `scripts/get_response_csv_70b.py`sends each review plus a **prompt** to **llama70b** via **LM Studio** API running on server from **GippLab**.
@@ -109,18 +104,18 @@ The shuffled data is used to evaluate language model performance in identifying 
 - Responses from different models/prompts are saved in different csv with the naming pattern of `venue_model_promptX.csv`.
 - All the files can be found at `processed_data/annotated_data_for_reviews` 
 
-#### 5. Language Model Response Comparison 
-The responses returned by the models are evaluated against golden data annotated at **Step 2 Manual Annotation**:
+#### Step 4. Language Model Response Comparison 
+The responses returned by the models are evaluated against golden data annotated at **Step 1 Manual Annotation**:
 - `scripts/compare_prompts.py` calculates and compares acc., recall, precision, f1 scores of all the responses returned by different models/prompts.
 
 ![PR-Curves from Models for NeurIPS Reviews](visualization/NeurIPS_models_pr_curves.png)
 
-#### 6. Get Responses Using the Best Models and Prompts
+#### Step 5. Get Responses Using the Best Models and Prompts
 - `scripts/get_response_csv_70b.py` is used to get all the responses from the best models and prompts.
 - CSVs with all the responses from best models and prompts are saved under `processed_data/processed_data_for_citations_in_review`.
 
 
-### Question 2: Analysing Citation and Suggested Years
+### RQ A2: How does the age of the recommended references compare to the distribution of ages of references that the paper had cited?
 
 #### 1. Extract Citation Years 
 Python scripts are provided to extract all the years from all the submission PDFs:
