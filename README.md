@@ -108,6 +108,7 @@ The shuffled data is used to evaluate language model performance in identifying 
 The responses returned by the models are evaluated against golden data annotated at **Step 1 Manual Annotation**:
 - `scripts/RQ_A/assign_tags.py` gives binary tags for reviews based on the model response -- containing "yes" for `1` else `0`.
 - `scripts/RQ_A/compare_prompts.py` calculates and compares acc., recall, precision, f1 scores of all the responses returned by different models/prompts.
+- For comparison, there's also a notebook containing results of regex-based method of determining citation recommendations under `scripts/RQ_A/regex_baseline.ipynb`
 
 ![PR-Curves from Models for NeurIPS Reviews](visualization/NeurIPS_models_pr_curves.png)
 
@@ -138,9 +139,23 @@ The years extracted in last step are analyzed and visualized through the followi
 ![Ages of Cited Papers vs. Ages of Suggested Papers](visualization/suggested_and_citation_years_ages.png)
 
 
-### RQ A3: a. How often do the recommended references fall into the field of ML/AI as opposed to fall in other fields? How many recommendations are outside of CS?; b. Is the distribution of fields of study different from that of papers cited in the submissions?
+### RQ A3: a. How often do the recommended references fall into the field of ML/AI as opposed to fall in other fields? How many recommendations are outside of CS? 
+### b. Is the distribution of fields of study different from that of papers cited in the submissions?
 
-#### 1. Extract Suggested Papers
+#### 1. Extract Recommended and Cited Papers
+
+- `scripts/RQ_A/get_recommended_titles.py` utilizes an LLM-aided method to extract recommended paper titles from review responses. Additionally, LLM output is manually corrected and annotated for higher accuracy.
+- `scripts/RQ_A/get_cited_titles.py` processses PDFs of submitted papers and extract the lists of cited papers.
+
+#### 2. Field of Study Analysis
+
+- `scripts/RQ_A/s2.py` sends paper titles and metadata to the Semantic Scholar API to retrieve corresponding S2 paper IDs. These IDs are then used to fetch the Field of Study classification for each paper (e.g., ML/AI, other CS fields, or non-CS).
+
+#### 3. Visualization
+
+- use `scripts//RQ_Afield_of_study.py` to visualize the distribution of recommended or cited papers.
+
+![Field Distribution of Recommended vs. Cited Papers](visualization/field_distribution_comparison.png)
 
 
 
@@ -153,3 +168,6 @@ The years extracted in last step are analyzed and visualized through the followi
 #### 2. Combine paper decision and review data
 - Scripts for merging review JSON and decision JSON are: `scripts/RQ_A/merge_review_decision_api1` (for processing ICLR) and `scripts/RQ_A/merge_review_decision_api2` 
 - Scirpts for top n-gram comparison 
+
+
+## Datasets 
