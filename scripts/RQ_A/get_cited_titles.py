@@ -6,7 +6,7 @@ import csv
 from tqdm import tqdm  
 from PyPDF2 import PdfReader
 
-# path to pdf folders 
+# path to pdf folders  
 pdf_directory = "/content/drive/MyDrive/Thesis/ICLR2013_submissions_pdfs"
 output_csv_path = "/content/drive/MyDrive/Thesis/ICLR2013_submissions_list.csv"
 
