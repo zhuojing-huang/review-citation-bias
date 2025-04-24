@@ -155,7 +155,7 @@ The years extracted in last step are analyzed and visualized through the followi
 
 - use `scripts//RQ_Afield_of_study.py` to visualize the distribution of recommended or cited papers.
 
-![Field Distribution of Recommended vs. Cited Papers](visualization/field_distribution_comparison.png)
+![ICLR Field Distribution of Recommended vs. Cited Papers](visualization/ICLR_field_distribution_comparison.png)
 
 
 
