@@ -204,9 +204,10 @@ df.to_csv('ICLR2023_llama70b_with_rec_num_binary.csv', index=False)
 | Data                                                       | Chi-square statistic | P-value  |
 |------------------------------------------------------------|----------------------|----------|
 | Whether or not Reviewers Recommending Extra Literature     | 5.9710               | 0.0145   |
-| Number of Reviewers Recommending Extra Literature          | 35.6557              | < 0.0001 |
+| Number of Reviewers Recommending Extra Literature          | 35.6557              |< 0.0001  |
 
-![Distribution of Acceptance and Paper Recommendation](visualization/rec_acc_corr.png.png)
+![Paper Decision vs. Extra Literature Recommendation](visualization/rec_acc_corr.png)
+![Paper Decision vs. Number of Reviewers Recommending Extra Literature](visualization/rec_num_acc_corr.png)
 
 
 ### RQ C1: a. How often do authors agree to incorporate the citing suggestions from the reviewers? b. How often do authors incorporate the citing suggestions from the reviewers?
