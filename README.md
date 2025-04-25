@@ -200,10 +200,11 @@ df.to_csv('ICLR2023_llama70b_with_rec_num_binary.csv', index=False)
 
 #### 3. Visualization and Results
 - There is a statistical significance between paper decision and getting extra literature recommendation
-| Data | Chi-square statistic | P-value |
-|----------|----------|----------|
-| Whether or not Reviewers Recommending Extra Literature  | 5.9710 | 0.0145     |
-| Number of Reviewers Recommending Extra Literature    | 35.6557     | < 0.0001    |
+| Data                                                       | Chi-square statistic | P-value  |
+|------------------------------------------------------------|----------------------|----------|
+| Whether or not Reviewers Recommending Extra Literature     | 5.9710               | 0.0145   |
+| Number of Reviewers Recommending Extra Literature          | 35.6557              | < 0.0001 |
+
 
 ![Distribution of Acceptance and Paper Recommendation](visualization/rec_acc_corr.png.png)
 
