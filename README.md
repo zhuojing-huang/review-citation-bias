@@ -139,8 +139,7 @@ The years extracted in last step are analyzed and visualized through the followi
 ![Ages of Cited Papers vs. Ages of Suggested Papers](visualization/suggested_and_citation_years_ages.png)
 
 
-### RQ A3: a. How often do the recommended references fall into the field of ML/AI as opposed to fall in other fields? How many recommendations are outside of CS? 
-### b. Is the distribution of fields of study different from that of papers cited in the submissions?
+### RQ A3: a. How often do the recommended references fall into the field of ML/AI as opposed to fall in other fields? How many recommendations are outside of CS? b. Is the distribution of fields of study different from that of papers cited in the submissions?
 
 #### 1. Extract Recommended and Cited Papers
 
@@ -153,7 +152,7 @@ The years extracted in last step are analyzed and visualized through the followi
 
 #### 3. Visualization
 
-- use `scripts//RQ_Afield_of_study.py` to visualize the distribution of recommended or cited papers.
+- use `scripts/RQ_A/field_of_study.py` to visualize the distribution of recommended or cited papers.
 
 ![ICLR Field Distribution of Recommended vs. Cited Papers](visualization/ICLR_field_distribution_comparison.png)
 
@@ -161,13 +160,73 @@ The years extracted in last step are analyzed and visualized through the followi
 
 
 
-### Question 4:  What are the most common keywords and phrases used in a reject case as opposed to an accept case? What are the most common reasons for acceptance and rejection?
-#### 1. Fetch paper decision JSON
-- Paper decisions in JSON format are acquired via OpenReview API. The raw data is saved under `raw_data`
+### RQ B1: What are the most common keywords and phrases used in a reject case as opposed to an accept case? What are the most common reasons for acceptance and rejection?
+#### 1. Categorize Accept and Reject Cases
+- 
 
-#### 2. Combine paper decision and review data
-- Scripts for merging review JSON and decision JSON are: `scripts/RQ_A/merge_review_decision_api1` (for processing ICLR) and `scripts/RQ_A/merge_review_decision_api2` 
-- Scirpts for top n-gram comparison 
+#### 2. Preprocessing
+- 
+
+#### 3. Key Word Analysis
+- 
 
 
-## Datasets 
+### RQ B2: In which topic areas are the papers recommended by peer review? Is there a bias toward recommending specific topics?
+#### 1. Categorize Accept and Reject Cases
+- 
+
+#### 2. Preprocessing
+- 
+
+#### 3. Key Word Analysis
+- 
+
+### RQ B3: Does the paper decision correlates with citation recommendation, i.e., does rejected papers get more citation recommendations comparing to accepted papers?
+#### 1. Categorize Accept and Reject Cases
+- Only ICLR2023 is analysed for this RQ, as it is the only one that has enough rejected data.
+- Merge all the accept cases, e.g., accept (main), accept (poster), into one category. 
+
+
+#### 2. Preprocessing
+- Run the following code on the csv which contains the number of reviewers recommending extra literature to convert them into binary categories, i.e., whether there's recommended literature to a paper. 
+
+```python
+import pandas as pd
+df = pd.read_csv('merged_ICLR2023_llama70b.csv') 
+df['number of reviewers recommending'] = df['response'].apply(lambda x: 1 if 'Yes,' in str(x) else 0)
+df.to_csv('ICLR2023_llama70b_with_rec_num_binary.csv', index=False)
+```
+- `decision_recommendation_corelate.py` analyse the corelation between whether the paper got recommended extra literature / the number of reviewers recommending extra literature, and the final decision. The script includes visualization, t-test and chi-square test. 
+
+#### 3. Visualization and Results
+- There is a statistical significance between paper decision and getting extra literature recommendation
+| Data | Chi-square statistic | P-value |
+|----------|----------|----------|
+| Whether or not Reviewers Recommending Extra Literature  | 5.9710 | 0.0145     |
+| Number of Reviewers Recommending Extra Literature    | 35.6557     | < 0.0001    |
+
+![Distribution of Acceptance and Paper Recommendation](visualization/rec_acc_corr.png.png)
+
+
+### RQ C1: a. How often do authors agree to incorporate the citing suggestions from the reviewers? b. How often do authors incorporate the citing suggestions from the reviewers?
+#### 1. Preprocessing
+- 
+
+#### 2. Preprocessing
+- 
+
+#### 3. Key Word Analysis
+- 
+
+### RQ C2:Do papers that heavily cite recent work receive better peer review outcomes/ higher review scores (i.e., final reject/accept or individual reviewer scores from 1-5 or 1-10) than those with a more balanced or diverse citation age?
+#### 1. Preprocessing
+- 
+
+#### 2. Preprocessing
+- 
+
+#### 3. Key Word Analysis
+- 
+
+
+## Datasets for Future Work
