@@ -1,0 +1,401 @@
+pure_titles,topic 1 
+Zero-Shot Robotic Manipulation with Pretrained Image-Editing Diffusion Models,robotics
+Zero-Shot Image Restoration Using Denoising Diffusion Null-Space Model,diffusion_based_models
+Zero-Reference Low-Light Enhancement via Physical Quadruple Priors,machine_vision
+Zero-1-to-3: Zero-shot One Image to 3D Object,generative_models
+You Only Need Less Attention at Each Stage in Vision Transformers,deep_learning_architectures
+YaRN: Efficient Context Window Extension of Large Language Models,natural_language_processing
+XCube: Large-Scale 3D Generative Modeling using Sparse Voxel Hierarchies,generative_models
+WOUAF: Weight Modulation for User Attribution and Fingerprinting in Text-to-Image Diffusion Models,privacy
+Word Acquisition in Neural Language Models,natural_language_processing
+WinCLIP: Zero-/Few-Shot Anomaly Classification and Segmentation,machine_vision
+Why Momentum Really Works,optimization
+Where to Mask: Structure-Guided Masking for Graph Masked Autoencoders,graph_neural_networks
+What's a good imputation to predict with missing values?,interpretability_and_explainability
+What to Hide from Your Students: Attention-Guided Masked Image Modeling,interpretability_and_explainability
+What Makes Good Data for Alignment? A Comprehensive Study of Automatic Data Selection in Instruction Tuning,fairness
+Weakly Supervised Learning of Cortical Surface Reconstruction from Segmentations,neuroscience_and_cognitive_science
+VL-ADAPTER: Parameter-Efficient Transfer Learning for Vision-and-Language Tasks,deep_learning_architectures
+Visual Genome: Connecting Language and Vision Using Crowdsourced Dense Image Annotations,human-AI_interaction
+VIP: Towards Universal Visual Reward and Representation via Value-Implicit Pre-Training,reinforcement_learning
+Vector Quantized Diffusion Model for Text-to-Image Synthesis,diffusion_based_models
+Variational Diffusion Models,diffusion_based_models
+VanillaKD: Revisit the Power of Vanilla Knowledge Distillation from Small Scale to Large Scale,deep_learning_architectures
+Vaccine: Perturbation-aware Alignment for Large Language Model,natural_language_processing
+UVCGAN v2: An Improved Cycle-Consistent GAN for Unpaired Image-to-Image Translation,generative_models
+UvA-DARE (Digital Academic Repository) Neural Relational Inference for Interacting Systems Neural Relational Inference for Interacting Systems,probabilistic_methods
+Up or Down? Adaptive Rounding for Post-Training Quantization,optimization_for_deep_networks
+Unsupervised Portrait Shadow Removal via Generative Priors,generative_models
+Unsupervised Non-Rigid Image Distortion Removal via Grid Deformation,machine_vision
+Unsupervised Learning of Debiased Representations with Pseudo-Attributes,fairness
+Unsupervised Concept Discovery Mitigates Spurious Correlations,interpretability_and_explainability
+Unpaired Image-to-Image Translation via Neural Schrödinger Bridge,generative_models
+Universal Neurons in GPT2 Language Models,natural_language_processing
+Universal Hopfield Networks: A General Framework for Single-Shot Associative Memory Models,learning_theory
+Universal Guidance for Diffusion Models,diffusion_based_models
+Unified Training of Universal Time Series Forecasting Transformers,deep_learning_architectures
+Uni3D: Exploring Unified 3D Representation at Scale,machine_vision
+Understanding Black-box Predictions via Influence Functions,interpretability_and_explainability
+Understanding Bandits with Graph Feedback,bandits
+Uncertainty and the Social Planner’s Problem: Why Sample Complexity Matters,causal_inference
+Unbalancedness in Neural Monge Maps Improves Unpaired Domain Translation,generative_models
+Tree-Ring Watermarks: Fingerprints for Diffusion Images that are Invisible and Robust,privacy
+Transolver: A Fast Transformer Solver for PDEs on General Geometries,machine_learning_for_physical_sciences
+Transformers are SSMs: Generalized Models and Efficient Algorithms Through Structured State Space Duality,deep_learning_architectures
+Transformer for Partial Differential Equations' Operator Learning,machine_learning_for_physical_sciences
+Transformer Feed-Forward Layers Are Key-Value Memories,deep_learning_architectures
+Training Region-Based Object Detectors with Online Hard Example Mining,machine_vision
+TrailBlazer: Trajectory Control for Diffusion-Based Video Generation,diffusion_based_models
+Towards Universal Visual Reward and Representation via Value-Implicit Pre-Training,reinforcement_learning
+Towards Scalable 3D Anomaly Detection and Localization: A Benchmark via 3D Anomaly Synthesis and A Self-Supervised Learning Network,machine_vision
+Towards Representation Alignment and Uniformity in Collaborative Filtering,machine_learning_for_social_sciences
+Towards optimal doubly robust estimation of heterogeneous causal effects,causal_inference
+Towards Last-layer Retraining for Group Robustness with Fewer Annotations,fairness
+Towards Global Optimality for Practical Average Reward Reinforcement Learning without Mixing Time Oracles,reinforcement_learning
+Towards Efficient Data Valuation Based on the Shapley Value,interpretability_and_explainability
+Towards Diverse and Coherent Augmentation for Time-Series Forecasting,machine_learning_for_other_sciences_and_fields
+Towards Calibrated Robust Fine-Tuning of Vision-Language Models,machine_vision
+Towards a Perceptual Evaluation Framework for Lighting Estimation,evaluation
+Toward Generalist Anomaly Detection via In-Context Residual Learning with Few-Shot Sample Prompts,deep_learning_architectures
+Toward Generalist Anomaly Detection via In-Context Residual Learning with Few-Shot Sample Prompts,deep_learning_architectures
+ToRA: A Tool-Integrated Reasoning Agent for Mathematical Problem Solving,natural_language_processing
+To Pool or Not To Pool: Analyzing the Regularizing Effects of Group-Fair Training on Shared Models,fairness
+Time-LLM: Time Series Forecasting by Reprogramming Large Language Models,natural_language_processing
+Time Series Data Augmentation for Deep Learning: A Survey,machine_learning_for_other_sciences_and_fields
+Tighter Information-Theoretic Generalization Bounds from Supersamples,learning_theory
+TIES-Merging: Resolving Interference When Merging Models,optimization_for_deep_networks
+The WMDP Benchmark: Measuring and Reducing Malicious Use With Unlearning,safety_in_machine_learning
+The Stable Signature: Rooting Watermarks in Latent Diffusion Models,diffusion_based_models
+The Role of ImageNet Classes in Fréchet Inception Distance,evaluation
+The Predictive Forward-Forward Algorithm,deep_learning_architectures
+The power of feedback.,online_learning
+The Pitfalls of Simplicity Bias in Neural Networks,interpretability_and_explainability
+The Open Images Dataset V4,infrastructure
+The Implicit Bias of Gradient Descent on Separable Data,optimization_for_deep_networks
+The Implicit Bias for Adaptive Optimization Algorithms on Homogeneous Neural Networks,optimization_for_deep_networks
+The Forward-Forward Algorithm: Some Preliminary Investigations,deep_learning_architectures
+The Devil in Linear Transformer,natural_language_processing
+Text2Video-Zero: Text-to-Image Diffusion Models are Zero-Shot Video Generators,diffusion_based_models
+Temporal Spiking Neural Networks with Synaptic Delay for Graph Reasoning,graph_neural_networks
+Temporal Difference Learning for Model Predictive Control,reinforcement_learning
+Task-Adaptive Tokenization: Enhancing Long-Form Text Generation Efficacy in Mental Health and Beyond,machine_learning_for_healthcare
+Task Decomposition Through Competition in a Modular Connectionist Architecture: The What and Where Vision Tasks,machine_vision
+Task Arithmetic in the Tangent Space: Improved Editing of Pre-Trained Models,deep_learning_architectures
+TaBERT: Pretraining for Joint Understanding of Textual and Tabular Data,natural_language_processing
+Switching Autoregressive Low-rank Tensor Models,probabilistic_methods
+Switch Diffusion Transformer: Synergizing Denoising Tasks with Sparse Mixture-of-Experts,diffusion_based_models
+Swin2SR: SwinV2 Transformer for Compressed Image Super-Resolution and Restoration,machine_vision
+Swin Transformer V2: Scaling Up Capacity and Resolution,deep_learning_architectures
+Surrogate Gap Minimization Improves Sharpness-Aware Training,optimization_for_deep_networks
+SurfFlow: A Flow-Based Approach for Rapid and Accurate Cortical Surface Reconstruction from Infant Brain MRI,machine_learning_for_healthcare
+SuperBench: A Super-Resolution Benchmark Dataset for Scientific Machine Learning,machine_learning_for_other_sciences_and_fields
+StyLIP: Multi-Scale Style-Conditioned Prompt Learning for CLIP-based Domain Generalization,machine_vision
+Studying Large Language Model Generalization with Influence Functions,interpretability_and_explainability
+Structural Entropy Guided Graph Hierarchical Pooling,graph_neural_networks
+Strongly Adaptive Online Learning,online_learning
+Striking a Balance: An Optimal Mechanism Design for Heterogenous Differentially Private Data Acquisition for Logistic Regression,privacy
+Statistical finite elements for misspecified models,machine_learning_for_physical_sciences
+STanHop: Sparse Tandem Hopfield Model for Memory-Enhanced Time Series Prediction,machine_learning_for_other_sciences_and_fields
+StableVideo: Text-driven Consistency-aware Diffusion Video Editing,diffusion_based_models
+SplattingAvatar: Realistic Real-Time Human Avatars With Mesh-Embedded Gaussian Splatting,machine_vision
+Spectral Tensor-Train Decomposition,optimization
+Spectral Entry-wise Matrix Estimation for Low-Rank Reinforcement Learning,reinforcement_learning
+Spatio-Temporal Hypergraph Learning for Next POI Recommendation,graph_neural_networks
+Spacetime Gaussian Feature Splatting for Real-Time Dynamic View Synthesis,machine_vision
+SortedNet: A Scalable and Generalized Framework for Training Modular Deep Neural Networks,deep_learning_architectures
+Some Might Say All You Need Is Sum,learning_theory
+Solving math word problems with process- and outcome-based feedback,natural_language_processing
+Solving Linear Inverse Problems Provably via Posterior Sampling with Latent Diffusion Models,diffusion_based_models
+Solving inverse problems using data-driven models,machine_learning_for_physical_sciences
+SMPL: A Skinned Multi-Person Linear Model,machine_vision
+SmoothQuant: Accurate and Efficient Post-Training Quantization for Large Language Models,natural_language_processing
+SmoothQuant: Accurate and Efficient Post-Training Quantization for Large Language Models,natural_language_processing
+Sliced Wasserstein Discrepancy for Unsupervised Domain Adaptation,fairness
+Skip-Attention: Improving Vision Transformers by Paying Less Attention,machine_vision
+Skip-Attention: Improving Vision Transformers by Paying Less Attention,machine_vision
+Skills-in-Context Prompting: Unlocking Compositionality in Large Language Models,natural_language_processing
+Skill-Mix: a Flexible and Expandable Family of Evaluations for AI models,evaluation
+Sketch-pix2seq: a Model to Generate Sketches of Multiple Categories,generative_models
+SketchAA: Abstract Representation for Abstract Sketches,generative_models
+SinSR: Diffusion-Based Image Super-Resolution in a Single Step,diffusion_based_models
+Sinkhorn Distances: Lightspeed Computation of Optimal Transport,optimization
+Single-Path Bit Sharing for Automatic Loss-Aware Model Compression,optimization_for_deep_networks
+Single-pass Detection of Jailbreaking Input in Large Language Models,safety_in_machine_learning
+SimPSI: A Simple Strategy to Preserve Spectral Information in Time Series Data Augmentation,machine_learning_for_other_sciences_and_fields
+SimPO: Simple Preference Optimization with a Reference-Free Reward,reinforcement_learning
+simple diffusion: End-to-end diffusion for high resolution images,diffusion_based_models
+Simple and Fast Group Robustness by Automatic Feature Reweighting,fairness
+SimGNN: A Neural Network Approach to Fast Graph Similarity Computation,graph_neural_networks
+SimAug: Learning Robust Representations from Simulation for Trajectory Prediction,machine_vision
+Sifer: Overcoming simplicity bias in deep networks using a feature sieve,deep_learning_architectures
+Sifer: Overcoming simplicity bias in deep networks using a feature sieve,deep_learning_architectures
+Shortcut learning in deep neural networks,deep_learning_architectures
+Sheared LLaMA: Accelerating Language Model Pre-training via Structured Pruning,natural_language_processing
+Sheared LLaMA: Accelerating Language Model Pre-training via Structured Pruning,natural_language_processing
+Sharpness-Aware Minimization Enhances Feature Quality via Balanced Learning,optimization_for_deep_networks
+Sharpness-Aware Minimization Enhances Feature Quality via Balanced Learning,optimization_for_deep_networks
+Shape Correspondence by Aligning Scale-invariant LBO Eigenfunctions,machine_learning_for_physical_sciences
+Shadow Alignment: The Ease of Subverting Safely-Aligned Language Models,safety_in_machine_learning
+"SfSNet: Learning Shape, Reflectance and Illuminance of Faces 'in the Wild'",machine_vision
+Separable Self-attention for Mobile Vision Transformers,machine_vision
+Semantic-SAM: Segment and Recognize Anything at Any Granularity,machine_vision
+SELMA: Learning and Merging Skill-Specific Text-to-Image Experts with Auto-Generated Data,generative_models
+Self-Rewarding Language Models,natural_language_processing
+Self-Destructing Models: Increasing the Costs of Harmful Dual Uses of Foundation Models,safety_in_machine_learning
+Self-Alignment for Factuality: Mitigating Hallucinations in LLMs via Self-Evaluation,natural_language_processing
+Selective Hourglass Mapping for Universal Image Restoration Based on Diffusion Model,diffusion_based_models
+Selection Via Proxy: Efficient Data Selection For Deep Learning,active_learning
+Selection by Prediction with Conformal p-values,probabilistic_methods
+Segment Anything in Medical Images,machine_learning_for_healthcare
+Segment Anything,machine_vision
+Segment Anything,machine_vision
+"SDFusion: Multimodal 3D Shape Completion, Reconstruction, and Generation",generative_models
+"SDFusion: Multimodal 3D Shape Completion, Reconstruction, and Generation",generative_models
+Score-Based Generative Modeling through Stochastic Differential Equations,generative_models
+SC-GS: Sparse-Controlled Gaussian Splatting for Editable Dynamic Scenes,machine_vision
+Scene Parsing through ADE20K Dataset,machine_vision
+Scan2CAD: Learning CAD Model Alignment in RGB-D Scans,machine_vision
+Scaling up GANs for Text-to-Image Synthesis,generative_models
+Scaling Laws for Reward Model Overoptimization,reinforcement_learning
+Scaling for Training Time and Post-hoc Out-of-distribution Detection Enhancement,evaluation
+Scalable Optimization in the Modular Norm,optimization
+Scaffold-GS: Structured 3D Gaussians for View-Adaptive Rendering,machine_vision
+"Sampling-based inference for large linear models, with application to linearised Laplace",probabilistic_methods
+Sample Efficient Reinforcement Learning via Low-Rank Matrix Estimation,reinforcement_learning
+"Same Pre-training Loss, Better Downstream: Implicit Bias Matters for Language Models",natural_language_processing
+Samba: Simple Hybrid State Space Models for Efficient Unlimited Context Language Modeling,natural_language_processing
+Salted Inference: Enhancing Privacy while Maintaining Efficiency of Split Inference in Mobile Computing,privacy
+SALAD-Bench: A Hierarchical and Comprehensive Safety Benchmark for Large Language Models,safety_in_machine_learning
+SAI3D: Segment any Instance in 3D Scenes,machine_vision
+SafeDecoding: Defending against Jailbreak Attacks via Safety-Aware Decoding,safety_in_machine_learning
+Safe Imitation Learning via Fast Bayesian Reward Inference from Preferences,reinforcement_learning
+Rotting infinitely many-armed bandits,bandits
+RobustSAM: Segment Anything Robustly on Degraded Images,machine_vision
+Robustness of AI-Image Detectors: Fundamental Limits and Practical Attacks,safety_in_machine_learning
+Robust Model-based Face Reconstruction through Weakly-Supervised Outlier Segmentation,machine_vision
+Robust Cross-Drone Multi-Target Association Using 3D Spatial Consistency,machine_vision
+Robust and Agnostic Learning of Conditional Distributional Treatment Effects,causal_inference
+Robotic Offline RL from Internet Videos via Value-Function Pre-Training,robotics
+Robot Learning with Sensorimotor Pre-training,robotics
+RL-ViGen: A Reinforcement Learning Benchmark for Visual Generalization,reinforcement_learning
+Revisiting Scalarization in Multi-Task Learning: A Theoretical Perspective,learning_theory
+Revisiting Sampling for Combinatorial Optimization,optimization
+Revisiting Fair-PAC Learning and the Axioms of Cardinal Welfare,fairness
+Retinexformer: One-stage Retinex-based Transformer for Low-light Image Enhancement,machine_vision
+Rethinking Information-theoretic Generalization: Loss Entropy Induced PAC Bounds,learning_theory
+Rethinking Importance Weighting for Deep Learning under Distribution Shift,evaluation
+Rethinking Disparity: A Depth Range Free Multi-View Stereo Based on Disparity,machine_vision
+ResShift: Efficient Diffusion Model for Image Super-resolution by Residual Shifting,diffusion_based_models
+Residual Pathway Priors for Soft Equivariance Constraints,deep_learning_architectures
+Replicability in Reinforcement Learning,reinforcement_learning
+Replicability in High Dimensional Statistics,learning_theory
+RePAST: Relative Pose Attention Scene Representation Transformer,machine_vision
+Removing RLHF Protections in GPT-4 via Fine-Tuning,safety_in_machine_learning
+Reliable Weighted Optimal Transport for Unsupervised Domain Adaptation,optimization
+Reinforcement Learning with State Observation Costs in Action-Contingent Noiselessly Observable Markov Decision Processes,reinforcement_learning
+Recurrent switching linear dynamical systems,probabilistic_methods
+Reconstruction of Multiple Neuromagnetic Sources Using Augmented Evolution Strategies— A Comparative Study,neuroscience_and_cognitive_science
+Reconstructed Convolution Module Based Look-Up Tables for Efficient Image Super-Resolution,machine_vision
+Reconciling emergences: An information-theoretic approach to identify causal emergence in multivariate data,causal_inference
+Reasoning with Language Model is Planning with World Model,natural_language_processing
+Real-time Photorealistic Dynamic Scene Representation and Rendering with 4D Gaussian Splatting,machine_vision
+Randomized Smoothing for Stochastic Optimization,optimization
+Random Sharpness-Aware Minimization,optimization_for_deep_networks
+Random Features for Large-Scale Kernel Machines,learning_theory
+RAIN: Your Language Models Can Align Themselves without Finetuning,natural_language_processing
+R3M: A Universal Visual Representation for Robot Manipulation,robotics
+R3M: A Universal Visual Representation for Robot Manipulation,robotics
+Query-Aware Quantization for Maximum Inner Product Search,optimization
+QuaRot: Outlier-Free 4-Bit Inference in Rotated LLMs,natural_language_processing
+QLLM: Accurate and Efficient Low-Bitwidth Quantization for Large Language Models,natural_language_processing
+Q-DM: An Efficient Low-bit Quantized Diffusion Model,diffusion_based_models
+Q-Diffusion: Quantizing Diffusion Models,diffusion_based_models
+PSRR-MaxpoolNMS++: Fast Non-Maximum Suppression With Discretization and Pooling,machine_vision
+Pseudoinverse-Guided Diffusion Models for Inverse Problems,diffusion_based_models
+Pruner-Zero: Evolving Symbolic Pruning Metric from scratch for Large Language Models,deep_learning_architectures
+Provable Acceleration of Heavy Ball beyond Quadratics for a Class of Polyak-Łojasiewicz Functions when the Non-Convexity is Averaged-Out,optimization
+Prompt-aligned Gradient for Prompt Tuning,natural_language_processing
+Prompt-aligned Gradient for Prompt Tuning,natural_language_processing
+PromptAD: Learning Prompts with only Normal Samples for Few-Shot Anomaly Detection,natural_language_processing
+Projection Regret: Reducing Background Bias for Novelty Detection via Diffusion Models,diffusion_based_models
+Progressive Weight Pruning of Deep Neural Networks using ADMM,optimization_for_deep_networks
+Probing the 3D Awareness of Visual Foundation Models,machine_vision
+Probabilistically Robust Learning: Balancing Average- and Worst-case Performance,learning_theory
+Probabilistic Numerical Method of Lines for Time-Dependent Partial Differential Equations,probabilistic_methods
+Privacy for Free: How does Dataset Condensation Help Privacy?,privacy
+Principled Reinforcement Learning with Human Feedback from Pairwise or K-wise Comparisons,reinforcement_learning
+Pretraining Language Models with Human Preferences,natural_language_processing
+Prefix-Tuning: Optimizing Continuous Prompts for Generation,natural_language_processing
+Preference Ranking Optimization for Human Alignment,human-AI_interaction
+"Preference Fine-Tuning of LLMs Should Leverage Suboptimal, On-Policy Data",natural_language_processing
+Predictive Control Barrier Functions: Enhanced Safety Mechanisms for Learning-Based Control,safety_in_machine_learning
+Predictive Control Barrier Functions for Online Safety Critical Control,safety_in_machine_learning
+Predicting the drape of woven cloth using interacting particles,machine_learning_for_physical_sciences
+Predicting Emergent Abilities with Infinite Resolution Evaluation,evaluation
+Practical Region-level Attack against Segment Anything Models,safety_in_machine_learning
+Power-aware Deep Learning Model Serving with μ-Serve,infrastructure
+Positive-Unlabeled Learning With Label Distribution Alignment,bandits
+Positive-Unlabeled Learning using Random Forests via Recursive Greedy Risk Minimization,bandits
+Position-aware Graph Neural Networks,graph_neural_networks
+Pose-NDF: Modeling Human Pose Manifolds with Neural Distance Fields,machine_vision
+PoseBERT: A Generic Transformer Module for Temporal 3D Human Modeling,machine_vision
+Portrait shadow manipulation,machine_vision
+Population Synthesis as Scenario Generation for Simulation-based Planning under Uncertainty,other
+Policy Optimization for Constrained MDPs with Provable Fast Global Convergence,reinforcement_learning
+PIGEON: Predicting Image Geolocations,machine_vision
+PI3D: Efficient Text-to-3D Generation with Pseudo-Image Diffusion,generative_models
+Pessimistic Nonlinear Least-Squares Value Iteration for Offline Reinforcement Learning,reinforcement_learning
+Performance-Efficiency Trade-off of Low-Precision Numerical Formats in Deep Neural Networks,deep_learning_architectures
+PECAN: Leveraging Policy Ensemble for Context-Aware Zero-Shot Human-AI Coordination,reinforcement_learning
+Pathfinder Discovery Networks for Neural Message Passing,graph_neural_networks
+Path Integral Sampler: a stochastic control approach for sampling,bandits
+Partition Speeds Up Learning Implicit Neural Representations Based on Exponential-Increase Hypothesis,machine_vision
+Parting with Illusions about Deep Active Learning,active_learning
+Particle Denoising Diffusion Sampler,diffusion_based_models
+Parametric Resynthesis With Neural Vocoders,speech_and_audio
+Parameter-Efficient Fine-Tuning for Medical Image Analysis: The Missed Opportunity,machine_learning_for_healthcare
+PaGoDA: Progressive Growing of a One-Step Generator from a Low-Resolution Diffusion Teacher,generative_models
+PaCa-ViT: Learning Patch-to-Cluster Attention in Vision Transformers,deep_learning_architectures
+Out-of-distribution Detection with Deep Nearest Neighbors,machine_vision
+Out-of-Distribution Detection with An Adaptive Likelihood Ratio on Informative Hierarchical VAE,probabilistic_methods
+Out-of-distribution Detection Learning with Unreliable Out-of-distribution Sources,probabilistic_methods
+Outlier Suppression+: Accurate quantization of large language models by equivalent and optimal shifting and scaling,optimization
+Ordinal Depth Supervision for 3D Human Pose Estimation,machine_vision
+Oracle-Efficient Pessimism: Offline Policy Optimization in Contextual Bandits,bandits
+Optimal Stochastic Non-smooth Non-convex Optimization through Online-to-Non-convex Conversion,optimization
+Optimal regimes for algorithm-assisted human decision-making,algorithmic_game_theory
+Optimal Online Generalized Linear Regression with Stochastic Noise and Its Application to Heteroscedastic Bandits,bandits
+Optimal Differentially Private Model Training with Public Data,privacy
+Optimal and Differentially Private Data Acquisition: Central and Local Mechanisms,privacy
+Open-Vocabulary SAM: Segment and Recognize Twenty-thousand Classes Interactively,machine_vision
+Open-Vocabulary Point-Cloud Object Detection without 3D Annotation,machine_vision
+Online Algorithms with Costly Predictions,online_learning
+Online (Multinomial) Logistic Bandit: Improved Regret and Constant Computation Cost,bandits
+One-2-3-45++: Fast Single Image to 3D Objects with Consistent Multi-View Generation and 3D Diffusion,generative_models
+One Fits All: Power General Time Series Analysis by Pretrained LM,natural_language_processing
+On the power of graph neural networks and the role of the activation function,graph_neural_networks
+On the Minimax Regret for Online Learning with Feedback Graphs,online_learning
+On the consistency of supervised learning with missing values,causal_inference
+On the Connection Between MPNN and Graph Transformer,graph_neural_networks
+On stochastic gradient and subgradient methods with adaptive steplength sequences,optimization
+On Sparse Modern Hopfield Model,neuroscience_and_cognitive_science
+On Pre-Training for Visuo-Motor Control: Revisiting a Learning-from-Scratch Baseline,reinforcement_learning
+On Interpolating Experts and Multi-Armed Bandits,bandits
+On Diffusion Modeling for Anomaly Detection,diffusion_based_models
+On Computational Limits of Modern Hopfield Models: A Fine-Grained Complexity Analysis,neuroscience_and_cognitive_science
+On Calibration of Modern Neural Networks,interpretability_and_explainability
+OmniQuant: Omnidirectionally Calibrated Quantization for Large Language Models,optimization
+Omni Aggregation Networks for Lightweight Image Super-Resolution,machine_vision
+Octo: An Open-Source Generalist Robot Policy,robotics
+Occlusion-Aware 3D Morphable Models and an Illumination Prior for Face Image Analysis,machine_vision
+Objects With Lighting: A Real-World Dataset for Evaluating Reconstruction and Rendering for Object Relighting,machine_vision
+ObjectNet: A large-scale bias-controlled dataset for pushing the limits of object recognition models,machine_vision
+Object-centric architectures enable efficient causal representation learning,causal_inference
+Object Scene Representation Transformer,machine_vision
+NTKCPL: Active Learning on Top of Self-Supervised Model by Estimating True Coverage,active_learning
+not-MIWAE: Deep Generative Modelling with Missing not at Random Data,generative_models
+Not All Tokens Are Equal: Human-centric Visual Analysis via Token Clustering Transformer,natural_language_processing
+Not All Images are Worth 16x16 Words: Dynamic Transformers for Efficient Image Recognition,deep_learning_architectures
+Nonparametric Uncertainty Quantification for Single Deterministic Neural Network,probabilistic_methods
+Noise or Signal: The Role of Image Backgrounds in Object Recognition,machine_vision
+No-go Theorem for Acceleration in the Hyperbolic Plane,optimization
+Neural Light Transport for Relighting and View Synthesis,generative_models
+Neural Language of Thought Models,natural_language_processing
+Neural Implicit Dictionary Learning via Mixture-of-Expert Training,deep_learning_architectures
+Neural gradients are near-lognormal: improved quantized and sparse training,deep_learning_architectures
+Neural collapse with unconstrained features,deep_learning_architectures
+Neural Acoustic Context Field: Rendering Realistic Room Impulse Response With Neural Fields,speech_and_audio
+Network Quantization with Element-wise Gradient Scaling,optimization
+Negative Momentum for Improved Game Dynamics,algorithmic_game_theory
+Negative Label Guided OOD Detection with Pretrained Vision-Language Models,machine_vision
+"Negative curvature obstructs acceleration for geodesically convex optimization, even with exact first-order oracles",optimization
+Nearly Minimax Optimal Reinforcement Learning for Linear Mixture Markov Decision Processes,reinforcement_learning
+Naive automated machine learning,machine_learning_for_other_sciences_and_fields
+MVSFormer++: Revealing the Devil in Transformer's Details for Multi-View Stereo,machine_vision
+MVSFormer: Multi-View Stereo by Learning Robust Image Features and Temperature-based Depth,machine_vision
+Multiview Stereo with Cascaded Epipolar RAFT,machine_vision
+Multi-View Masked World Models for Visual Robotic Manipulation,robotics
+Multitask Multimodal Prompted Training for Interactive Embodied Task Completion,human-AI_interaction
+Multi-Scale Dense Networks for Resource Efficient Image Classification,machine_vision
+Multiple paired forward and inverse models for motor control,robotics
+Multi-Patch Prediction: Adapting LLMs for Time Series Representation Learning,natural_language_processing
+Multi-label Classification under Uncertainty: A Tree-based Conformal Prediction Approach,bandits
+Multi-Concept Customization of Text-to-Image Diffusion,generative_models
+MQuAKE: Assessing Knowledge Editing in Language Models via Multi-Hop Questions,natural_language_processing
+Motion-Zero: Zero-Shot Moving Object Control Framework for Diffusion-Based Video Generation,generative_models
+MonoOcc: Digging into Monocular Semantic Occupancy Prediction,machine_vision
+MOMENT: A Family of Open Time-series Foundation Models,other
+MoEC: Mixture of Experts Implicit Neural Compression,generative_models
+Modern graph neural networks do worse than classical greedy algorithms in solving combinatorial optimization problems like maximum independent set,graph_neural_networks
+Modern Bayesian Experimental Design,bandits
+Modeling communication and switching nonlinear dynamics in multi-region neural activity,neuroscience_and_cognitive_science
+Mitigating Social Biases in Language Models through Unlearning,fairness
+Mip-Splatting: Alias-Free 3D Gaussian Splatting,machine_vision
+MIMO Radar for Advanced Driver-Assistance Systems and Autonomous Driving: Advantages and Challenges,robotics
+MIDA: Multiple Imputation Using Denoising Autoencoders,other
+Meta-Learning to Compositionally Generalize,learning_theory
+Meta Graph Learning for Long-tail Recommendation,machine_learning_for_social_sciences
+Memory-based Adapters for Online 3D Scene Perception,robotics
+Median Optimal Treatment Regimes,causal_inference
+Mechanistically analyzing the effects of fine-tuning on procedurally defined tasks,interpretability_and_explainability
+Measuring the Intrinsic Dimension of Objective Landscapes,optimization
+MCMC-driven learning,probabilistic_methods
+Maximum Entropy Population Based Training for Zero-Shot Human-AI Coordination,reinforcement_learning
+Maximum Entropy Heterogeneous-Agent Reinforcement Learning,reinforcement_learning
+Maximum Common Subgraph Guided Graph Retrieval: Late and Early Interaction Networks,graph_neural_networks
+Matching Anything by Segmenting Anything,machine_vision
+Mastering Zero-Shot Interactions in Cooperative and Competitive Simultaneous Games,algorithmic_game_theory
+Masked Motion Encoding for Self-Supervised Video Representation Learning,machine_vision
+Masked Autoencoders Are Scalable Vision Learners,deep_learning_architectures
+MapTracker: Tracking with Strided Memory Fusion for Consistent Vector HD Mapping,robotics
+Mapping Sub-Second Structure in Mouse Behavior,neuroscience_and_cognitive_science
+Making Harmful Behaviors Unlearnable for Large Language Models,fairness
+Make-A-Shape: a Ten-Million-scale 3D Shape Model,generative_models
+M3DM-NR: RGB-3D Noisy-Resistant Industrial Anomaly Detection via Multimodal Denoising,other
+LVM-Med: Learning Large-Scale Self-Supervised Vision Models for Medical Imaging via Second-order Graph Matching,machine_learning_for_healthcare
+LRANet: Towards Accurate and Efficient Scene Text Detection with Low-Rank Approximation Network,machine_vision
+Low-Rank Tensor Function Representation for Multi-Dimensional Data Recovery,probabilistic_methods
+Low-Light Image Enhancement with Wavelet-Based Diffusion Models,image_processing
+Low Budget Active Learning via Wasserstein Distance: An Integer Programming Approach,active_learning
+LoRAShear: Efficient Large Language Model Structured Pruning and Knowledge Recovery,optimization_for_deep_networks
+Look-Up Table Compression for Efficient Image Restoration,machine_vision
+Look-Up Table Compression for Efficient Image Restoration,machine_vision
+Look Before You Leap: Unveiling the Power of GPT-4V in Robotic Vision-Language Planning,robotics
+Locally Attentional SDF Diffusion for Controllable 3D Shape Generation,generative_models
+Local Group Invariant Representations via Orbit Embeddings,machine_learning_for_physical_sciences
+LLM Maybe LongLM: Self-Extend LLM Context Window Without Tuning,natural_language_processing
+LLaMA: Open and Efficient Foundation Language Models,deep_learning_architectures
+Llama Guard: LLM-based Input-Output Safeguard for Human-AI Conversations,human-AI_interaction
+LLaGA: Large Language and Graph Assistant,natural_language_processing
+LIV: Language-Image Representations and Rewards for Robotic Control,robotics
+Linear-Time Probabilistic Solution of Boundary Value Problems,probabilistic_methods
+LIMA: Less Is More for Alignment,deep_learning_architectures
+Light diffusion in multi-layered translucent materials,machine_learning_for_physical_sciences
+Leximin and utilitarian rules: A joint characterization,fairness
+LeViT: a Vision Transformer in ConvNet’s Clothing for Faster Inference,deep_learning_architectures
+Leveraging Diffusion-Based Image Variations for Robust Training on Poisoned Data,generative_models
+Let's Verify Step by Step,machine_learning_for_other_sciences_and_fields
+Less is More: Pay Less Attention in Vision Transformers,deep_learning_architectures
+Least-to-Most Prompting Enables Complex Reasoning in Large Language Models,natural_language_processing
+Learning-Rate-Free Learning by D-Adaptation,optimization
+Learning-augmented Online Algorithm for Two-level Ski-rental Problem,online_learning
+Learning Visual Predictive Models of Physics for Playing Billiards,machine_learning_for_physical_sciences
+Learning Universal Policies via Text-Guided Video Generation,reinforcement_learning
+Learning to Remove Refractive Distortions from Underwater Images,machine_vision
+Learning to Poke by Poking: Experiential Learning of Intuitive Physics,reinforcement_learning
+Learning to Learn with Generative Models of Neural Network Checkpoints,machine_learning_for_physical_sciences
+Learning to Compare: Relation Network for Few-Shot Learning,few_shot_learning
+Learning to Act from Actionless Videos through Dense Correspondences,reinforcement_learning
+Learning Regions of Interest for Bayesian Optimization with Adaptive Level-Set Estimation,optimization
+Learning Physics-Guided Face Relighting Under Directional Light,machine_learning_for_physical_sciences
+Learning nonparametric latent causal graphs with unknown interventions,causal_inference
+Learning Neural Constitutive Laws From Motion Observations for Generalizable PDE Dynamics,machine_learning_for_physical_sciences
+Learning Multimodal Rewards from Rankings,reinforcement_learning
+Learning Math Reasoning from Self-Sampled Correct and Partially-Correct Solutions,learning_theory
+Learning Light-Weight Translation Models from Deep Transformer,natural_language_processing
+Learning Layer-wise Equivariances Automatically using Gradients,deep_learning_architectures
+Learning from Failure: De-biasing Classifier from Biased Classifier,fairness
+Learning from Failure: De-biasing Classifier from Biased Classifier,fairness
+Learning De-biased Representations with Biased Representations,fairness
+LEADS: Learning Dynamical Systems that Generalize Across Environments,learning_theory
+Latent State Models of Training Dynamics,learning_theory
