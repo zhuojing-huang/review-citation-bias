@@ -119,7 +119,7 @@ ax.text(len(x) - 0.5, max_mean + 0.05, f"Highest Mean: {max_mean:.2f}", va='bott
 
 ax.set_xticks(x)
 ax.set_xticklabels(mean_df["year"], rotation=0)
-ax.set_title("Overall Reviewer Score by Citing Year (Mean Only)")
+ax.set_title("Overall Reviewer Score by Citing Year For EMNLP (Total)")
 ax.set_ylabel("Average Score")
 ax.set_xlabel("Rounded Average Year")
 ax.set_ylim(1, 4)
