@@ -1,13 +1,14 @@
 # Quantifying Biases in Peer Review: Analyzing Reviewer Suggestions in Artificial Intelligence Publications
 
-This project provides a framework for analyzing biases induced by citation suggestions from peer review at major AI conferences. It includes tools for retrieving, converting, annotating, and shuffling review data, as well as sending prompts together with review data to open-source large language models via API to evaluate their performance in suggesting additional citations based on the reviews. The project also analyses different aspects of biases in peer review suggestions. 
+This project provides a framework for analyzing biases induced by citation suggestions from peer review at major AI conferences. It includes tools for retrieving, converting, annotating, and shuffling review data, as well as sending prompts together with review data to open-source LLMs via API to evaluate their performance in suggesting additional citations based on the reviews. The project also analyses different aspects of biases in peer review suggestions. 
 
 This README serves as a simple guideline for the key experiments and visualizaiton of the main results. 
 
 **Prerequisites**
 - Python 3.x
-- LM Studio for interacting with language models
+- LM Studio for using different LLMs
 - OpenReview API keys for data retrieval
+- Semantic Scholar API key (optional; for better usage)
 
 
 ## Data Retrieval
@@ -134,18 +135,14 @@ Python scripts are provided to extract all the years from all the submission PDF
 #### 3. Analyse and Visualize
 The years extracted in last step are analyzed and visualized through the following scripts:
 - `scripts/RQ_A/violin_plot.py` visualize the distribution of all the citation years across the venues.
-![Distribution of Citation Years Across the Venues](visualization/violin_plot_citation_years.png)
-- `scripts/RQ_A/violin_plot_combined.py` visualize the distribution of all the citation years and suggested years across the venues.
 ![Distribution of Citation and Suggested Years Across the Venues](visualization/violin_plot_citation_and_suggested_years_2.png)
-- `scripts/RQ_A/citation_age_combined.py` calculates average ages of paper being cited and suggested in different venues and visualize the averages and medians.
-![Ages of Cited Papers vs. Ages of Suggested Papers](visualization/suggested_and_citation_years_ages.png)
 
 
 ### RQ A3: a. How often do the recommended references fall into the field of ML/AI as opposed to fall in other fields? How many recommendations are outside of CS? b. Is the distribution of fields of study different from that of papers cited in the submissions?
 
 #### 1. Extract Recommended and Cited Papers
 
-- `scripts/RQ_A/get_recommended_titles.py` utilizes an LLM-aided method to extract recommended paper titles from review responses. Additionally, LLM output is manually corrected and annotated for higher accuracy.
+- `scripts/RQ_A/get_recommended_titles.py` utilizes an LLM-aided method to extract recommended paper titles from review responses. Additionally, LLM output is manually corrected and annotated for higher accuracy. Annotated datasets can be found under `processed_data/annotated_data_for_suggested_papers`
 - `scripts/RQ_A/get_cited_titles.py` processses PDFs of submitted papers and extract the lists of cited papers.
 
 #### 2. Field of Study Analysis
@@ -156,38 +153,22 @@ The years extracted in last step are analyzed and visualized through the followi
 
 - use `scripts/RQ_A/field_of_study.py` to visualize the distribution of recommended or cited papers.
 
-![ICLR Field Distribution of Recommended vs. Cited Papers](visualization/ICLR_field_distribution_comparison.png)
 
+### RQ B1: In which topic areas are the papers recommended by peer review? Is there a bias toward recommending specific topics?
+#### 1. Preprocessing and Annotation
+- Apart from submitted papers of NeurIPS 2024 and ICLR 2023, which contains paper topics by default, other submitted/recommended papers need annotation
+- Annotated dataset can be found udner `processed_data/annotated_data_for_topics`
 
+#### 2. Analysis of Topic Composition and Shift
+- Use `scripts/RQ_B/topic_freq_emnlp.py` and `scripts/RQ_B/topic_freq_iclr_neurips.py` to get Top 15 topics of both recommended and cited topics in each venue. 
+- Use `scripts/RQ_B/topic_shift_iclr.py` and `scripts/RQ_B/topic_shift_neurips.py` to visualize topic shifts in ICLR 2023 and NeurIPS 2024.
 
+![Incoming fields to NLP in NeurIPS 2024. ](visualization/NeurIPS_topic_nlp.png)
 
-
-### RQ B1: What are the most common keywords and phrases used in a reject case as opposed to an accept case? What are the most common reasons for acceptance and rejection?
-#### 1. Categorize Accept and Reject Cases
-- 
-
-#### 2. Preprocessing
-- 
-
-#### 3. Key Word Analysis
-- 
-
-
-### RQ B2: In which topic areas are the papers recommended by peer review? Is there a bias toward recommending specific topics?
-#### 1. Categorize Accept and Reject Cases
-- 
-
-#### 2. Preprocessing
-- 
-
-#### 3. Key Word Analysis
-- 
-
-### RQ B3: Does the paper decision correlates with citation recommendation, i.e., does rejected papers get more citation recommendations comparing to accepted papers?
+### RQ B2: Does the paper decision correlates with citation recommendation, i.e., does rejected papers get more citation recommendations comparing to accepted papers?
 #### 1. Categorize Accept and Reject Cases
 - Only ICLR2023 is analysed for this RQ, as it is the only one that has enough rejected data.
 - Merge all the accept cases, e.g., accept (main), accept (poster), into one category. 
-
 
 #### 2. Preprocessing
 - Run the following code on the csv which contains the number of reviewers recommending extra literature to convert them into binary categories, i.e., whether there's recommended literature to a paper. 
@@ -212,25 +193,16 @@ df.to_csv('ICLR2023_llama70b_with_rec_num_binary.csv', index=False)
 ![Paper Decision vs. Number of Reviewers Recommending Extra Literature](visualization/rec_num_acc_corr.png)
 
 
-### RQ C1: a. How often do authors agree to incorporate the citing suggestions from the reviewers? b. How often do authors incorporate the citing suggestions from the reviewers?
-#### 1. Preprocessing
-- 
+### RQ C1: How often do authors incorporate the citing suggestions from the reviewers?
+#### 1. Cross-referencing
+- Use `scripts/RQ_C/actual_cite.py` to cross-reference list of recommended papers and list of final citation.
 
-#### 2. Preprocessing
-- 
-
-#### 3. Key Word Analysis
-- 
 
 ### RQ C2:Do papers that heavily cite recent work receive better peer review outcomes/ higher review scores (i.e., final reject/accept or individual reviewer scores from 1-5 or 1-10) than those with a more balanced or diverse citation age?
 #### 1. Preprocessing
-- 
+- Merge the csv with review scores and the csv with average citing years. 
 
-#### 2. Preprocessing
-- 
+#### 2. Analysis
+- Use `scripts/RQ_C/calculate_avg_iclr.py`, `scripts/RQ_C/calculate_avg_emnlp.py` and `scripts/RQ_C/calculate_avg_neurips.py` to visualize the correlation between review scores and avg. citing years. 
+- The above scripts also compute chi-square. 
 
-#### 3. Key Word Analysis
-- 
-
-
-## Datasets for Future Work
