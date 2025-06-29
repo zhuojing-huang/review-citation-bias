@@ -1,0 +1,201 @@
+bigrams,frequency,topic 1,topic 2
+language models,76,Other/Unknown,LLM related(self assigned)
+large language,24,Other/Unknown,LLM related(self assigned)
+question answering,20,Question Answering,
+machine translation,19,Machine Translation,
+text generation,15,Generation,
+named entity,15,Information Extraction,
+entity recognition,14,Information Extraction,
+natural language,13,Other/Unknown,
+speech translation,12,"Speech Recognition, Text-to-Speech and Spoken Language Understanding",Machine Translation
+style transfer,11,"Sentiment Analysis, Stylistic Analysis, and Argument Mining",Machine Learning for NLP
+text classification,11,NLP Applications,
+neural machine,11,Machine Translation,
+chain thought,11,Language Modeling,
+sentiment analysis,10,"Sentiment Analysis, Stylistic Analysis, and Argument Mining",
+language model,10,Other/Unknown,
+contrastive learning,9,Machine Learning for NLP,
+aspect-based sentiment,8,"Sentiment Analysis, Stylistic Analysis, and Argument Mining",
+reinforcement learning,8,Machine Learning for NLP,
+semantic change,7,Semantics: Lexical and Sentence-Level,
+in-context learning,6,Language Modeling,
+language generation,6,Generation,
+text style,6,Computational Social Science and Cultural Analytics,Machine Learning for NLP
+transfer learning,6,Machine Learning for NLP,
+parameter-efficient fine-tuning,6,Efficient/Low-Resource Methods for NLP,
+thought prompting,6,Language Modeling,
+cross-lingual transfer,5,Multilingualism and Cross-Lingual NLP,
+continual learning,5,Machine Learning for NLP,
+knowledge graph,5,NLP Applications,
+knowledge graphs,5,NLP Applications,
+commonsense knowledge,5,Interpretability and Analysis of Models for NLP,Dialogue and Interactive Systems
+pre-trained language,5,Language Modeling,
+code generation,5,Generation,
+active learning,5,Machine Learning for NLP,
+end-to-end speech,5,"Speech Recognition, Text-to-Speech and Spoken Language Understanding",
+self-consistency improves,5,Language Modeling,
+improves chain,5,Language Modeling,
+thought reasoning,5,Language Modeling,
+reasoning language,5,Language Modeling,
+lexical semantic,5,Semantics: Lexical and Sentence-Level,
+passage retrieval,4,Information Retrieval and Text Mining,
+pre-trained models,4,Language Modeling,
+image captioning,4,"Multimodality and Language Grounding to Vision, Robotics and Beyond",
+word embeddings,4,Machine Learning for NLP,Semantics: Lexical and Sentence-Level
+language processing,4,Other/Unknown,
+commonsense question,4,Question Answering,
+prompt learning,4,Language Modeling,
+vision-and-language navigation,4,"Multimodality and Language Grounding to Vision, Robotics and Beyond",
+recognition via,4,"Speech Recognition, Text-to-Speech and Spoken Language Understanding",
+deep reinforcement,4,Machine Learning for NLP,
+few-shot text,4,Other/Unknown,
+open-domain question,4,Question Answering,
+social media,4,Computational Social Science and Cultural Analytics,NLP Applications
+information extraction,4,Information Extraction,
+knowledge-grounded dialogue,4,Dialogue and Interactive Systems,
+dialogue generation,4,Dialogue and Interactive Systems,Generation
+knowledge bases,4,Interpretability and Analysis of Models for NLP,Dialogue and Interactive Systems
+models knowledge,4,Interpretability and Analysis of Models for NLP,Dialogue and Interactive Systems
+change detection,4,NLP Applications,
+news recommendation,4,NLP Applications,
+learning language,3,Other/Unknown,
+controlled text,3,Generation,
+unsupervised text,3,Machine Learning for NLP,
+small language,3,Efficient/Low-Resource Methods for NLP,
+state tracking,3,Dialogue and Interactive Systems,
+generation models,3,Generation,
+theory mind,3,"Linguistic Theories, Cognitive Modeling, and Psycholinguistics",
+dense passage,3,Information Retrieval and Text Mining,
+video captioning,3,"Multimodality and Language Grounding to Vision, Robotics and Beyond",
+sentiment classification,3,Semantics: Lexical and Sentence-Level,
+temporal knowledge,3,NLP Applications,
+empirical study,3,NLP Applications,
+models via,3,Other/Unknown,
+representation learning,3,Machine Learning for NLP,
+using deep,3,Other/Unknown,
+hierarchical attention,3,Language Modeling,
+question generation,3,Generation,Question Answering
+zero-shot commonsense,3,Interpretability and Analysis of Models for NLP,Resources and Evaluation
+factual consistency,3,Interpretability and Analysis of Models for NLP,Resources and Evaluation
+improving robustness,3,Interpretability and Analysis of Models for NLP,Resources and Evaluation
+backdoor attacks,3,Interpretability and Analysis of Models for NLP,
+translation models,3,Machine Translation,
+multi-task learning,3,Machine Learning for NLP,
+learning framework,3,Other/Unknown,
+relation extraction,3,Information Extraction,
+human evaluation,3,Human-Centered NLP,Resources and Evaluation
+interactive learning,3,Machine Learning for NLP,
+paraphrase generation,3,Semantics: Lexical and Sentence-Level,Generation
+contextualized word,3,Semantics: Lexical and Sentence-Level,Machine Learning for NLP
+word representations,3,Semantics: Lexical and Sentence-Level,Machine Learning for NLP
+complexity-based prompting,3,Language Modeling,
+prompting multi-step,3,Language Modeling,
+multi-step reasoning,3,Language Modeling,
+automatic chain,3,Language Modeling,
+prompting large,3,Language Modeling,LLM related(self assigned)
+prompting elicits,3,Language Modeling,
+elicits reasoning,3,Language Modeling,
+reasoning large,3,Language Modeling,LLM related(self assigned)
+multimodal named,3,"Multimodality and Language Grounding to Vision, Robotics and Beyond",Information Extraction
+temporal question,3,Question Answering,
+answering knowledge,3,Question Answering,
+abstractive summarization,3,Summarization,
+emotion recognition,3,"Sentiment Analysis, Stylistic Analysis, and Argument Mining",
+graph neural,3,Machine Learning for NLP,
+neural networks,3,Other/Unknown,
+self-adaptive prompting,3,Language Modeling,
+taxonomy expansion,3,Semantics: Lexical and Sentence-Level,
+taxonomy completion,3,Semantics: Lexical and Sentence-Level,
+masked language,2,Language Modeling,
+prompt-and-rerank method,2,Language Modeling,
+method zero-shot,2,Language Modeling,
+zero-shot few-shot,2,Language Modeling,
+few-shot arbitrary,2,Language Modeling,
+arbitrary textual,2,Language Modeling,
+textual style,2,Language Modeling,
+transfer small,2,Language Modeling,
+approach controlled,2,Other/Unknown,
+few-shot learning,2,Other/Unknown,
+efficient fine-tuning,2,Efficient/Low-Resource Methods for NLP,
+fine-tuning language,2,Language Modeling,
+linguistic knowledge,2,"Linguistic Theories, Cognitive Modeling, and Psycholinguistics",
+scalable multi-domain,2,Other/Unknown,
+conversational agents,2,Dialogue and Interactive Systems,
+dialogue state,2,Dialogue and Interactive Systems,
+task-oriented dialogue,2,Dialogue and Interactive Systems,
+dialogue systems,2,Dialogue and Interactive Systems,
+survey hallucination,2,Language Modeling,
+hallucination natural,2,Language Modeling,
+reasoning recursive,2,Dialogue and Interactive Systems,
+person re-identification,2,Information Extraction,
+passage re-ranking,2,Information Retrieval and Text Mining,
+blip bootstrapping,2,"Multimodality and Language Grounding to Vision, Robotics and Beyond",
+bootstrapping language-image,2,"Multimodality and Language Grounding to Vision, Robotics and Beyond",
+language-image pre-training,2,"Multimodality and Language Grounding to Vision, Robotics and Beyond",
+pre-training unified,2,Other/Unknown,
+unified vision-language,2,"Multimodality and Language Grounding to Vision, Robotics and Beyond",
+vision-language understanding,2,"Multimodality and Language Grounding to Vision, Robotics and Beyond",
+understanding generation,2,"Multimodality and Language Grounding to Vision, Robotics and Beyond",
+models arabic,2,Efficient/Low-Resource Methods for NLP,Multilingualism and Cross-Lingual NLP
+survey aspect-level,2,Other/Unknown,
+aspect-level sentiment,2,"Sentiment Analysis, Stylistic Analysis, and Argument Mining",
+survey aspect-based,2,Other/Unknown,
+bbtv2 towards,2,Language Modeling,LLM related(self assigned)
+towards gradient-free,2,Language Modeling,LLM related(self assigned)
+gradient-free future,2,Language Modeling,LLM related(self assigned)
+future large,2,Language Modeling,LLM related(self assigned)
+forward passes,2,Other/Unknown,
+memory efficient,2,Efficient/Low-Resource Methods for NLP,
+propaganda detection,2,NLP Applications,Computational Social Science and Cultural Analytics
+large scale,2,Other/Unknown,
+graph reasoning,2,NLP Applications,Dialogue and Interactive Systems
+training neural,2,Other/Unknown,
+neural text,2,Other/Unknown,
+hybrid approach,2,Other/Unknown,
+contextual word,2,Other/Unknown,
+graph convolutional,2,Machine Learning for NLP,
+convolutional networks,2,Machine Learning for NLP,
+chinese commonsense,2,Dialogue and Interactive Systems,Computational Social Science and Cultural Analytics
+soda million-scale,2,Dialogue and Interactive Systems,Machine Learning for NLP
+million-scale dialogue,2,Dialogue and Interactive Systems,Machine Learning for NLP
+dialogue distillation,2,Dialogue and Interactive Systems,Machine Learning for NLP
+distillation social,2,Dialogue and Interactive Systems,Machine Learning for NLP
+social commonsense,2,Dialogue and Interactive Systems,Machine Learning for NLP
+commonsense contextualization,2,Dialogue and Interactive Systems,Machine Learning for NLP
+parameter-efficient transfer,2,Efficient/Low-Resource Methods for NLP,
+car conceptualization-augmented,2,Question Answering,
+conceptualization-augmented reasoner,2,Question Answering,
+reasoner zero-shot,2,Question Answering,
+gradient descent,2,Other/Unknown,
+learning language-specific,2,Machine Translation,Multilingualism and Cross-Lingual NLP
+language-specific layers,2,Machine Translation,Multilingualism and Cross-Lingual NLP
+layers multilingual,2,Machine Translation,Multilingualism and Cross-Lingual NLP
+multilingual machine,2,Machine Translation,Multilingualism and Cross-Lingual NLP
+shared task,2,Other/Unknown,
+chatgpt zero-shot,2,Dialogue and Interactive Systems,LLM related(self assigned)
+zero-shot dialogue,2,Dialogue and Interactive Systems,LLM related(self assigned)
+neural syntactic,2,"Syntax: Tagging, Chunking and Parsing",
+stochastic weight,2,Machine Learning for NLP,
+weight averaging,2,Machine Learning for NLP,
+language inference,2,Semantics: Lexical and Sentence-Level,
+model pretraining,2,Language Modeling,
+weak supervision,2,Machine Learning for NLP,
+models automatic,2,Other/Unknown,
+automatic post-editing,2,Machine Translation,
+generative retrieval,2,Information Retrieval and Text Mining,
+differentiable search,2,Information Retrieval and Text Mining,
+search index,2,Information Retrieval and Text Mining,
+learning strategies,2,Other/Unknown,
+mad-x adapter-based,2,Language Modeling,
+adapter-based framework,2,Language Modeling,
+framework multi-task,2,Other/Unknown,
+multi-task cross-lingual,2,Multilingualism and Cross-Lingual NLP,
+text encoders,2,Language Modeling,
+via large,2,LLM related(self assigned),
+code search,2,Information Retrieval and Text Mining,
+retrieval augmented,2,Language Modeling,
+augmented language,2,Language Modeling,Efficient/Low-Resource Methods for NLP
+retrieval open-domain,2,Information Retrieval and Text Mining,
+language modeling,2,Language Modeling,
+bridging gap,2,Other/Unknown,
+multitask learning,2,Machine Learning for NLP,
