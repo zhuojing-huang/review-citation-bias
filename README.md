@@ -2,6 +2,8 @@
 
 This project provides a framework for analyzing biases induced by citation suggestions from peer review at major AI conferences. It includes tools for retrieving, converting, annotating, and shuffling review data, as well as sending prompts together with review data to open-source large language models via API to evaluate their performance in suggesting additional citations based on the reviews. The project also analyses different aspects of biases in peer review suggestions. 
 
+This README serves as a simple guideline for the key experiments and visualizaiton of the main results. 
+
 **Prerequisites**
 - Python 3.x
 - LM Studio for interacting with language models
@@ -74,7 +76,7 @@ Python scripts are provided to convert the JSON files into CSV format for easier
 - `scripts/Preprocessing/convert_json_csv_API1_reviews.py`: Converts **ICLR** JSON data to CSV.
 For other data like submission data, only minor adjustments, i.e., changing column names, need be to done. All the converted CSVs are also saved under `raw_data`.
 
-### RQ A1: Analysing Review Texts
+### RQ A1: How often do reviewers cite additional literature as part of their review?
 
 #### 1. Manual Annotation
 After converting the JSON files to CSV:
