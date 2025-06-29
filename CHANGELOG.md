@@ -3,15 +3,11 @@
 This changelog tracks all changes, updates, and annotations made to the peer review data during the project lifecycle.
 
 ---
-## **v20250305 - 2025-03-05 (Year Extraction & Paper Decision Update)**
-### **2025-02-16 to 2025-03-05**
-
-
-
-
-
-
-
+## **v20250630 - 2025-06-30 (Final Annotated Dataset Update and Completed Code)**
+### **2025-02-16 to 2025-06-30**
+- Annotated data for the paper topics are saved under `processed_data\annotated_data_for_topics`
+- Annotated data for the titles of recommended papers are saved under `processed_data\annotated_data_for_suggested_papers`
+- First completed version of code is saved under `scripts`, with all the folders named after the corresponding research questions. 
 
 ---
 ## **v20250216 - 2025-02-16 (Response Collection Update)**
