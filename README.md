@@ -206,3 +206,15 @@ df.to_csv('ICLR2023_llama70b_with_rec_num_binary.csv', index=False)
 - Use `scripts/RQ_C/calculate_avg_iclr.py`, `scripts/RQ_C/calculate_avg_emnlp.py` and `scripts/RQ_C/calculate_avg_neurips.py` to visualize the correlation between review scores and avg. citing years. 
 - The above scripts also compute chi-square. 
 
+
+## 📚 Citation
+
+If you use this work in your research, please cite it as:
+
+```
+@article{huang2025ReviewCitationBias,
+  author       = {Zhuojing Huang},
+  title        = {Quantifying Biases in Peer Review: Analyzing Reviewer Suggestions in Artificial Intelligence Publications},
+  year         = {2025}
+}
+```
