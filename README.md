@@ -1,6 +1,6 @@
 # Quantifying Biases in Peer Review: Analyzing Reviewer Suggestions in Artificial Intelligence Publications
 
-This project provides a framework for analyzing biases induced by citation suggestions from peer review at major AI conferences. It includes tools for retrieving, converting, annotating, and shuffling review data, as well as sending prompts together with review data to open-source LLMs via API to evaluate their performance in suggesting additional citations based on the reviews. The project also analyses different aspects of biases in peer review suggestions. 
+This master's thesis project provides a framework for analyzing biases induced by citation suggestions from peer review at major AI conferences. It includes tools for retrieving, converting, annotating, and shuffling review data, as well as sending prompts together with review data to open-source LLMs via API to evaluate their performance in suggesting additional citations based on the reviews. The project also analyses different aspects of biases in peer review suggestions. 
 
 This README serves as a simple guideline for the key experiments and visualizaiton of the main results. 
 
